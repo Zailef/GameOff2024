@@ -7,6 +7,7 @@ extends Control
 
 var settings_menu_scene: PackedScene = preload("res://scenes/menus/settings_menu/settings_menu.tscn")
 var credits_menu_scene: PackedScene = preload("res://scenes/menus/credits_menu/credits_menu.tscn")
+var main_level: PackedScene = preload("res://scenes/levels/sandbox.tscn")
 
 func _ready() -> void:
     play_button.pressed.connect(_on_play_button_pressed)
@@ -15,7 +16,7 @@ func _ready() -> void:
     quit_button.pressed.connect(_on_quit_button_pressed)
 
 func _on_play_button_pressed() -> void:
-    pass
+    get_tree().change_scene_to_packed(main_level)
 
 func _on_settings_button_pressed() -> void:
     get_tree().change_scene_to_packed(settings_menu_scene)
