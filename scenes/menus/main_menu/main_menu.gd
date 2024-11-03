@@ -5,6 +5,8 @@ extends Control
 @onready var credits_button: Button = %CreditsButton
 @onready var quit_button: Button = %QuitButton
 
+var settings_menu_scene: PackedScene = preload("res://scenes/menus/settings_menu/settings_menu.tscn")
+
 func _ready() -> void:
     play_button.pressed.connect(_on_play_button_pressed)
     settings_button.pressed.connect(_on_settings_button_pressed)
@@ -15,7 +17,7 @@ func _on_play_button_pressed() -> void:
     pass
 
 func _on_settings_button_pressed() -> void:
-    pass
+    get_tree().change_scene_to_packed(settings_menu_scene)
 
 func _on_credits_button_pressed() -> void:
     pass

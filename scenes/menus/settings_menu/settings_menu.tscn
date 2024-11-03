@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3 uid="uid://djrd4sci3aady"]
+
+[ext_resource type="Script" path="res://scenes/menus/settings_menu/settings_menu.gd" id="1_ksp3g"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ksp3g")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="SettingsLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="ControlsContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="MasterVolumeLabel" type="Label" parent="MarginContainer/ControlsContainer"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="MarginContainer/ControlsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.7
+
+[node name="MusicVolumeLabel" type="Label" parent="MarginContainer/ControlsContainer"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/ControlsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.7
+
+[node name="SFXVolumeLabel" type="Label" parent="MarginContainer/ControlsContainer"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="MarginContainer/ControlsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.7
+
+[node name="BackButton" type="Button" parent="MarginContainer/ControlsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back"
+
+[node name="SFXSampler" type="AudioStreamPlayer" parent="."]
