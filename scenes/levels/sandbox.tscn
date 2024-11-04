@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbcs2ke7l76a2"]
+[gd_scene load_steps=6 format=3 uid="uid://dbcs2ke7l76a2"]
+
+[ext_resource type="PackedScene" uid="uid://mwbglbrt5mhq" path="res://scenes/characters/player/player.tscn" id="1_2fspt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kgrn6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,5 +32,5 @@ collision_mask = 0
 size = Vector3(20, 1, 20)
 material = SubResource("StandardMaterial3D_v12sb")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.766997, 0.64165, 0, -0.64165, 0.766997, 0, 3.6486, 7.37857)
+[node name="Player" parent="." instance=ExtResource("1_2fspt")]
+transform = Transform3D(0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, 0.999848, 0, 1.5, 0)
