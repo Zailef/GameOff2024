@@ -27,14 +27,36 @@ environment = SubResource("Environment_hw884")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Floor" type="CSGBox3D" parent="."]
+[node name="Player" parent="." instance=ExtResource("1_2fspt")]
+transform = Transform3D(0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, 0.999848, 0, 1.5, 0)
+
+[node name="Bounds" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Bounds"]
 use_collision = true
 collision_mask = 0
 size = Vector3(40, 1, 40)
 material = SubResource("StandardMaterial3D_v12sb")
 
-[node name="Player" parent="." instance=ExtResource("1_2fspt")]
-transform = Transform3D(0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, 0.999848, 0, 1.5, 0)
-
-[node name="ground-test" parent="." instance=ExtResource("2_snsrf")]
+[node name="ground-test" parent="Bounds/Floor" instance=ExtResource("2_snsrf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+
+[node name="FrontWall" type="CSGBox3D" parent="Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -20.5)
+use_collision = true
+size = Vector3(40, 10, 1)
+
+[node name="LeftWall" type="CSGBox3D" parent="Bounds"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.5, 5, 0)
+use_collision = true
+size = Vector3(40, 10, 1)
+
+[node name="RightWall" type="CSGBox3D" parent="Bounds"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.5, 5, 0)
+use_collision = true
+size = Vector3(40, 10, 1)
+
+[node name="BackWall" type="CSGBox3D" parent="Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 20.5)
+use_collision = true
+size = Vector3(40, 10, 1)
