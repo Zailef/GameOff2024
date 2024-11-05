@@ -9,7 +9,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_dm2wh"]
 size = Vector3(0.5, 0.1, 0.1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kld1g"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r8qsy"]
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, 0.999848, 0, 1, 0)
@@ -32,7 +32,7 @@ mesh = SubResource("BoxMesh_dm2wh")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="TwistPivot/PitchPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96475, 0)
-shape = SubResource("BoxShape3D_kld1g")
+shape = SubResource("CapsuleShape3D_r8qsy")
 spring_length = 6.0
 
 [node name="ThridPersonCamera3D" type="Camera3D" parent="TwistPivot/PitchPivot/SpringArm3D"]
