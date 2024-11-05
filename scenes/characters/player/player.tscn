@@ -31,6 +31,7 @@ mesh = SubResource("BoxMesh_dm2wh")
 [node name="PitchPivot" type="Node3D" parent="TwistPivot"]
 
 [node name="SpringArm3D" type="SpringArm3D" parent="TwistPivot/PitchPivot"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96475, 0)
 shape = SubResource("CapsuleShape3D_r8qsy")
 spring_length = 6.0

@@ -1,15 +1,21 @@
 extends CharacterBody3D
 
+@onready var twist_pivot: Node3D = $TwistPivot
+@onready var pitch_pivot: Node3D = $TwistPivot/PitchPivot
+@onready var spring_arm: SpringArm3D = %SpringArm3D
+
 @export var move_speed: float = 5.0
 @export var jump_velocity: float = 4.5
 @export var mouse_sensitivity: float = 0.001
 @export var camera_rotation_speed: float = 15.0
 @export var player_rotation_speed: float = 100.0
+
 @export var min_camera_yaw: float = -45
 @export var max_camera_yaw: float = 45
-
-@onready var twist_pivot: Node3D = $TwistPivot
-@onready var pitch_pivot: Node3D = $TwistPivot/PitchPivot
+@export var camera_zoom_speed: float = 4.0
+@export var camera_zoom_min_distance: float = 3.0
+@onready var camera_zoom_max_distance: float = spring_arm.spring_length
+@onready var target_zoom_length: float = spring_arm.spring_length
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -17,6 +23,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+	if Input.is_action_just_pressed(ActionNames.CAMERA_ZOOM_IN):
+		target_zoom_length = clamp(target_zoom_length - camera_zoom_speed, camera_zoom_min_distance, camera_zoom_max_distance)
+	elif Input.is_action_just_pressed(ActionNames.CAMERA_ZOOM_OUT):
+		target_zoom_length = clamp(target_zoom_length + camera_zoom_speed, camera_zoom_min_distance, camera_zoom_max_distance)
+
+	# Smoothly interpolate the spring length towards the target zoom length
+	spring_arm.spring_length = lerp(spring_arm.spring_length, target_zoom_length, camera_zoom_speed * delta)
 
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector(ActionNames.TURN_LEFT, ActionNames.TURN_RIGHT, ActionNames.MOVE_FORWARDS, ActionNames.MOVE_BACKWARDS)
