@@ -19,19 +19,20 @@ func _process(delta: float) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _physics_process(delta: float) -> void:
-	handle_movement(delta)
-	handle_camera_rotation(delta)
+	var input_dir := Input.get_vector(ActionNames.TURN_LEFT, ActionNames.TURN_RIGHT, ActionNames.MOVE_FORWARDS, ActionNames.MOVE_BACKWARDS)
+
+	handle_movement(input_dir, delta)
+	handle_camera_rotation(input_dir, delta)
 	move_and_slide()
 
-func handle_movement(delta: float) -> void:
+func handle_movement(input_direction: Vector2, delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed(ActionNames.JUMP) and is_on_floor():
 		velocity.y = jump_velocity
 
-	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var direction := (transform.basis * Vector3(0, 0, input_dir.y)).normalized() # Only consider forward/backward movement
+	var direction := (transform.basis * Vector3(0, 0, input_direction.y)).normalized() # Only consider forward/backward movement
 
 	if direction:
 		velocity.x = direction.x * move_speed
@@ -41,12 +42,11 @@ func handle_movement(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, move_speed)
 
 	# Handle rotation based on left/right input
-	print(input_dir.x)
-	if input_dir.x != 0:
-		var rotation_amount = input_dir.x * player_rotation_speed * delta
+	if input_direction.x != 0:
+		var rotation_amount = input_direction.x * player_rotation_speed * delta
 		rotate_y(deg_to_rad(-rotation_amount))
 
-func handle_camera_rotation(delta: float) -> void:
+func handle_camera_rotation(input_direction: Vector2, delta: float) -> void:
 	var mouse_motion = Input.get_last_mouse_velocity()
 	
 	# Calculate the target rotations
@@ -54,8 +54,7 @@ func handle_camera_rotation(delta: float) -> void:
 	var target_pitch = pitch_pivot.rotation.x + deg_to_rad(-mouse_motion.y * mouse_sensitivity) # Invert the y-axis
 	
 	# Check if the player is moving
-	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var is_moving = input_dir.length() > 0
+	var is_moving = input_direction.length() > 0
 	
 	# Clamp the yaw if the player is moving
 	if is_moving:
