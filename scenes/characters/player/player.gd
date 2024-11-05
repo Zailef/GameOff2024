@@ -1,22 +1,69 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+@export var move_speed: float = 5.0
+@export var jump_velocity: float = 4.5
+@export var mouse_sensitivity: float = 0.001
+@export var camera_rotation_speed: float = 15.0
+@export var player_rotation_speed: float = 100.0
+@export var min_camera_yaw: float = -45
+@export var max_camera_yaw: float = 45
+
+@onready var twist_pivot: Node3D = $TwistPivot
+@onready var pitch_pivot: Node3D = $TwistPivot/PitchPivot
+
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _physics_process(delta: float) -> void:
+	handle_movement(delta)
+	handle_camera_rotation(delta)
+	move_and_slide()
+
+func handle_movement(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump_velocity
 
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	var direction := (transform.basis * Vector3(0, 0, input_dir.y)).normalized() # Only consider forward/backward movement
+
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * move_speed
+		velocity.z = direction.z * move_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, move_speed)
+		velocity.z = move_toward(velocity.z, 0, move_speed)
 
-	move_and_slide()
+	# Handle rotation based on left/right input
+	print(input_dir.x)
+	if input_dir.x != 0:
+		var rotation_amount = input_dir.x * player_rotation_speed * delta
+		rotate_y(deg_to_rad(-rotation_amount))
+
+func handle_camera_rotation(delta: float) -> void:
+	var mouse_motion = Input.get_last_mouse_velocity()
+	
+	# Calculate the target rotations
+	var target_yaw = twist_pivot.rotation.y + deg_to_rad(-mouse_motion.x * mouse_sensitivity)
+	var target_pitch = pitch_pivot.rotation.x + deg_to_rad(-mouse_motion.y * mouse_sensitivity) # Invert the y-axis
+	
+	# Check if the player is moving
+	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	var is_moving = input_dir.length() > 0
+	
+	# Clamp the yaw if the player is moving
+	if is_moving:
+		target_yaw = clamp(target_yaw, deg_to_rad(min_camera_yaw), deg_to_rad(max_camera_yaw))
+	
+	# Interpolate towards the target rotations
+	twist_pivot.rotation.y = lerp(twist_pivot.rotation.y, target_yaw, camera_rotation_speed * delta)
+	
+	# Clamp the pitch and interpolate
+	target_pitch = clamp(target_pitch, deg_to_rad(-45), deg_to_rad(45))
+	pitch_pivot.rotation.x = lerp(pitch_pivot.rotation.x, target_pitch, camera_rotation_speed * delta)
