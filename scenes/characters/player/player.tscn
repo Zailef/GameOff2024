@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_5m5gm"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6b6ep"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_4faco"]
+margin = 0.1
+radius = 1.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ffkop"]
 
@@ -20,7 +22,7 @@ collision_layer = 2
 script = ExtResource("1_5m5gm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_6b6ep")
+shape = SubResource("SphereShape3D_4faco")
 
 [node name="PlayerBody" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_ffkop")

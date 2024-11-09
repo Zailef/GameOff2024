@@ -9,11 +9,11 @@ class_name Player
 @export var sprint_modifier: float = 1.5
 @export var jump_velocity: float = 4.5
 @export var mouse_sensitivity: float = 0.001
-@export var camera_rotation_speed: float = 15.0
-@export var player_rotation_speed: float = 100.0
+@export var camera_rotation_speed: float = 20.0
+@export var player_rotation_speed: float = 125.0
 
-@export var min_camera_yaw: float = -45
-@export var max_camera_yaw: float = 45
+@export var min_camera_yaw: float = -60
+@export var max_camera_yaw: float = 60
 @export var camera_zoom_speed: float = 4.0
 @export var camera_zoom_min_distance: float = 3.0
 @onready var camera_zoom_max_distance: float = spring_arm.spring_length
