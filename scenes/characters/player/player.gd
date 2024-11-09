@@ -1,10 +1,12 @@
 extends CharacterBody3D
+class_name Player
 
 @onready var twist_pivot: Node3D = $TwistPivot
 @onready var pitch_pivot: Node3D = $TwistPivot/PitchPivot
 @onready var spring_arm: SpringArm3D = %SpringArm3D
 
 @export var move_speed: float = 5.0
+@export var sprint_modifier: float = 1.5
 @export var jump_velocity: float = 4.5
 @export var mouse_sensitivity: float = 0.001
 @export var camera_rotation_speed: float = 15.0
@@ -16,6 +18,11 @@ extends CharacterBody3D
 @export var camera_zoom_min_distance: float = 3.0
 @onready var camera_zoom_max_distance: float = spring_arm.spring_length
 @onready var target_zoom_length: float = spring_arm.spring_length
+
+var is_sprinting: bool = false
+
+var current_move_speed: float:
+	get: return move_speed * (sprint_modifier if is_sprinting else 1.0)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -46,14 +53,19 @@ func handle_movement(input_direction: Vector2, delta: float) -> void:
 	if Input.is_action_just_pressed(ActionNames.JUMP) and is_on_floor():
 		velocity.y = jump_velocity
 
+	if Input.is_action_pressed(ActionNames.SPRINT):
+		is_sprinting = true
+	else:
+		is_sprinting = false
+
 	var direction := (transform.basis * Vector3(0, 0, input_direction.y)).normalized() # Only consider forward/backward movement
 
 	if direction:
-		velocity.x = direction.x * move_speed
-		velocity.z = direction.z * move_speed
+		velocity.x = direction.x * current_move_speed
+		velocity.z = direction.z * current_move_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, move_speed)
-		velocity.z = move_toward(velocity.z, 0, move_speed)
+		velocity.x = move_toward(velocity.x, 0, current_move_speed)
+		velocity.z = move_toward(velocity.z, 0, current_move_speed)
 
 	# Handle rotation based on left/right input
 	if input_direction.x != 0:
