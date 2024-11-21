@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp4favuaixq6p"
-path.s3tc="res://.godot/imported/fortune.teller_Fortune.png-ff6c9d2b96636defa6ac54077f81ca83.s3tc.ctex"
+uid="uid://b31brjplhcuh3"
+path.s3tc="res://.godot/imported/fortune.teller_black-velvet.png-28589503bb0197ce5c590ce20888d6e4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "2522ba4d1c19a26b94f1f0b91f7f1dc0"
+"md5": "91b00d3a522aef0fa9d09d03b88915aa"
 }
 
 [deps]
 
-source_file="res://models/characters/fortune.teller_Fortune.png"
-dest_files=["res://.godot/imported/fortune.teller_Fortune.png-ff6c9d2b96636defa6ac54077f81ca83.s3tc.ctex"]
+source_file="res://models/characters/fortune_teller/fortune.teller_black-velvet.png"
+dest_files=["res://.godot/imported/fortune.teller_black-velvet.png-28589503bb0197ce5c590ce20888d6e4.s3tc.ctex"]
 
 [params]
 

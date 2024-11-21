@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://f1n4bef1u22x"
-path="res://.godot/imported/fortune.teller.sign.glb-2da500abf65cdee08bd9672f28e387bc.scn"
+uid="uid://c46xaikra54ku"
+path="res://.godot/imported/fortune.teller.tent.glb-ece13198e8e258514d6626a466e323ca.scn"
 
 [deps]
 
-source_file="res://models/characters/fortune.teller.sign.glb"
-dest_files=["res://.godot/imported/fortune.teller.sign.glb-2da500abf65cdee08bd9672f28e387bc.scn"]
+source_file="res://models/characters/fortune_teller/fortune.teller.tent.glb"
+dest_files=["res://.godot/imported/fortune.teller.tent.glb-ece13198e8e258514d6626a466e323ca.scn"]
 
 [params]
 

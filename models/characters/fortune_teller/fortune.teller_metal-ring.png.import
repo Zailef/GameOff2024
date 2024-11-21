@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b31brjplhcuh3"
-path.s3tc="res://.godot/imported/fortune.teller_black-velvet.png-cdde3430a5ed0f04dad2458e0b994d96.s3tc.ctex"
+uid="uid://dojo4w6dk6xj2"
+path.s3tc="res://.godot/imported/fortune.teller_metal-ring.png-e6068cd47fdb2a9c6d2c4f57e726ed8b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "91b00d3a522aef0fa9d09d03b88915aa"
+"md5": "74a27fbb8e5fd4c8a31071f17bf3983b"
 }
 
 [deps]
 
-source_file="res://models/characters/fortune.teller_black-velvet.png"
-dest_files=["res://.godot/imported/fortune.teller_black-velvet.png-cdde3430a5ed0f04dad2458e0b994d96.s3tc.ctex"]
+source_file="res://models/characters/fortune_teller/fortune.teller_metal-ring.png"
+dest_files=["res://.godot/imported/fortune.teller_metal-ring.png-e6068cd47fdb2a9c6d2c4f57e726ed8b.s3tc.ctex"]
 
 [params]
 
