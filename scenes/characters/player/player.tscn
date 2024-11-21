@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://mwbglbrt5mhq"]
+[gd_scene load_steps=12 format=3 uid="uid://mwbglbrt5mhq"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_5m5gm"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_state_machine.gd" id="2_5tt5k"]
+[ext_resource type="Script" path="res://scenes/characters/player/camera_controller.gd" id="2_gucjo"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_move_state.gd" id="3_gvtl3"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_idle_state.gd" id="4_o4wn0"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_jump_state.gd" id="5_4suqs"]
@@ -40,17 +41,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00509398, 0.400528, -0.2918
 mesh = SubResource("BoxMesh_dm2wh")
 skeleton = NodePath("../..")
 
-[node name="TwistPivot" type="Node3D" parent="."]
+[node name="CameraController" type="Node3D" parent="."]
+script = ExtResource("2_gucjo")
 
-[node name="PitchPivot" type="Node3D" parent="TwistPivot"]
+[node name="TwistPivot" type="Node3D" parent="CameraController"]
+transform = Transform3D(0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, 0.999848, 0, 0, 0)
 
-[node name="SpringArm3D" type="SpringArm3D" parent="TwistPivot/PitchPivot"]
+[node name="PitchPivot" type="Node3D" parent="CameraController/TwistPivot"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraController/TwistPivot/PitchPivot"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96475, 0)
 shape = SubResource("CapsuleShape3D_r8qsy")
 spring_length = 6.0
 
-[node name="ThridPersonCamera3D" type="Camera3D" parent="TwistPivot/PitchPivot/SpringArm3D"]
+[node name="ThridPersonCamera3D" type="Camera3D" parent="CameraController/TwistPivot/PitchPivot/SpringArm3D"]
 transform = Transform3D(0.999982, 0.00585071, 0.00100975, -0.00585071, 0.942133, 0.335187, 0.00100976, -0.335187, 0.942151, 0, 0, 0)
 
 [node name="InteractionProbe" type="Area3D" parent="."]
