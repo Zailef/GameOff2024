@@ -1,6 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://mwbglbrt5mhq"]
+[gd_scene load_steps=11 format=3 uid="uid://mwbglbrt5mhq"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_5m5gm"]
+[ext_resource type="Script" path="res://scenes/characters/player/player_state_machine.gd" id="2_5tt5k"]
+[ext_resource type="Script" path="res://scenes/characters/player/player_move_state.gd" id="3_gvtl3"]
+[ext_resource type="Script" path="res://scenes/characters/player/player_idle_state.gd" id="4_o4wn0"]
+[ext_resource type="Script" path="res://scenes/characters/player/player_jump_state.gd" id="5_4suqs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_73sg4"]
 radius = 0.4
@@ -18,7 +22,7 @@ size = Vector3(0.3, 0.1, 0.1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_kn2nh"]
 radius = 1.5
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, 0.999848, 0, 1, 0)
 collision_layer = 2
 script = ExtResource("1_5m5gm")
@@ -55,3 +59,17 @@ collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionProbe"]
 shape = SubResource("SphereShape3D_kn2nh")
+
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("player", "initial_state")]
+script = ExtResource("2_5tt5k")
+player = NodePath("..")
+initial_state = NodePath("PlayerIdleState")
+
+[node name="PlayerMoveState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("3_gvtl3")
+
+[node name="PlayerIdleState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("4_o4wn0")
+
+[node name="PlayerJumpState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("5_4suqs")

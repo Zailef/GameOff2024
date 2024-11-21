@@ -5,24 +5,21 @@ class_name Player
 @onready var pitch_pivot: Node3D = $TwistPivot/PitchPivot
 @onready var spring_arm: SpringArm3D = %SpringArm3D
 
-@export var move_speed: float = 5.0
-@export var sprint_modifier: float = 1.5
-@export var jump_velocity: float = 4.5
-@export var mouse_sensitivity: float = 0.001
 @export var camera_rotation_speed: float = 20.0
-@export var player_rotation_speed: float = 125.0
-
 @export var min_camera_yaw: float = -60
 @export var max_camera_yaw: float = 60
 @export var camera_zoom_speed: float = 4.0
 @export var camera_zoom_min_distance: float = 3.0
 @onready var camera_zoom_max_distance: float = spring_arm.spring_length
 @onready var target_zoom_length: float = spring_arm.spring_length
+@export var mouse_sensitivity: float = 0.001
 
-var is_sprinting: bool = false
+@export var player_rotation_speed: float = 150.0
 
-var current_move_speed: float:
-	get: return move_speed * (sprint_modifier if is_sprinting else 1.0)
+@onready var state_machine: PlayerStateMachine = $PlayerStateMachine
+@onready var player_idle_state: PlayerIdleState = $PlayerStateMachine/PlayerIdleState
+@onready var player_move_state: PlayerMoveState = $PlayerStateMachine/PlayerMoveState
+@onready var player_jump_state: PlayerJumpState = $PlayerStateMachine/PlayerJumpState
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -40,37 +37,18 @@ func _process(delta: float) -> void:
 	spring_arm.spring_length = lerp(spring_arm.spring_length, target_zoom_length, camera_zoom_speed * delta)
 
 func _physics_process(delta: float) -> void:
-	var input_dir := Input.get_vector(ActionNames.TURN_LEFT, ActionNames.TURN_RIGHT, ActionNames.MOVE_FORWARDS, ActionNames.MOVE_BACKWARDS)
+	state_machine.update(delta)
 
-	handle_movement(input_dir, delta)
-	handle_camera_rotation(input_dir, delta)
-	move_and_slide()
+	var input_direction: Vector2 = Input.get_vector(
+		ActionNames.TURN_LEFT,
+		ActionNames.TURN_RIGHT,
+		ActionNames.MOVE_FORWARDS,
+		ActionNames.MOVE_BACKWARDS)
 
-func handle_movement(input_direction: Vector2, delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	handle_camera_rotation(input_direction, delta)
 
-	if Input.is_action_just_pressed(ActionNames.JUMP) and is_on_floor():
-		velocity.y = jump_velocity
-
-	if Input.is_action_pressed(ActionNames.SPRINT):
-		is_sprinting = true
-	else:
-		is_sprinting = false
-
-	var direction := (transform.basis * Vector3(0, 0, input_direction.y)).normalized() # Only consider forward/backward movement
-
-	if direction:
-		velocity.x = direction.x * current_move_speed
-		velocity.z = direction.z * current_move_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, current_move_speed)
-		velocity.z = move_toward(velocity.z, 0, current_move_speed)
-
-	# Handle rotation based on left/right input
-	if input_direction.x != 0:
-		var rotation_amount = input_direction.x * player_rotation_speed * delta
-		rotate_y(deg_to_rad(-rotation_amount))
+func _unhandled_input(event: InputEvent) -> void:
+	state_machine.handle_input(event)
 
 func handle_camera_rotation(input_direction: Vector2, delta: float) -> void:
 	var mouse_motion = Input.get_last_mouse_velocity()

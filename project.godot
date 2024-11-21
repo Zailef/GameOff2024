@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 
 ActionNames="*res://autoloads/action_names.gd"
 
+[global_group]
+
+player=""
+
 [input]
 
 move_forwards={
