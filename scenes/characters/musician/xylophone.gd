@@ -14,7 +14,7 @@ var note_to_index_map = {
 	"G3": 6,
 	"A4": 7,
 	"B4": 8,
-	"C4": 2
+	"C4": 9
 }
 
 func _ready():
@@ -27,7 +27,6 @@ func _on_input_event(_camera, event, _event_position, _normal, _shape_idx, area)
 		if event.pressed:
 			note_played.emit(area.get_groups()[0])
 
-# TODO: fix the issue with material override for C highlighting both C3 and C4
 func get_surface_material_override_by_note(note: String) -> Callable:
 	var note_index = note_to_index_map[note]
 	var material = xylophone_mesh.get_active_material(note_index)
