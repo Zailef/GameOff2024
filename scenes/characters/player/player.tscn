@@ -6,17 +6,12 @@
 [ext_resource type="Script" path="res://scenes/characters/player/player_move_state.gd" id="3_gvtl3"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_idle_state.gd" id="4_o4wn0"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_jump_state.gd" id="5_4suqs"]
+[ext_resource type="PackedScene" uid="uid://ciw67y4ag0c0o" path="res://models/characters/player/Player.glb" id="7_46vjb"]
+[ext_resource type="Script" path="res://scenes/characters/player/player_freeze_state.gd" id="7_ggo65"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_73sg4"]
 radius = 0.4
 height = 1.4
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ffkop"]
-radius = 0.3
-height = 1.4
-
-[sub_resource type="BoxMesh" id="BoxMesh_dm2wh"]
-size = Vector3(0.3, 0.1, 0.1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r8qsy"]
 
@@ -32,15 +27,6 @@ script = ExtResource("1_5m5gm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 shape = SubResource("CapsuleShape3D_73sg4")
 
-[node name="PlayerBody" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
-mesh = SubResource("CapsuleMesh_ffkop")
-
-[node name="PlayerFaceIndicator" type="MeshInstance3D" parent="PlayerBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00509398, 0.400528, -0.291833)
-mesh = SubResource("BoxMesh_dm2wh")
-skeleton = NodePath("../..")
-
 [node name="CameraController" type="Node3D" parent="."]
 script = ExtResource("2_gucjo")
 
@@ -55,7 +41,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96475, 0)
 shape = SubResource("CapsuleShape3D_r8qsy")
 spring_length = 6.0
 
-[node name="ThridPersonCamera3D" type="Camera3D" parent="CameraController/TwistPivot/PitchPivot/SpringArm3D"]
+[node name="ThirdPersonCamera" type="Camera3D" parent="CameraController/TwistPivot/PitchPivot/SpringArm3D"]
+unique_name_in_owner = true
 transform = Transform3D(0.999982, 0.00585071, 0.00100975, -0.00585071, 0.942133, 0.335187, 0.00100976, -0.335187, 0.942151, 0, 0, 0)
 
 [node name="InteractionProbe" type="Area3D" parent="."]
@@ -78,3 +65,9 @@ script = ExtResource("4_o4wn0")
 
 [node name="PlayerJumpState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("5_4suqs")
+
+[node name="PlayerFreezeState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_ggo65")
+
+[node name="PlayerModel" parent="." instance=ExtResource("7_46vjb")]
+transform = Transform3D(-1, 0, -8.75443e-08, 0, 1, 0, 8.75443e-08, 0, -1, 0.00683182, -0.995044, -0.391395)

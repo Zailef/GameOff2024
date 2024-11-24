@@ -6,6 +6,12 @@ var player_node: Player
 func _ready() -> void:
 	state_name = "PLAYER_IDLE_STATE"
 
+func enter() -> void:
+	super.enter()
+	player_node.set_process(true)
+	player_node.set_physics_process(true)
+	player_node.set_process_unhandled_input(true)
+
 func update(_delta: float) -> void:
 	var input_direction = Input.get_vector(
 		ActionNames.TURN_LEFT,
