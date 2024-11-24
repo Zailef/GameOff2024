@@ -13,9 +13,12 @@ func enter() -> void:
 
 func handle_note(note_pressed: String) -> void:
 	owner_node.log_diagnostics()
-	owner_node.play_note(note_pressed)
 
-	if note_pressed == owner_node.sequence[owner_node.player_index]:
+	var is_correct_note: bool = note_pressed == owner_node.sequence[owner_node.player_index]
+
+	await owner_node.play_note(note_pressed)
+
+	if is_correct_note:
 		owner_node.player_index += 1
 		if owner_node.player_index >= owner_node.sequence.size():
 			get_parent().change_state(owner_node.result_state)

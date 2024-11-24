@@ -8,6 +8,8 @@ class_name XylophoneMemoryGame
 @onready var result_state = $MemoryGameStateMachine/ResultState
 @onready var xylophone: Xylophone = $Xylophone
 @onready var audio_streams: Node3D = $AudioStreams
+@onready var success_audio_player: AudioStreamPlayer = $AudioStreams/SuccessSound
+@onready var failure_audio_player: AudioStreamPlayer = $AudioStreams/FailureSound
 
 var key_audio_stream_players = {}
 

@@ -10,6 +10,8 @@ func enter() -> void:
     super.enter()
     if owner_node.player_index >= owner_node.sequence.size():
         if owner_node.current_round < owner_node.num_rounds + 1:
+            owner_node.success_audio_player.play()
+            await owner_node.success_audio_player.finished
             progress_round()
         else:
             owner_node.current_round = 1
@@ -17,6 +19,7 @@ func enter() -> void:
             print("Player won!")
     else:
         print("Player failed!")
+        owner_node.failure_audio_player.play()
         owner_node.current_round = 1
         get_parent().change_state(owner_node.idle_state)
 
