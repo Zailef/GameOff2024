@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://ctb7kh77do0es"]
+
+[ext_resource type="PackedScene" uid="uid://c2trspmgcscp6" path="res://models/items/xylophone.glb" id="1_yd1qp"]
+[ext_resource type="Script" path="res://scenes/characters/musician/xylophone.gd" id="2_aa06l"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_egfmk"]
+points = PackedVector3Array(39.3807, 6.58401, 9.44998, -42.9322, -6.27737, -16.2703, -42.9322, -6.27737, 15.8832, 39.3807, -6.27737, -11.1243, -42.9322, 6.58401, 14.5959, 39.3807, -6.27737, 10.7372, 39.3807, 6.58401, -9.83706, 38.0835, 5.29737, 12.0245, -42.9322, 6.58401, -13.6957, -32.6431, 5.29737, -16.2703, -26.2053, 5.29737, 15.8832, -32.6431, -6.27737, 15.8832, -32.6431, -6.27737, -16.2703, -41.6349, 6.58401, -14.983, 38.0835, 6.58401, 10.7372, -24.9242, 2.72535, 15.8832, -32.6431, 6.58401, -14.983, -41.0139, 5.05762, 15.1339, -32.6431, 6.58401, 14.5959, -24.9242, 4.01073, 15.8832)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1r16t"]
+size = Vector3(0.166992, 0.13681, 0.877808)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xm71s"]
+size = Vector3(0.179199, 0.148376, 0.754028)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_35eor"]
+size = Vector3(0.179199, 0.148376, 0.684479)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kf58g"]
+size = Vector3(0.179199, 0.148376, 0.636086)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ddvv3"]
+size = Vector3(0.179199, 0.148376, 0.550257)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3exc3"]
+size = Vector3(0.179199, 0.148376, 0.469718)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2bq5b"]
+size = Vector3(0.179199, 0.148376, 0.41284)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0jii"]
+size = Vector3(0.179199, 0.148376, 0.36618)
+
+[node name="Xylophone" instance=ExtResource("1_yd1qp")]
+script = ExtResource("2_aa06l")
+
+[node name="Xyophone" parent="." index="0"]
+transform = Transform3D(0.0291181, 0, 0, 0, 0.0291181, 0, 0, 0, 0.0291181, 0.0280508, 0.00295606, -0.00307706)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Xyophone" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Xyophone/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_egfmk")
+
+[node name="KeyAreas" type="Node3D" parent="." index="1"]
+
+[node name="C3Note" type="Area3D" parent="KeyAreas" index="0" groups=["C3"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KeyAreas/C3Note" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.810115, 0.149155, -6.10352e-05)
+shape = SubResource("BoxShape3D_1r16t")
+
+[node name="D3Note" type="Area3D" parent="KeyAreas" index="1" groups=["D3"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KeyAreas/D3Note" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.576928, 0.147064, 0.00152588)
+shape = SubResource("BoxShape3D_xm71s")
+
+[node name="E3Note" type="Area3D" parent="KeyAreas" index="2" groups=["E3"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.218, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KeyAreas/E3Note" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.576928, 0.147064, 1.52588e-05)
+shape = SubResource("BoxShape3D_35eor")
+
+[node name="F3Note" type="Area3D" parent="KeyAreas" index="3" groups=["F3"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113601, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KeyAreas/F3Note" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00170398, 0.147064, 0.00116348)
+shape = SubResource("BoxShape3D_kf58g")
+
+[node name="G3Note" type="Area3D" parent="KeyAreas" index="4" groups=["G3"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114832, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KeyAreas/G3Note" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00170398, 0.147064, -0.00251675)
+shape = SubResource("BoxShape3D_ddvv3")
+
+[node name="A4Note" type="Area3D" parent="KeyAreas" index="5" groups=["A4"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.348457, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KeyAreas/A4Note" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00170398, 0.147064, 0.00138497)
+shape = SubResource("BoxShape3D_3exc3")
+
+[node name="B4Note" type="Area3D" parent="KeyAreas" index="6" groups=["B4"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.579486, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KeyAreas/B4Note" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00170398, 0.147064, -0.00410932)
+shape = SubResource("BoxShape3D_2bq5b")
+
+[node name="C4Note" type="Area3D" parent="KeyAreas" index="7" groups=["C4"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.800132, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KeyAreas/C4Note" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00170398, 0.147064, 0.00368777)
+shape = SubResource("BoxShape3D_y0jii")

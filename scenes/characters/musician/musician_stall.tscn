@@ -1,0 +1,172 @@
+[gd_scene load_steps=25 format=3 uid="uid://drbrebgd4gd5n"]
+
+[ext_resource type="Script" path="res://scenes/characters/musician/musician_stall.gd" id="1_wacb7"]
+[ext_resource type="PackedScene" uid="uid://2isfaa6wkaj8" path="res://scenes/common/interaction_handler.tscn" id="2_bj52x"]
+[ext_resource type="Script" path="res://scenes/characters/musician/xylophone_memory_game.gd" id="4_m7olm"]
+[ext_resource type="Script" path="res://scenes/characters/musician/memory_game_state_machine.gd" id="5_xh75u"]
+[ext_resource type="Script" path="res://scenes/characters/musician/show_sequence_state.gd" id="6_y2n5o"]
+[ext_resource type="Script" path="res://scenes/characters/musician/player_input_state.gd" id="7_nuhq3"]
+[ext_resource type="Script" path="res://scenes/characters/musician/result_state.gd" id="8_ukxcx"]
+[ext_resource type="Script" path="res://scenes/characters/musician/idle_state.gd" id="9_07mrm"]
+[ext_resource type="PackedScene" uid="uid://ctb7kh77do0es" path="res://scenes/characters/musician/xylophone.tscn" id="9_qip7a"]
+[ext_resource type="AudioStream" uid="uid://dse8chjbrhva2" path="res://audio/characters/musician/xylophone/C3.wav" id="10_urlku"]
+[ext_resource type="AudioStream" uid="uid://0d8bhpb5pr5t" path="res://audio/characters/musician/xylophone/D3.wav" id="11_57nk0"]
+[ext_resource type="AudioStream" uid="uid://8rumgb0mbhe4" path="res://audio/characters/musician/xylophone/E3.wav" id="12_vjaj2"]
+[ext_resource type="AudioStream" uid="uid://cqp01353aaypt" path="res://audio/characters/musician/xylophone/F3.wav" id="13_wba40"]
+[ext_resource type="AudioStream" uid="uid://ca5jndovagbdv" path="res://audio/characters/musician/xylophone/G3.wav" id="14_5ulgd"]
+[ext_resource type="AudioStream" uid="uid://cea18iwyj46re" path="res://audio/characters/musician/xylophone/A4.wav" id="15_hdss2"]
+[ext_resource type="AudioStream" uid="uid://biq2w6s4j08x4" path="res://audio/characters/musician/xylophone/B4.wav" id="16_iqogl"]
+[ext_resource type="AudioStream" uid="uid://buiv28axvka6s" path="res://audio/characters/musician/xylophone/C4.wav" id="17_1he3q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72cj6"]
+albedo_color = Color(0.268261, 0.154354, 2.40654e-08, 1)
+metallic_specular = 0.16
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swp3a"]
+albedo_color = Color(0.268261, 0.154354, 2.40654e-08, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cm20"]
+albedo_color = Color(0.314043, 0.52677, 0.426783, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t7ubu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvooh"]
+albedo_color = Color(1, 0.258824, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_be0vo"]
+size = Vector3(0.5, 0.1, 0.1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p1n5s"]
+radius = 2.5
+
+[node name="MusicianStall" type="Node3D"]
+script = ExtResource("1_wacb7")
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+material_override = SubResource("StandardMaterial3D_72cj6")
+use_collision = true
+collision_mask = 0
+size = Vector3(0.1, 2, 2)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -0.7, 2.3, 0)
+material_override = SubResource("StandardMaterial3D_72cj6")
+use_collision = true
+collision_mask = 0
+size = Vector3(0.1, 2, 2)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.7, 2.3, 0)
+material_override = SubResource("StandardMaterial3D_72cj6")
+use_collision = true
+collision_mask = 0
+size = Vector3(0.1, 2, 2)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, -1)
+material_override = SubResource("StandardMaterial3D_72cj6")
+use_collision = true
+collision_mask = 0
+size = Vector3(0.1, 2, 2)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+material_override = SubResource("StandardMaterial3D_72cj6")
+use_collision = true
+collision_mask = 0
+size = Vector3(0.1, 2, 2)
+
+[node name="Table" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.820523)
+material_override = SubResource("StandardMaterial3D_swp3a")
+use_collision = true
+collision_mask = 0
+size = Vector3(1.61383, 1, 1)
+
+[node name="MusicianCharacter" type="Node3D" parent="."]
+transform = Transform3D(0.499924, 0, 0.0087262, 0, 0.5, 0, -0.0087262, 0, 0.499924, 0, 1, 0)
+
+[node name="MusicianBody" type="MeshInstance3D" parent="MusicianCharacter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00495087, 0, -0.283635)
+material_override = SubResource("StandardMaterial3D_2cm20")
+mesh = SubResource("CapsuleMesh_t7ubu")
+
+[node name="MusicianFaceMarker" type="MeshInstance3D" parent="MusicianCharacter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00320917, 0.496474, 0.183853)
+material_override = SubResource("StandardMaterial3D_rvooh")
+mesh = SubResource("BoxMesh_be0vo")
+
+[node name="MiniGameCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.910518, 0.41347, 0, -0.41347, 0.910518, 0, 2.16019, 2.37851)
+
+[node name="InteractionHandler" parent="." instance=ExtResource("2_bj52x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.876854, 1.79591)
+label_text = "Talk [E]"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionHandler"]
+shape = SubResource("SphereShape3D_p1n5s")
+
+[node name="XylophoneMemoryGame" type="Node3D" parent="."]
+script = ExtResource("4_m7olm")
+
+[node name="MemoryGameStateMachine" type="Node" parent="XylophoneMemoryGame" node_paths=PackedStringArray("owner_node", "initial_state")]
+script = ExtResource("5_xh75u")
+owner_node = NodePath("..")
+initial_state = NodePath("IdleState")
+
+[node name="ShowSequenceState" type="Node" parent="XylophoneMemoryGame/MemoryGameStateMachine"]
+script = ExtResource("6_y2n5o")
+
+[node name="PlayerInputState" type="Node" parent="XylophoneMemoryGame/MemoryGameStateMachine"]
+script = ExtResource("7_nuhq3")
+
+[node name="ResultState" type="Node" parent="XylophoneMemoryGame/MemoryGameStateMachine"]
+script = ExtResource("8_ukxcx")
+
+[node name="IdleState" type="Node" parent="XylophoneMemoryGame/MemoryGameStateMachine"]
+script = ExtResource("9_07mrm")
+
+[node name="Xylophone" parent="XylophoneMemoryGame" instance=ExtResource("9_qip7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03787, 1.18902)
+
+[node name="AudioStreams" type="Node3D" parent="XylophoneMemoryGame"]
+
+[node name="C3KeyPlayer" type="AudioStreamPlayer" parent="XylophoneMemoryGame/AudioStreams"]
+stream = ExtResource("10_urlku")
+bus = &"SFX"
+
+[node name="D3KeyPlayer" type="AudioStreamPlayer" parent="XylophoneMemoryGame/AudioStreams"]
+stream = ExtResource("11_57nk0")
+bus = &"SFX"
+
+[node name="E3KeyPlayer" type="AudioStreamPlayer" parent="XylophoneMemoryGame/AudioStreams"]
+stream = ExtResource("12_vjaj2")
+bus = &"SFX"
+
+[node name="F3KeyPlayer" type="AudioStreamPlayer" parent="XylophoneMemoryGame/AudioStreams"]
+stream = ExtResource("13_wba40")
+bus = &"SFX"
+
+[node name="G3KeyPlayer" type="AudioStreamPlayer" parent="XylophoneMemoryGame/AudioStreams"]
+stream = ExtResource("14_5ulgd")
+bus = &"SFX"
+
+[node name="A4KeyPlayer" type="AudioStreamPlayer" parent="XylophoneMemoryGame/AudioStreams"]
+stream = ExtResource("15_hdss2")
+bus = &"SFX"
+
+[node name="B4KeyPlayer" type="AudioStreamPlayer" parent="XylophoneMemoryGame/AudioStreams"]
+stream = ExtResource("16_iqogl")
+bus = &"SFX"
+
+[node name="C4KeyPlayer" type="AudioStreamPlayer" parent="XylophoneMemoryGame/AudioStreams"]
+stream = ExtResource("17_1he3q")
+bus = &"SFX"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+light_color = Color(0.431057, 0.990468, 1, 1)
+light_energy = 10.0
