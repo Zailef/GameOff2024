@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bv0vf4sf3qnsl"
+path="res://.godot/imported/xylophone failure.wav-070c9b4b9911730e75410a8cb0e84f21.sample"
+
+[deps]
+
+source_file="res://audio/characters/musician/xylophone/xylophone failure.wav"
+dest_files=["res://.godot/imported/xylophone failure.wav-070c9b4b9911730e75410a8cb0e84f21.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
