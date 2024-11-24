@@ -15,14 +15,13 @@ func enter() -> void:
             owner_node.current_round = 1
             get_parent().change_state(owner_node.idle_state)
             print("Player won!")
-            SignalManager.player_unfreeze_requested.emit()
     else:
         print("Player failed!")
         owner_node.current_round = 1
         get_parent().change_state(owner_node.idle_state)
-        SignalManager.player_unfreeze_requested.emit()
 
 func progress_round() -> void:
     owner_node.current_round += 1
     owner_node.round_note_count += 1
+    await (get_tree().create_timer(1.0).timeout)
     get_parent().change_state(owner_node.show_sequence_state)

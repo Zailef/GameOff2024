@@ -30,7 +30,9 @@ func _on_input_event(_camera, event, _event_position, _normal, _shape_idx, area)
 func get_surface_material_override_by_note(note: String) -> Callable:
 	var note_index = note_to_index_map[note]
 	var material = xylophone_mesh.get_active_material(note_index)
-	var new_material = material.duplicate()
-	new_material.albedo_color = Color(0.5, 0.5, 0.5)
+	var new_material: BaseMaterial3D = material.duplicate()
+	new_material.emission_enabled = true
+	new_material.emission = new_material.albedo_color
+	new_material.emission_energy = 2
 	xylophone_mesh.set_surface_override_material(note_index, new_material)
 	return func(): xylophone_mesh.set_surface_override_material(note_index, null)
