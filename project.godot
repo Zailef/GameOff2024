@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 [autoload]
 
 ActionNames="*res://autoloads/action_names.gd"
+SignalManager="*res://autoloads/signal_manager.gd"
 
 [global_group]
 
