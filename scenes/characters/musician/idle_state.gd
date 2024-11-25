@@ -8,11 +8,6 @@ func _ready() -> void:
 
 func enter() -> void:
     super.enter()
-    Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-
-    owner_node.sequence = []
-    owner_node.current_index = 0
-    owner_node.player_index = 0
-    owner_node.current_round = 1
-
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    owner_node.reset_game()
     SignalManager.player_unfreeze_requested.emit()
