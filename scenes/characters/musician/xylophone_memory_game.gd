@@ -11,17 +11,18 @@ class_name XylophoneMemoryGame
 @onready var success_audio_player: AudioStreamPlayer = $AudioStreams/SuccessSound
 @onready var failure_audio_player: AudioStreamPlayer = $AudioStreams/FailureSound
 
-var key_audio_stream_players = {}
+var key_audio_stream_players := {}
 
 var available_notes = ["C3", "D3", "E3", "F3", "G3", "A4", "B4", "C4"]
-var sequence = []
-var current_index = 0
-var player_index = 0
-var current_round = 1
-@export var num_rounds = 2
-@export var round_note_count = 3
+var sequence := []
+var current_index := 0
+var player_index := 0
+var current_round := 1
+@export var num_rounds := 2
+@export var round_note_count := 3
+@export var player_default_delay := .5
 
-func _ready():
+func _ready() -> void:
 	state_machine.owner_node = self
 	state_machine.initial_state = idle_state
 	state_machine._ready()
@@ -31,21 +32,27 @@ func _ready():
 
 	xylophone.note_played.connect(player_input_state.handle_note)
 
-func _process(delta):
+func _process(delta) -> void:
 	state_machine.update(delta)
 
-func start_game():
+func start_game() -> void:
 	state_machine.change_state(show_sequence_state)
 
-func play_note(note: String) -> void:
+func play_note(note: String, await_completion: bool = true) -> void:
 	print("Playing note: ", note)
+
 	var original_material_callback = xylophone.get_surface_material_override_by_note(note)
 	var audio_player = key_audio_stream_players[note]
 	audio_player.play()
-	await audio_player.finished
+
+	if await_completion:
+		await audio_player.finished
+	else:
+		await (get_tree().create_timer(player_default_delay).timeout)
+
 	original_material_callback.call()
 
-func generate_sequence():
+func generate_sequence() -> Array:
 	sequence = []
 
 	for i in range(round_note_count):
@@ -60,3 +67,10 @@ func log_diagnostics() -> void:
 	print("Sequence: ", sequence)
 	print("Round note count: ", round_note_count)
 	print("Num rounds: ", num_rounds)
+
+func reset_game() -> void:
+	current_round = 1
+	round_note_count = 3
+	sequence = []
+	current_index = 0
+	player_index = 0

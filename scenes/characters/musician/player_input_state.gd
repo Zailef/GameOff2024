@@ -2,6 +2,8 @@ extends BaseState
 class_name PlayerInputState
 
 var owner_node: XylophoneMemoryGame
+var is_handling_note: bool = false
+var note_queue := []
 
 func _ready() -> void:
 	state_name = "MEMORY_GAME_PLAYER_INPUT_STATE"
@@ -11,12 +13,24 @@ func enter() -> void:
 	owner_node.player_index = 0
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
+func update(_delta) -> void:
+	if note_queue.size() > 0 and not is_handling_note:
+		print("Handling queued note", note_queue[0])
+		handle_note(note_queue.pop_front())
+
 func handle_note(note_pressed: String) -> void:
+	if is_handling_note:
+		note_queue.append(note_pressed)
+		return
+
 	owner_node.log_diagnostics()
+	is_handling_note = true
 
 	var is_correct_note: bool = note_pressed == owner_node.sequence[owner_node.player_index]
 
-	await owner_node.play_note(note_pressed)
+	await owner_node.play_note(note_pressed, false)
+
+	is_handling_note = false
 
 	if is_correct_note:
 		owner_node.player_index += 1
