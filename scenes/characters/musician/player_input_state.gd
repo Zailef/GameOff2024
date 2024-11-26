@@ -11,10 +11,12 @@ func _ready() -> void:
 func enter() -> void:
 	super.enter()
 	owner_node.player_index = 0
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 	owner_node.xylophone.xylophone_mallet.visible = true
 
 func exit() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	owner_node.xylophone.xylophone_mallet.visible = false
 	is_handling_note = false
 	note_queue.clear()
