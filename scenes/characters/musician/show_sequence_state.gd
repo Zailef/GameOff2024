@@ -17,7 +17,7 @@ func enter():
 func play_next_note():
 	if owner_node.current_index < owner_node.sequence.size():
 		await (get_tree().create_timer(1.0).timeout)
-		owner_node.play_note(owner_node.sequence[owner_node.current_index])
+		owner_node.xylophone.play_note(owner_node.sequence[owner_node.current_index])
 		owner_node.current_index += 1
 		play_next_note()
 	else:

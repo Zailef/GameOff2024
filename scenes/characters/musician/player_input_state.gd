@@ -11,7 +11,13 @@ func _ready() -> void:
 func enter() -> void:
 	super.enter()
 	owner_node.player_index = 0
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	owner_node.xylophone.xylophone_mallet.visible = true
+
+func exit() -> void:
+	owner_node.xylophone.xylophone_mallet.visible = false
+	is_handling_note = false
+	note_queue.clear()
 
 func update(_delta) -> void:
 	if note_queue.size() > 0 and not is_handling_note:
@@ -28,7 +34,7 @@ func handle_note(note_pressed: String) -> void:
 
 	var is_correct_note: bool = note_pressed == owner_node.sequence[owner_node.player_index]
 
-	await owner_node.play_note(note_pressed, false)
+	await owner_node.xylophone.play_note(note_pressed, false)
 
 	is_handling_note = false
 

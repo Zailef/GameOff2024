@@ -1,7 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctb7kh77do0es"]
+[gd_scene load_steps=25 format=3 uid="uid://ctb7kh77do0es"]
 
 [ext_resource type="PackedScene" uid="uid://c2trspmgcscp6" path="res://models/items/xylophone.glb" id="1_yd1qp"]
 [ext_resource type="Script" path="res://scenes/characters/musician/xylophone.gd" id="2_aa06l"]
+[ext_resource type="PackedScene" uid="uid://cp48p8j5gfthv" path="res://models/items/xylophone_mallet.glb" id="3_p0v3c"]
+[ext_resource type="AudioStream" uid="uid://dse8chjbrhva2" path="res://audio/characters/musician/xylophone/C3.wav" id="4_ko7p3"]
+[ext_resource type="AudioStream" uid="uid://0d8bhpb5pr5t" path="res://audio/characters/musician/xylophone/D3.wav" id="5_hwht1"]
+[ext_resource type="AudioStream" uid="uid://8rumgb0mbhe4" path="res://audio/characters/musician/xylophone/E3.wav" id="6_lnima"]
+[ext_resource type="AudioStream" uid="uid://cqp01353aaypt" path="res://audio/characters/musician/xylophone/F3.wav" id="7_pgdog"]
+[ext_resource type="AudioStream" uid="uid://ca5jndovagbdv" path="res://audio/characters/musician/xylophone/G3.wav" id="8_wca3g"]
+[ext_resource type="AudioStream" uid="uid://cea18iwyj46re" path="res://audio/characters/musician/xylophone/A4.wav" id="9_6h28s"]
+[ext_resource type="AudioStream" uid="uid://biq2w6s4j08x4" path="res://audio/characters/musician/xylophone/B4.wav" id="10_aix47"]
+[ext_resource type="AudioStream" uid="uid://buiv28axvka6s" path="res://audio/characters/musician/xylophone/C4.wav" id="11_kglk1"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_egfmk"]
 points = PackedVector3Array(39.3807, 6.58401, 9.44998, -42.9322, -6.27737, -16.2703, -42.9322, -6.27737, 15.8832, 39.3807, -6.27737, -11.1243, -42.9322, 6.58401, 14.5959, 39.3807, -6.27737, 10.7372, 39.3807, 6.58401, -9.83706, 38.0835, 5.29737, 12.0245, -42.9322, 6.58401, -13.6957, -32.6431, 5.29737, -16.2703, -26.2053, 5.29737, 15.8832, -32.6431, -6.27737, 15.8832, -32.6431, -6.27737, -16.2703, -41.6349, 6.58401, -14.983, 38.0835, 6.58401, 10.7372, -24.9242, 2.72535, 15.8832, -32.6431, 6.58401, -14.983, -41.0139, 5.05762, 15.1339, -32.6431, 6.58401, 14.5959, -24.9242, 4.01073, 15.8832)
@@ -29,6 +38,94 @@ size = Vector3(0.179199, 0.148376, 0.41284)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0jii"]
 size = Vector3(0.179199, 0.148376, 0.36618)
+
+[sub_resource type="Curve3D" id="Curve3D_vj35b"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.825015, 2.98023e-05, 0.0554632, 0, 0, 0, 0, 0, 0, -0.580654, 2.98023e-05, 0.0566491, 0, 0, 0, 0, 0, 0, -0.346976, 2.98023e-05, 0.0542888, 0, 0, 0, 0, 0, 0, -0.120379, 2.98023e-05, 0.0590095, 0, 0, 0, 0, 0, 0, 0.10447, 2.98023e-05, 0.0522351, 0, 0, 0, 0, 0, 0, 0.340624, 2.98023e-05, 0.0446232, 0, 0, 0, 0, 0, 0, 0.574716, 2.98023e-05, 0.0283311, 0, 0, 0, 0, 0, 0, 0.799341, 2.98023e-05, 0.0404729),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Animation" id="Animation_n0p3t"]
+resource_name = "hit_key"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XylophoneMallet:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.256214, 0, 0), Vector3(-0.283895, 0, 0), Vector3(0.256214, 0, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("XylophoneMallet:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.537788, -0.25, 0, 0.25, 0, 0.246838, -0.25, 0, 0.25, 0, 0.537788, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.266667, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("XylophoneMallet:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.566593, -0.25, 0, 0.25, 0, 0.291414, -0.25, 0, 0.25, 0, 0.566593, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.266667, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_dspjc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XylophoneMallet:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.256214, 0, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("XylophoneMallet:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.537788, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("XylophoneMallet:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.566593, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_15fgc"]
+_data = {
+"RESET": SubResource("Animation_dspjc"),
+"hit_key": SubResource("Animation_n0p3t")
+}
 
 [node name="Xylophone" instance=ExtResource("1_yd1qp")]
 script = ExtResource("2_aa06l")
@@ -96,3 +193,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.800132, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KeyAreas/C4Note" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00170398, 0.147064, 0.00368777)
 shape = SubResource("BoxShape3D_y0jii")
+
+[node name="XylophoneMallet" parent="." index="2" instance=ExtResource("3_p0v3c")]
+transform = Transform3D(1, 0, 0, 0, 0.967356, -0.25342, 0, 0.25342, 0.967356, -0.818378, 0.537788, 0.566593)
+
+[node name="XylophonePath" type="Path3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.223515, -0.0281611)
+curve = SubResource("Curve3D_vj35b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_15fgc")
+}
+
+[node name="AudioStreams" type="Node3D" parent="." index="5"]
+
+[node name="C3KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="0"]
+stream = ExtResource("4_ko7p3")
+bus = &"SFX"
+
+[node name="D3KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="1"]
+stream = ExtResource("5_hwht1")
+bus = &"SFX"
+
+[node name="E3KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="2"]
+stream = ExtResource("6_lnima")
+bus = &"SFX"
+
+[node name="F3KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="3"]
+stream = ExtResource("7_pgdog")
+bus = &"SFX"
+
+[node name="G3KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="4"]
+stream = ExtResource("8_wca3g")
+bus = &"SFX"
+
+[node name="A4KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="5"]
+stream = ExtResource("9_6h28s")
+bus = &"SFX"
+
+[node name="B4KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="6"]
+stream = ExtResource("10_aix47")
+bus = &"SFX"
+
+[node name="C4KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="7"]
+stream = ExtResource("11_kglk1")
+bus = &"SFX"

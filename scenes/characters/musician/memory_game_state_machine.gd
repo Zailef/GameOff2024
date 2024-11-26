@@ -10,7 +10,6 @@ func _ready() -> void:
 	for state in get_children():
 		if state is BaseState:
 			state.owner_node = owner_node
-			state.exit()
 
 	change_state(initial_state)
 
