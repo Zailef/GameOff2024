@@ -27,6 +27,9 @@ func update(_delta) -> void:
 		print("Handling queued note", note_queue[0])
 		handle_note(note_queue.pop_front())
 
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_parent().change_state(owner_node.idle_state)
+
 func handle_note(note_pressed: String) -> void:
 	if is_handling_note:
 		note_queue.append(note_pressed)
