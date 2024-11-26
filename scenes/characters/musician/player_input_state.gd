@@ -16,8 +16,9 @@ func enter() -> void:
 	owner_node.xylophone.xylophone_mallet.visible = true
 
 func exit() -> void:
-	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	owner_node.xylophone.xylophone_mallet.visible = false
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	is_handling_note = false
 	note_queue.clear()
 
