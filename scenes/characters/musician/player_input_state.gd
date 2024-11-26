@@ -37,7 +37,7 @@ func handle_note(note_pressed: String) -> void:
 
 	var is_correct_note: bool = note_pressed == owner_node.sequence[owner_node.player_index]
 
-	await owner_node.xylophone.play_note(note_pressed, false)
+	await owner_node.xylophone.play_note(note_pressed, true)
 
 	is_handling_note = false
 

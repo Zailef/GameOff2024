@@ -12,6 +12,7 @@ signal note_played(note: String)
 
 @export var player_default_delay := .5
 
+var current_player_note: String
 var key_audio_stream_players := {}
 
 var note_data_map = {
@@ -39,26 +40,30 @@ func _on_input_event(_camera, event, _event_position, _normal, _shape_idx, area)
 	if event is InputEventMouseMotion:
 		var key_index = note_data_map[note]["path_index"]
 		var new_position = xylophone_path.curve.get_point_position(key_index)
-		xylophone_mallet.transform.origin = Vector3(new_position.x, xylophone_mallet.transform.origin.y, new_position.z + .6)
+		xylophone_mallet.transform.origin = Vector3(new_position.x, xylophone_mallet.transform.origin.y, new_position.z + .4)
 
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			note_played.emit(note)
 
-func play_note(note: String, await_completion: bool = true) -> void:
+func play_note(note: String, is_player_note: bool = false) -> void:
 	print("Playing note: ", note)
-
 	var original_material_callback = _override_surface_material(note)
 	var audio_player = key_audio_stream_players[note]
-	audio_player.play()
 
-	if await_completion:
+	if not is_player_note:
+		audio_player.play()
 		await audio_player.finished
 	else:
+		current_player_note = note
 		animation_player.play("hit_key")
 		await (get_tree().create_timer(player_default_delay).timeout)
 
 	original_material_callback.call()
+
+func play_player_note() -> void:
+	var audio_player = key_audio_stream_players[current_player_note]
+	audio_player.play()
 
 func _override_surface_material(note: String) -> Callable:
 	var note_index = note_data_map[note]["material_index"]

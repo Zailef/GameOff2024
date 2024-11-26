@@ -68,7 +68,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.537788, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0.278599, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/2/type = "bezier"
@@ -79,7 +79,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.566593, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0.4, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -106,7 +106,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.537788, -0.25, 0, 0.25, 0, 0.246838, -0.25, 0, 0.25, 0, 0.537788, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0.279, -0.25, 0, 0.25, 0, 0.246838, -0.25, 0, 0.25, 0, 0.279, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.266667, 0.5)
 }
 tracks/2/type = "bezier"
@@ -117,8 +117,22 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.566593, -0.25, 0, 0.25, 0, 0.291414, -0.25, 0, 0.25, 0, 0.566593, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0.4, -0.25, 0, 0.25, 0, 0.291414, -0.25, 0, 0.25, 0, 0.4, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.266667, 0.5)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.266667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_player_note"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_15fgc"]
@@ -195,7 +209,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00170398, 0.147064, 0.00368
 shape = SubResource("BoxShape3D_y0jii")
 
 [node name="XylophoneMallet" parent="." index="2" instance=ExtResource("3_p0v3c")]
-transform = Transform3D(1, 0, 0, 0, 0.967356, -0.25342, 0, 0.25342, 0.967356, -0.818378, 0.537788, 0.566593)
+transform = Transform3D(1, 0, 0, 0, 0.967356, -0.25342, 0, 0.25342, 0.967356, -0.818, 0.278599, 0.4)
 visible = false
 
 [node name="XylophonePath" type="Path3D" parent="." index="3"]
