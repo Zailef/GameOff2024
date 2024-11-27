@@ -34,8 +34,6 @@ func _on_fade_timer_timeout() -> void:
 		return
 
 	is_platform_revealed = false
+	material.transparency = material.TRANSPARENCY_ALPHA
 	animation_player.play("fade_out")
 	await animation_player.animation_finished
-	material.distance_fade_mode = material.DISTANCE_FADE_PIXEL_ALPHA
-	material.transparency = material.TRANSPARENCY_ALPHA
-	# material.transparency = 0.0
