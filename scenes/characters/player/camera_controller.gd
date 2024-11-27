@@ -10,7 +10,7 @@ extends Node
 @export var camera_zoom_speed: float = 4.0
 @export var camera_zoom_min_distance: float = 3.0
 @onready var camera_zoom_max_distance: float = spring_arm.spring_length
-@onready var target_zoom_length: float = spring_arm.spring_length
+@onready var target_zoom_length: float = camera_zoom_min_distance
 @export var mouse_sensitivity: float = 0.001
 
 func _physics_process(delta: float) -> void:
