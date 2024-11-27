@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-@export var player_rotation_speed: float = 150.0
+@export var player_rotation_speed: float = 160.0
 
 @onready var state_machine: PlayerStateMachine = $PlayerStateMachine
 @onready var player_idle_state: PlayerIdleState = $PlayerStateMachine/PlayerIdleState

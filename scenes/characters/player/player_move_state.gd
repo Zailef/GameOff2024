@@ -4,7 +4,7 @@ class_name PlayerMoveState
 var player_node: Player
 
 @export var move_speed: float = 5.0
-@export var sprint_modifier: float = 1.5
+@export var sprint_modifier: float = 1.25
 
 var is_sprinting: bool = false
 var direction: Vector3 = Vector3.ZERO
