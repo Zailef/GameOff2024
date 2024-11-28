@@ -1,0 +1,175 @@
+[gd_scene load_steps=12 format=3 uid="uid://q0xqg7cyoond"]
+
+[ext_resource type="Texture2D" uid="uid://1chhar0cvu14" path="res://textures/tarot_cards/wands/Wands01.jpg" id="1_0usmj"]
+[ext_resource type="Script" path="res://scenes/environment/platforms/fire_platform.gd" id="1_g5qm8"]
+
+[sub_resource type="Gradient" id="Gradient_8pef4"]
+offsets = PackedFloat32Array(0.291045, 0.529851, 0.641791, 0.932836, 0.970149)
+colors = PackedColorArray(0.524505, 0.311791, 0.19022, 1, 0, 0, 0, 1, 0.666081, 0.156341, 0.0914308, 1, 0.980368, 0.844174, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oxly1"]
+frequency = 0.0120231
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lg6ou"]
+color_ramp = SubResource("Gradient_8pef4")
+noise = SubResource("FastNoiseLite_oxly1")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rdi76"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbvx4"]
+resource_local_to_scene = true
+albedo_texture = SubResource("NoiseTexture2D_lg6ou")
+emission = Color(0.783824, 0.167183, 0, 1)
+emission_energy_multiplier = 10.0
+emission_operator = 1
+normal_enabled = true
+normal_scale = 16.0
+normal_texture = ExtResource("1_0usmj")
+rim_tint = 1.0
+clearcoat_roughness = 1.0
+clearcoat_texture = SubResource("CompressedTexture2D_rdi76")
+backlight_enabled = true
+backlight = Color(0.133196, 0.133196, 0.133196, 1)
+uv1_scale = Vector3(1, -1, 1)
+uv1_triplanar_sharpness = 0.5
+grow_amount = 0.337
+proximity_fade_distance = 0.01
+distance_fade_min_distance = 10.0
+distance_fade_max_distance = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l2vh4"]
+size = Vector3(3.9754, 0.121216, 2.33105)
+
+[sub_resource type="Animation" id="Animation_3osn5"]
+resource_name = "enflame"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Card:material:albedo_texture:noise:seed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Card:material:albedo_texture:noise:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 8.33333, 0), Vector3(0, 16.6667, 0), Vector3(0, 25, 0), Vector3(0, 33.3333, 0), Vector3(0, 41.6667, 0), Vector3(0, 50, 0), Vector3(0, 58.3333, 0), Vector3(0, 66.6667, 0), Vector3(0, 75, 0), Vector3(0, 83.3333, 0), Vector3(0, 91.6667, 0), Vector3(0, 100, 0), Vector3(0, 108.333, 0), Vector3(0, 116.667, 0), Vector3(0, 125, 0), Vector3(0, 133.333, 0), Vector3(0, 141.667, 0), Vector3(0, 150, 0), Vector3(0, 158.333, 0), Vector3(0, 166.667, 0), Vector3(0, 175, 0), Vector3(0, 183.333, 0), Vector3(0, 191.667, 0), Vector3(0, 200, 0), Vector3(0, 208.333, 0), Vector3(0, 216.667, 0), Vector3(0, 225, 0), Vector3(0, 233.333, 0), Vector3(0, 241.667, 0), Vector3(0, 250, 0), Vector3(0, 258.333, 0), Vector3(0, 266.667, 0), Vector3(0, 275, 0), Vector3(0, 283.333, 0), Vector3(0, 291.667, 0), Vector3(0, 300, 0), Vector3(0, 308.333, 0), Vector3(0, 316.667, 0), Vector3(0, 325, 0), Vector3(0, 333.333, 0), Vector3(0, 341.667, 0), Vector3(0, 350, 0), Vector3(0, 358.333, 0), Vector3(0, 366.667, 0), Vector3(0, 375, 0), Vector3(0, 383.333, 0), Vector3(0, 391.667, 0), Vector3(0, 400, 0), Vector3(0, 408.333, 0), Vector3(0, 416.667, 0), Vector3(0, 425, 0), Vector3(0, 433.333, 0), Vector3(0, 441.667, 0), Vector3(0, 450, 0), Vector3(0, 458.333, 0), Vector3(0, 466.667, 0), Vector3(0, 475, 0), Vector3(0, 483.333, 0), Vector3(0, 491.667, 0), Vector3(0, 500, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Card:material:emission")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.783824, 0.167183, 0, 1), Color(0.790306, 0.180515, 0.00315296, 1), Color(0.796787, 0.193847, 0.00630591, 1), Color(0.803269, 0.207179, 0.00945887, 1), Color(0.809751, 0.220511, 0.0126118, 1), Color(0.816232, 0.233843, 0.0157648, 1), Color(0.822714, 0.247175, 0.0189177, 1), Color(0.829196, 0.260507, 0.0220707, 1), Color(0.835677, 0.273839, 0.0252237, 1), Color(0.842159, 0.287171, 0.0283766, 1), Color(0.848641, 0.300503, 0.0315296, 1), Color(0.855122, 0.313835, 0.0346825, 1), Color(0.861604, 0.327167, 0.0378355, 1), Color(0.868086, 0.340499, 0.0409884, 1), Color(0.874567, 0.353831, 0.0441414, 1), Color(0.881049, 0.367163, 0.0472944, 1), Color(0.88753, 0.380495, 0.0504473, 1), Color(0.894012, 0.393827, 0.0536003, 1), Color(0.900494, 0.407159, 0.0567532, 1), Color(0.906975, 0.420491, 0.0599062, 1), Color(0.913457, 0.433823, 0.0630592, 1), Color(0.919939, 0.447155, 0.0662121, 1), Color(0.92642, 0.460487, 0.0693651, 1), Color(0.932902, 0.473819, 0.072518, 1), Color(0.939384, 0.487151, 0.075671, 1), Color(0.945865, 0.500483, 0.0788239, 1), Color(0.952347, 0.513815, 0.0819769, 1), Color(0.958829, 0.527147, 0.0851298, 1), Color(0.96531, 0.540479, 0.0882828, 1), Color(0.971792, 0.553811, 0.0914358, 1), Color(0.978273, 0.567143, 0.0945887, 1), Color(0.978998, 0.581572, 0.124769, 1), Color(0.979722, 0.596, 0.154949, 1), Color(0.980446, 0.610429, 0.18513, 1), Color(0.98117, 0.624857, 0.21531, 1), Color(0.981895, 0.639286, 0.245491, 1), Color(0.982619, 0.653714, 0.275671, 1), Color(0.983343, 0.668143, 0.305851, 1), Color(0.984067, 0.682572, 0.336032, 1), Color(0.984791, 0.697, 0.366212, 1), Color(0.985516, 0.711429, 0.396392, 1), Color(0.98624, 0.725857, 0.426573, 1), Color(0.986964, 0.740286, 0.456753, 1), Color(0.987688, 0.754714, 0.486934, 1), Color(0.988412, 0.769143, 0.517114, 1), Color(0.989137, 0.783572, 0.547294, 1), Color(0.989861, 0.798, 0.577475, 1), Color(0.990585, 0.812429, 0.607655, 1), Color(0.991309, 0.826857, 0.637836, 1), Color(0.992034, 0.841286, 0.668016, 1), Color(0.992758, 0.855714, 0.698196, 1), Color(0.993482, 0.870143, 0.728377, 1), Color(0.994206, 0.884571, 0.758557, 1), Color(0.99493, 0.899, 0.788737, 1), Color(0.995655, 0.913429, 0.818918, 1), Color(0.996379, 0.927857, 0.849098, 1), Color(0.997103, 0.942286, 0.879278, 1), Color(0.997827, 0.956714, 0.909459, 1), Color(0.998552, 0.971143, 0.939639, 1), Color(0.999276, 0.985571, 0.96982, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Card:material:emission_energy_multiplier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [100.0, 115.0, 130.0, 145.0, 160.0, 175.0, 190.0, 205.0, 220.0, 235.0, 250.0, 265.0, 280.0, 295.0, 310.0, 325.0, 340.0, 355.0, 370.0, 385.0, 400.0, 415.0, 430.0, 445.0, 460.0, 475.0, 490.0, 505.0, 520.0, 535.0, 550.0, 565.0, 580.0, 595.0, 610.0, 625.0, 640.0, 655.0, 670.0, 685.0, 700.0, 715.0, 730.0, 745.0, 760.0, 775.0, 790.0, 805.0, 820.0, 835.0, 850.0, 865.0, 880.0, 895.0, 910.0, 925.0, 940.0, 955.0, 970.0, 985.0, 1000.0]
+}
+
+[sub_resource type="Animation" id="Animation_hs15x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Card:material:albedo_texture:noise:seed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Card:material:albedo_texture:noise:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Card:material:emission")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.783824, 0.167183, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Card:material:emission_energy_multiplier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_do8l7"]
+_data = {
+"RESET": SubResource("Animation_hs15x"),
+"enflame": SubResource("Animation_3osn5")
+}
+
+[node name="FirePlatform" type="Node3D"]
+script = ExtResource("1_g5qm8")
+
+[node name="Card" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+use_collision = true
+collision_mask = 0
+size = Vector3(6, 0.09, 3.5)
+material = SubResource("StandardMaterial3D_cbvx4")
+
+[node name="PlayerDetectionArea" type="Area3D" parent="."]
+transform = Transform3D(-6.55671e-08, 0.000277972, -1.5, 0, 1.5, 0.000277972, 1.5, 1.21505e-11, -6.55671e-08, 0, 0, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
+transform = Transform3D(1, -5.89806e-17, 1.28964e-12, 0, 1, -3.54068e-19, 0, 3.66708e-09, 1, 0.000347733, 0.029358, -0.00320662)
+shape = SubResource("BoxShape3D_l2vh4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_do8l7")
+}
