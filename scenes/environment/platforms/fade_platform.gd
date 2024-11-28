@@ -1,9 +1,10 @@
-extends CSGBox3D
+extends Node3D
 class_name FadePlatform
 
 @onready var player_detection_area: Area3D = $PlayerDetectionArea
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var fade_timer: Timer = $FadeTimer
+@onready var card: CSGBox3D = $Card
 
 var is_platform_revealed: bool = false
 var is_player_on_platform: bool = false
@@ -21,8 +22,8 @@ func _on_player_detection_area_body_entered(body: Node) -> void:
 			is_platform_revealed = true
 			animation_player.play("fade_in")
 			await animation_player.animation_finished
-			material.distance_fade_mode = material.DISTANCE_FADE_DISABLED
-			material.transparency = material.TRANSPARENCY_DISABLED
+			card.material.distance_fade_mode = BaseMaterial3D.DISTANCE_FADE_DISABLED
+			card.material.transparency = BaseMaterial3D.TRANSPARENCY_DISABLED
 
 func _on_player_detection_area_body_exited(body: Node) -> void:
 	if body is Player and is_platform_revealed:
@@ -34,6 +35,6 @@ func _on_fade_timer_timeout() -> void:
 		return
 
 	is_platform_revealed = false
-	material.transparency = material.TRANSPARENCY_ALPHA
+	card.material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	animation_player.play("fade_out")
 	await animation_player.animation_finished
