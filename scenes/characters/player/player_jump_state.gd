@@ -44,6 +44,9 @@ func update(delta: float) -> void:
 		ActionNames.TURN_RIGHT,
 		ActionNames.MOVE_FORWARDS,
 		ActionNames.MOVE_BACKWARDS)
+
+	if input_dir.length() > 0:
+		player_node.state_machine.change_state(player_node.player_move_state)
 	
 	handle_turning(input_dir, delta)
 
