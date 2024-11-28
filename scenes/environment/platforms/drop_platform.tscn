@@ -6,6 +6,7 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xx562"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ivfst"]
+resource_local_to_scene = true
 transparency = 1
 emission = Color(0, 0.831457, 0.801135, 1)
 emission_operator = 1

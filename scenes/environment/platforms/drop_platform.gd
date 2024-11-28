@@ -12,6 +12,7 @@ class_name DropPlatform
 @export var drop_time: float = 1.0
 
 var is_player_on_platform: bool = false
+var original_animation_speed_scale: float = 1.0
 var is_dropping: bool = false
 var player: Player
 
@@ -33,7 +34,7 @@ func _on_player_detection_area_body_entered(body: Node) -> void:
 		player = body as Player
 		is_player_on_platform = true
 		drop_timer.start()
-		animation_player.play("wobble")
+		play_randomized_animation_with_speed("wobble")
 
 func _on_player_detection_area_body_exited(body: Node) -> void:
 	if body is Player:
@@ -45,6 +46,11 @@ func _on_drop_timer_timeout() -> void:
 
 func _on_drop_reset_timer_timeout() -> void:
 	reset()
+
+func play_randomized_animation_with_speed(animation_name: String) -> void:
+	var speed = randf_range(0.5, 1.5) * (1 if randi() % 2 == 0 else -1) # Randomize speed and direction
+	animation_player.play(animation_name)
+	animation_player.speed_scale = speed
 
 func reset() -> void:
 	is_dropping = false
@@ -59,6 +65,7 @@ func reset() -> void:
 
 func drop() -> void:
 	animation_player.stop()
+	animation_player.speed_scale = original_animation_speed_scale
 	card.collision_layer = 0
 	card.collision_mask = 1
 	is_dropping = true
