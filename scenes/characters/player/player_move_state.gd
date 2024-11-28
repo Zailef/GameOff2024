@@ -6,16 +6,25 @@ var animation_player: AnimationPlayer
 
 @export var move_speed: float = 5.0
 @export var sprint_modifier: float = 1.25
+@export var slip_modifier: float = 1.8
 
 var is_sprinting: bool = false
 var direction: Vector3 = Vector3.ZERO
 var input_direction: Vector2 = Vector2.ZERO
+var is_slipping: bool = false
 
 var current_move_speed: float:
-	get: return move_speed * (sprint_modifier if is_sprinting else 1.0)
+	get:
+		if is_slipping:
+			return move_speed * slip_modifier
+		else:
+			return move_speed * (sprint_modifier if is_sprinting else 1.0)
 
 func _ready() -> void:
 	state_name = "PLAYER_MOVE_STATE"
+
+	SignalManager.player_entered_slippery_area.connect(func(): is_slipping = true)
+	SignalManager.player_exited_slippery_area.connect(func(): is_slipping = false)
 
 func enter() -> void:
 	super.enter()
@@ -44,12 +53,16 @@ func handle_movement(delta: float) -> void:
 	# Only consider forward/backward movement
 	direction = (player_node.transform.basis * Vector3(0, 0, input_direction.y)).normalized()
 
-	if direction:
-		player_node.velocity.x = direction.x * current_move_speed
-		player_node.velocity.z = direction.z * current_move_speed
+	if is_slipping:
+		player_node.velocity.x = lerp(player_node.velocity.x, direction.x * current_move_speed, 0.02)
+		player_node.velocity.z = lerp(player_node.velocity.z, direction.z * current_move_speed, 0.02)
 	else:
-		player_node.velocity.x = move_toward(player_node.velocity.x, 0, current_move_speed)
-		player_node.velocity.z = move_toward(player_node.velocity.z, 0, current_move_speed)
+		if direction:
+			player_node.velocity.x = direction.x * current_move_speed
+			player_node.velocity.z = direction.z * current_move_speed
+		else:
+			player_node.velocity.x = move_toward(player_node.velocity.x, 0, current_move_speed)
+			player_node.velocity.z = move_toward(player_node.velocity.z, 0, current_move_speed)
 
 	# Handle rotation based on left/right input
 	if input_direction.x != 0:
