@@ -2,6 +2,7 @@ extends BaseState
 class_name PlayerMoveState
 
 var player_node: Player
+var animation_player: AnimationPlayer
 
 @export var move_speed: float = 5.0
 @export var sprint_modifier: float = 1.25
@@ -16,9 +17,15 @@ var current_move_speed: float:
 func _ready() -> void:
 	state_name = "PLAYER_MOVE_STATE"
 
+func enter() -> void:
+	super.enter()
+	animation_player = player_node.player_model_animated.get_node("AnimationPlayer")
+	animation_player.play("run")
+
 func exit() -> void:
 	super.exit()
 	is_sprinting = false
+	animation_player.stop()
 
 func update(delta: float) -> void:
 	input_direction = Input.get_vector(
@@ -29,7 +36,6 @@ func update(delta: float) -> void:
 
 	handle_state_transitions()
 	handle_movement(delta)
-	handle_gravity(delta)
 	player_node.move_and_slide()
 
 func handle_movement(delta: float) -> void:
@@ -50,13 +56,11 @@ func handle_movement(delta: float) -> void:
 		var rotation_amount = input_direction.x * player_node.player_rotation_speed * delta
 		player_node.rotate_y(deg_to_rad(-rotation_amount))
 
-func handle_gravity(delta: float) -> void:
-	if not player_node.is_on_floor():
-		player_node.velocity += player_node.get_gravity() * delta
-
 func handle_state_transitions() -> void:
 	if player_node.is_on_floor():
 		if player_node.velocity.length() == 0 and input_direction.length() == 0:
 			player_node.state_machine.change_state(player_node.player_idle_state)
 		elif Input.is_action_just_pressed(ActionNames.JUMP):
 			player_node.state_machine.change_state(player_node.player_jump_state)
+	else:
+		player_node.state_machine.change_state(player_node.player_fall_state)

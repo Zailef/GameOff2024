@@ -8,7 +8,9 @@ class_name Player
 @onready var player_move_state: PlayerMoveState = $PlayerStateMachine/PlayerMoveState
 @onready var player_jump_state: PlayerJumpState = $PlayerStateMachine/PlayerJumpState
 @onready var player_freeze_state: PlayerFreezeState = $PlayerStateMachine/PlayerFreezeState
+@onready var player_fall_state: PlayerFallState = $PlayerStateMachine/PlayerFallState
 @onready var third_person_camera: Camera3D = %ThirdPersonCamera
+@onready var player_model_animated: Node3D = $PlayerModelAnimated
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
