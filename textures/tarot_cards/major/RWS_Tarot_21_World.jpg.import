@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/RWS_Tarot_21_World.jpg-c2e69a1f6f0e1bc1fac88e
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

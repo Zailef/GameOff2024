@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://2a08notkb18q"
-path.s3tc="res://.godot/imported/RWS_Tarot_20_Judgement.jpg-b32ec33a6053ac877c6d5cf19b876d0e.s3tc.ctex"
+path="res://.godot/imported/RWS_Tarot_20_Judgement.jpg-b32ec33a6053ac877c6d5cf19b876d0e.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/tarot_cards/major/RWS_Tarot_20_Judgement.jpg"
-dest_files=["res://.godot/imported/RWS_Tarot_20_Judgement.jpg-b32ec33a6053ac877c6d5cf19b876d0e.s3tc.ctex"]
+dest_files=["res://.godot/imported/RWS_Tarot_20_Judgement.jpg-b32ec33a6053ac877c6d5cf19b876d0e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

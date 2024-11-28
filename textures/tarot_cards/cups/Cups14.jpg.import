@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Cups14.jpg-0722ea6c172358e90c7ee646a6bf66c7.c
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

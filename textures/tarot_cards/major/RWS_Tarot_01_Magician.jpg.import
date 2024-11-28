@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/RWS_Tarot_01_Magician.jpg-4dc6f9221657d71742c
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

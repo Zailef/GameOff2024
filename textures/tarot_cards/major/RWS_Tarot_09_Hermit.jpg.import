@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/RWS_Tarot_09_Hermit.jpg-368ef041453b5b6094da9
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

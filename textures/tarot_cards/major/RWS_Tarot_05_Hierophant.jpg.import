@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/RWS_Tarot_05_Hierophant.jpg-8dc0f3b4952e1b485
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

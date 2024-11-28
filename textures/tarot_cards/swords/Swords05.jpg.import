@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blbnndhd4oapd"
-path.s3tc="res://.godot/imported/Swords05.jpg-2b01bc161f7f029d2a0eb1a6c8c383ad.s3tc.ctex"
+path="res://.godot/imported/Swords05.jpg-2b01bc161f7f029d2a0eb1a6c8c383ad.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/tarot_cards/swords/Swords05.jpg"
-dest_files=["res://.godot/imported/Swords05.jpg-2b01bc161f7f029d2a0eb1a6c8c383ad.s3tc.ctex"]
+dest_files=["res://.godot/imported/Swords05.jpg-2b01bc161f7f029d2a0eb1a6c8c383ad.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

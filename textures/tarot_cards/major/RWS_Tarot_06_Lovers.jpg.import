@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/RWS_Tarot_06_Lovers.jpg-41f781293da8da5a5400f
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Wands05.jpg-7c4335b98ce6a4454f3a46faf1c98f51.
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
