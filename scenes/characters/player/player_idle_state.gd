@@ -29,7 +29,10 @@ func update(_delta: float) -> void:
 		ActionNames.MOVE_FORWARDS,
 		ActionNames.MOVE_BACKWARDS)
 
+	if not player_node.is_on_floor():
+		player_node.state_machine.change_state(player_node.player_fall_state)
+
 	if Input.is_action_just_pressed(ActionNames.JUMP):
 		player_node.state_machine.change_state(player_node.player_jump_state)
-	elif input_direction.length() > 0:
+	elif input_direction.length() > 0 or player_node.velocity.length() > 0:
 		player_node.state_machine.change_state(player_node.player_move_state)
