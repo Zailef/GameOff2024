@@ -1,6 +1,8 @@
 extends BaseState
 class_name PlayerJumpState
 
+const JUMPING_ANIMATION: String = "jump"
+
 var player_node: Player
 
 @export var jump_velocity: float = 4.5
@@ -18,7 +20,7 @@ func enter() -> void:
 		player_node.velocity.y = jump_velocity
 		jump_timer = jump_grace_period
 		animation_player = player_node.player_model_animated.get_node("AnimationPlayer")
-		animation_player.play("jump")
+		animation_player.play(JUMPING_ANIMATION)
 
 func exit() -> void:
 	super.exit()

@@ -1,6 +1,8 @@
 extends BaseState
 class_name PlayerFallState
 
+const FALLING_ANIMATION: String = "falling"
+
 var player_node: Player
 var animation_player: AnimationPlayer
 
@@ -10,7 +12,7 @@ func _ready() -> void:
 func enter() -> void:
 	super.enter()
 	animation_player = player_node.player_model_animated.get_node("AnimationPlayer")
-	animation_player.play("rest")
+	animation_player.play(FALLING_ANIMATION)
 
 func exit() -> void:
 	super.exit()

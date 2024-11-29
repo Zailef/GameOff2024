@@ -1,6 +1,10 @@
 extends BaseState
 class_name PlayerMoveState
 
+const SLIPPING_ANIMATION: String = "Slipping"
+const TURNING_ANIMATION: String = "turning"
+const RUN_ANIMATION: String = "run"
+
 var player_node: Player
 var animation_player: AnimationPlayer
 
@@ -9,9 +13,11 @@ var animation_player: AnimationPlayer
 @export var slip_modifier: float = 1.8
 
 var is_sprinting: bool = false
+var is_slipping: bool = false
+var is_spot_turning: bool = false
+
 var direction: Vector3 = Vector3.ZERO
 var input_direction: Vector2 = Vector2.ZERO
-var is_slipping: bool = false
 
 var current_move_speed: float:
 	get:
@@ -29,7 +35,6 @@ func _ready() -> void:
 func enter() -> void:
 	super.enter()
 	animation_player = player_node.player_model_animated.get_node("AnimationPlayer")
-	animation_player.play("run")
 
 func exit() -> void:
 	super.exit()
@@ -45,6 +50,7 @@ func update(delta: float) -> void:
 
 	handle_state_transitions()
 	handle_movement(delta)
+	handle_animations()
 	player_node.move_and_slide()
 
 func handle_movement(delta: float) -> void:
@@ -66,8 +72,20 @@ func handle_movement(delta: float) -> void:
 
 	# Handle rotation based on left/right input
 	if input_direction.x != 0:
+		is_spot_turning = not is_slipping and player_node.velocity == Vector3.ZERO
 		var rotation_amount = input_direction.x * player_node.player_rotation_speed * delta
 		player_node.rotate_y(deg_to_rad(-rotation_amount))
+	else:
+		is_spot_turning = false
+
+func handle_animations() -> void:
+	if is_spot_turning and not is_slipping and not animation_player.is_playing() and animation_player.current_animation != TURNING_ANIMATION:
+		animation_player.play(TURNING_ANIMATION)
+	elif is_slipping and not animation_player.is_playing() and animation_player.current_animation != SLIPPING_ANIMATION:
+		animation_player.play(SLIPPING_ANIMATION)
+	else:
+		if not animation_player.is_playing() and animation_player.current_animation != RUN_ANIMATION:
+			animation_player.play(RUN_ANIMATION)
 
 func handle_state_transitions() -> void:
 	if player_node.is_on_floor():
