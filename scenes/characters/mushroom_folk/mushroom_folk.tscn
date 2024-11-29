@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://tign6pylq6lu"]
+
+[ext_resource type="PackedScene" uid="uid://b4a16n7i3021" path="res://models/characters/mushroom_folk.glb" id="1_m0rg2"]
+[ext_resource type="Script" path="res://scenes/characters/mushroom_folk/mushroom_folk.gd" id="2_xish7"]
+[ext_resource type="PackedScene" uid="uid://2isfaa6wkaj8" path="res://scenes/common/interaction_handler.tscn" id="3_ohe2b"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dm414"]
+points = PackedVector3Array(-0.178541, -1.60184, -1.63595, 0.510443, -1.03743, 1.92063, -1.86575, -1.14812, 0.829673, -0.110633, -3.45872, 0.304691, -0.0487009, 0.503527, -0.0655552, 1.70325, -1.53679, -0.337504, -1.41113, -1.53679, -1.18167, 1.63851, -1.27741, 1.08936, -0.827029, -1.01843, 1.93317, 1.24899, -1.66648, -1.18131, 0.137427, -3.45862, -0.129175, -1.80029, -1.40791, -0.597548, 1.31408, -1.21277, 1.60838, -1.47623, -1.08348, 1.544, -0.290726, 0.466014, 0.060312, -0.354194, -3.30517, -0.185308, 1.22368, -0.684882, -0.182199, -0.178541, -3.41875, 0.44014, 0.565539, -1.16502, -1.35415, 0.311155, -3.3323, 0.240702, 1.05076, -0.800628, 1.58567, -1.14633, -1.22874, -1.22143, -0.0487009, 0.488312, 0.181163, -1.20835, -0.679072, 1.46298, 0.729983, -1.14772, 1.93282, 0.470303, -1.66648, -1.57085, 1.76835, -1.47215, 0.375396, -0.231993, 0.484056, -0.124447, -0.892127, -1.60184, -1.5061, -1.5201, -0.798256, -0.00272703, 0.197233, 0.373552, -0.00337856, -0.502963, -1.08348, 1.99792)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rkljb"]
+height = 3.0
+radius = 1.0
+
+[node name="MushroomFolk" instance=ExtResource("1_m0rg2")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("2_xish7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0612786, 3.36013, 0.00707394)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_dm414")
+
+[node name="Cube_008" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0612786, 3.36013, 0.00707394)
+
+[node name="InteractionHandler" parent="." index="2" instance=ExtResource("3_ohe2b")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionHandler" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.632, 1.53833)
+shape = SubResource("CylinderShape3D_rkljb")
