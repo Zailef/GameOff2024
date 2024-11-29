@@ -52,24 +52,24 @@ func update(delta: float) -> void:
 		ActionNames.MOVE_FORWARDS,
 		ActionNames.MOVE_BACKWARDS)
 
-	handle_state_transitions()
 	handle_movement(delta)
 	handle_animations()
 	player_node.move_and_slide()
+	handle_state_transitions()
 
 func handle_movement(delta: float) -> void:
-	is_sprinting = Input.is_action_pressed(ActionNames.SPRINT)
-	
 	# Only consider forward/backward movement
 	direction = (player_node.transform.basis * Vector3(0, 0, input_direction.y)).normalized()
 
+	is_sprinting = Input.is_action_pressed(ActionNames.SPRINT)
 	is_moving_backward = Input.is_action_pressed(ActionNames.MOVE_BACKWARDS)
+	is_spot_turning = false
 
 	if is_slipping:
 		player_node.velocity.x = lerp(player_node.velocity.x, direction.x * current_move_speed, 0.02)
 		player_node.velocity.z = lerp(player_node.velocity.z, direction.z * current_move_speed, 0.02)
 	else:
-		if direction:
+		if direction.length() > 0:
 			player_node.velocity.x = direction.x * current_move_speed
 			player_node.velocity.z = direction.z * current_move_speed
 		else:
@@ -78,20 +78,17 @@ func handle_movement(delta: float) -> void:
 
 	# Handle rotation based on left/right input
 	if input_direction.x != 0:
-		is_spot_turning = not is_slipping and player_node.velocity == Vector3.ZERO
+		is_spot_turning = not is_slipping and player_node.velocity.length() == 0
 		var rotation_amount = input_direction.x * player_node.player_rotation_speed * delta
 		player_node.rotate_y(deg_to_rad(-rotation_amount))
-	else:
-		is_spot_turning = false
 
 func handle_animations() -> void:
-	if is_spot_turning and not is_slipping and not animation_player.is_playing() and animation_player.current_animation != TURNING_ANIMATION:
+	if is_spot_turning and animation_player.current_animation != TURNING_ANIMATION:
 		animation_player.play(TURNING_ANIMATION)
-	elif is_slipping and not animation_player.is_playing() and animation_player.current_animation != SLIPPING_ANIMATION:
+	elif is_slipping and animation_player.current_animation != SLIPPING_ANIMATION:
 		animation_player.play(SLIPPING_ANIMATION)
-	else:
-		if not animation_player.is_playing() and animation_player.current_animation != RUN_ANIMATION:
-			animation_player.play(RUN_ANIMATION)
+	elif not is_spot_turning and not is_slipping and animation_player.current_animation != RUN_ANIMATION:
+		animation_player.play(RUN_ANIMATION)
 
 func handle_state_transitions() -> void:
 	if player_node.is_on_floor():
