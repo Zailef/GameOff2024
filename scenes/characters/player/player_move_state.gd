@@ -9,11 +9,13 @@ var player_node: Player
 var animation_player: AnimationPlayer
 
 @export var move_speed: float = 5.0
+@export var backward_modifier: float = 0.5
 @export var sprint_modifier: float = 1.25
 @export var slip_modifier: float = 1.8
 
 var is_sprinting: bool = false
 var is_slipping: bool = false
+var is_moving_backward: bool = false
 var is_spot_turning: bool = false
 
 var direction: Vector3 = Vector3.ZERO
@@ -21,7 +23,9 @@ var input_direction: Vector2 = Vector2.ZERO
 
 var current_move_speed: float:
 	get:
-		if is_slipping:
+		if is_moving_backward:
+			return move_speed * backward_modifier
+		elif is_slipping:
 			return move_speed * slip_modifier
 		else:
 			return move_speed * (sprint_modifier if is_sprinting else 1.0)
@@ -58,6 +62,8 @@ func handle_movement(delta: float) -> void:
 	
 	# Only consider forward/backward movement
 	direction = (player_node.transform.basis * Vector3(0, 0, input_direction.y)).normalized()
+
+	is_moving_backward = Input.is_action_pressed(ActionNames.MOVE_BACKWARDS)
 
 	if is_slipping:
 		player_node.velocity.x = lerp(player_node.velocity.x, direction.x * current_move_speed, 0.02)
