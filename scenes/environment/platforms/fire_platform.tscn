@@ -10,15 +10,15 @@ colors = PackedColorArray(0.524505, 0.311791, 0.19022, 1, 0, 0, 0, 1, 0.666081, 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_oxly1"]
 frequency = 0.0120231
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lg6ou"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fr8u6"]
 color_ramp = SubResource("Gradient_8pef4")
 noise = SubResource("FastNoiseLite_oxly1")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rdi76"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lopab"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbvx4"]
 resource_local_to_scene = true
-albedo_texture = SubResource("NoiseTexture2D_lg6ou")
+albedo_texture = SubResource("NoiseTexture2D_fr8u6")
 emission = Color(0.783824, 0.167183, 0, 1)
 emission_energy_multiplier = 10.0
 emission_operator = 1
@@ -27,7 +27,7 @@ normal_scale = 16.0
 normal_texture = ExtResource("1_0usmj")
 rim_tint = 1.0
 clearcoat_roughness = 1.0
-clearcoat_texture = SubResource("CompressedTexture2D_rdi76")
+clearcoat_texture = SubResource("CompressedTexture2D_lopab")
 backlight_enabled = true
 backlight = Color(0.133196, 0.133196, 0.133196, 1)
 uv1_scale = Vector3(1, -1, 1)
@@ -39,6 +39,57 @@ distance_fade_max_distance = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_niprw"]
 size = Vector3(3.9754, 0.121216, 2.33105)
+
+[sub_resource type="Animation" id="Animation_hs15x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Card:material:albedo_texture:noise:seed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Card:material:albedo_texture:noise:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Card:material:emission")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.783824, 0.167183, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Card:material:emission_energy_multiplier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
 
 [sub_resource type="Animation" id="Animation_3osn5"]
 resource_name = "enflame"
@@ -91,57 +142,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [100.0, 115.0, 130.0, 145.0, 160.0, 175.0, 190.0, 205.0, 220.0, 235.0, 250.0, 265.0, 280.0, 295.0, 310.0, 325.0, 340.0, 355.0, 370.0, 385.0, 400.0, 415.0, 430.0, 445.0, 460.0, 475.0, 490.0, 505.0, 520.0, 535.0, 550.0, 565.0, 580.0, 595.0, 610.0, 625.0, 640.0, 655.0, 670.0, 685.0, 700.0, 715.0, 730.0, 745.0, 760.0, 775.0, 790.0, 805.0, 820.0, 835.0, 850.0, 865.0, 880.0, 895.0, 910.0, 925.0, 940.0, 955.0, 970.0, 985.0, 1000.0]
-}
-
-[sub_resource type="Animation" id="Animation_hs15x"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Card:material:albedo_texture:noise:seed")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Card:material:albedo_texture:noise:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Card:material:emission")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.783824, 0.167183, 0, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Card:material:emission_energy_multiplier")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [10.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_do8l7"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://mwbglbrt5mhq"]
+[gd_scene load_steps=24 format=3 uid="uid://mwbglbrt5mhq"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_5m5gm"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_state_machine.gd" id="2_5tt5k"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scenes/characters/player/screen_flames.gd" id="4_ci6ft"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_idle_state.gd" id="4_o4wn0"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_jump_state.gd" id="5_4suqs"]
-[ext_resource type="PackedScene" uid="uid://ciw67y4ag0c0o" path="res://models/characters/player/Player.glb" id="7_46vjb"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_freeze_state.gd" id="7_ggo65"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_fall_state.gd" id="8_qyltd"]
 [ext_resource type="PackedScene" uid="uid://2nu4yl8r3ojc" path="res://models/characters/player/Player.full.ani.glb" id="9_sefjt"]
@@ -124,6 +123,9 @@ wait_time = 0.1
 [node name="RecoveryTimer" type="Timer" parent="CanvasLayer/ScreenFlames"]
 wait_time = 0.1
 
+[node name="RecoveryDelayTimer" type="Timer" parent="CanvasLayer/ScreenFlames"]
+wait_time = 1.5
+
 [node name="InteractionProbe" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 4
@@ -151,10 +153,6 @@ script = ExtResource("7_ggo65")
 
 [node name="PlayerFallState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("8_qyltd")
-
-[node name="PlayerModel" parent="." instance=ExtResource("7_46vjb")]
-transform = Transform3D(-1, 0, -8.75443e-08, 0, 1, 0, 8.75443e-08, 0, -1, 0.00683182, -0.995044, -0.391395)
-visible = false
 
 [node name="PlayerModelAnimated" parent="." instance=ExtResource("9_sefjt")]
 transform = Transform3D(-1, 0, -8.75443e-08, 0, 1, 0, 8.75443e-08, 0, -1, -0.000290542, -0.995044, 0.0166451)
