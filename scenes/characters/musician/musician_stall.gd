@@ -1,8 +1,8 @@
 extends Node3D
 class_name MusicianStall
 
-@onready var mini_game_camera: Camera3D = $MiniGameCamera
-@onready var interaction_handler: InteractionHandler = $InteractionHandler
+@onready var mini_game_camera: Camera3D = $XylophoneMemoryGame/MiniGameCamera
+@onready var interaction_handler: InteractionHandler = $XylophoneMemoryGame/InteractionHandler
 @onready var xylophone_memory_game: XylophoneMemoryGame = $XylophoneMemoryGame
 
 func _ready() -> void:
