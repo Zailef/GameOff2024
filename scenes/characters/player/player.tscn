@@ -73,7 +73,7 @@ shader_parameter/color_gradient = SubResource("GradientTexture1D_5pmhq")
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t2bme"]
 height = 1.5
 
-[node name="Player" type="CharacterBody3D" groups=["player"]]
+[node name="Player" type="CharacterBody3D"]
 transform = Transform3D(0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, 0.999848, 0, 1, 0)
 collision_layer = 2
 script = ExtResource("1_5m5gm")
@@ -132,7 +132,7 @@ collision_mask = 4
 transform = Transform3D(1, 0, -1.66533e-16, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0130067, -0.289208, -0.745154)
 shape = SubResource("CylinderShape3D_t2bme")
 
-[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("player", "initial_state")]
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("player", "initial_state") groups=["player"]]
 script = ExtResource("2_5tt5k")
 player = NodePath("..")
 initial_state = NodePath("PlayerIdleState")

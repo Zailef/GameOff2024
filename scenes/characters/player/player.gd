@@ -21,6 +21,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if Input.is_action_just_released("ui_cancel"):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if Input.is_action_just_pressed(ActionNames.KILL_PLAYER):
+		SignalManager.player_died.emit()
 
 func _physics_process(delta: float) -> void:
 	state_machine.update(delta)

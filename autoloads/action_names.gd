@@ -9,6 +9,7 @@ const SPRINT = "sprint"
 const INTERACT = "interact"
 const CAMERA_ZOOM_IN = "camera_zoom_in"
 const CAMERA_ZOOM_OUT = "camera_zoom_out"
+const KILL_PLAYER = "kill_player"
 
 func _ready() -> void:
 	set_process(false)

@@ -36,7 +36,10 @@ func _on_death_timer_timeout() -> void:
 		recovery_timer.stop()
 
 	if current_intensity == 1.0:
-		print("Player died")
+		SignalManager.player_died.emit()
+		current_intensity = 0.0
+		death_timer.stop()
+		recovery_timer.stop()
 	else:
 		current_intensity += intensity_increase
 	death_timer.start()
