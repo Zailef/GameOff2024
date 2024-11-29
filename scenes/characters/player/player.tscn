@@ -1,21 +1,74 @@
-[gd_scene load_steps=14 format=3 uid="uid://mwbglbrt5mhq"]
+[gd_scene load_steps=25 format=3 uid="uid://mwbglbrt5mhq"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_5m5gm"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_state_machine.gd" id="2_5tt5k"]
 [ext_resource type="Script" path="res://scenes/characters/player/camera_controller.gd" id="2_gucjo"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_move_state.gd" id="3_gvtl3"]
+[ext_resource type="Script" path="res://scenes/characters/player/screen_flames.gd" id="4_ci6ft"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_idle_state.gd" id="4_o4wn0"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_jump_state.gd" id="5_4suqs"]
 [ext_resource type="PackedScene" uid="uid://ciw67y4ag0c0o" path="res://models/characters/player/Player.glb" id="7_46vjb"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_freeze_state.gd" id="7_ggo65"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_fall_state.gd" id="8_qyltd"]
 [ext_resource type="PackedScene" uid="uid://2nu4yl8r3ojc" path="res://models/characters/player/Player.full.ani.glb" id="9_sefjt"]
+[ext_resource type="Shader" path="res://shaders/screen_flames.gdshader" id="11_vwdn8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_73sg4"]
 radius = 0.4
 height = 1.4
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r8qsy"]
+
+[sub_resource type="Gradient" id="Gradient_h4ar4"]
+offsets = PackedFloat32Array(0, 0.262295, 0.483607, 0.704918, 0.852459, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.213115, 0.213115, 0.213115, 1, 0.426989, 0.0551541, 0, 1, 1, 0.555584, 0.241088, 1, 1, 0.80146, 0.191734, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5pmhq"]
+gradient = SubResource("Gradient_h4ar4")
+width = 1024
+
+[sub_resource type="Gradient" id="Gradient_m2gfx"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.295082, 0.57377, 0.778689, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.425895, 0, 0.0806081, 1, 0.952068, 0.495527, 3.85046e-07, 1, 0.969675, 0.742111, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hb5l0"]
+noise_type = 4
+frequency = 0.004
+fractal_type = 3
+fractal_lacunarity = 3.0
+fractal_gain = 0.6
+fractal_ping_pong_strength = 3.0
+domain_warp_amplitude = 10.0
+domain_warp_fractal_octaves = 10
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_is3bv"]
+width = 1920
+height = 1080
+seamless_blend_skirt = 0.829
+color_ramp = SubResource("Gradient_m2gfx")
+noise = SubResource("FastNoiseLite_hb5l0")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6bmml"]
+frequency = 0.2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gao88"]
+noise = SubResource("FastNoiseLite_6bmml")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d378i"]
+width = 1920
+height = 1080
+color_ramp = SubResource("Gradient_m2gfx")
+noise = SubResource("FastNoiseLite_hb5l0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hllwc"]
+resource_local_to_scene = true
+shader = ExtResource("11_vwdn8")
+shader_parameter/intensity = 1.0
+shader_parameter/flame1_texture = SubResource("NoiseTexture2D_is3bv")
+shader_parameter/flame2_texture = SubResource("NoiseTexture2D_gao88")
+shader_parameter/flame3_texture = SubResource("NoiseTexture2D_d378i")
+shader_parameter/color_gradient = SubResource("GradientTexture1D_5pmhq")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t2bme"]
 height = 1.5
@@ -46,6 +99,29 @@ spring_length = 6.0
 [node name="ThirdPersonCamera" type="Camera3D" parent="CameraController/TwistPivot/PitchPivot/SpringArm3D"]
 unique_name_in_owner = true
 transform = Transform3D(0.999982, 0.00585071, 0.00100975, -0.00585071, 0.942133, 0.335187, 0.00100976, -0.335187, 0.942151, 0, 0, 0)
+current = true
+
+[node name="SubViewport" type="SubViewport" parent="CameraController/TwistPivot/PitchPivot/SpringArm3D/ThirdPersonCamera"]
+transparent_bg = true
+size = Vector2i(1920, 180)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScreenFlames" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_hllwc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.0784314)
+script = ExtResource("4_ci6ft")
+
+[node name="DeathTimer" type="Timer" parent="CanvasLayer/ScreenFlames"]
+wait_time = 0.1
+
+[node name="RecoveryTimer" type="Timer" parent="CanvasLayer/ScreenFlames"]
+wait_time = 0.1
 
 [node name="InteractionProbe" type="Area3D" parent="."]
 collision_layer = 2

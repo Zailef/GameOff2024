@@ -18,8 +18,10 @@ func _on_player_detection_area_body_entered(body: Node) -> void:
 	if body is Player:
 		player = body as Player
 		is_player_on_platform = true
+		SignalManager.player_entered_fire_area.emit()
 
 func _on_player_detection_area_body_exited(body: Node) -> void:
 	if body is Player:
 		is_player_on_platform = false
 		player = null
+		SignalManager.player_exited_fire_area.emit()
