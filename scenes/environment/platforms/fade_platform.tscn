@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/environment/platforms/fade_platform.gd" id="2_6g2mp"]
 [ext_resource type="Texture2D" uid="uid://bfoaej1fex7f6" path="res://textures/tarot_cards/major/RWS_Tarot_11_Justice.jpg" id="2_h73vc"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xx562"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_udpxs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uh7s"]
 resource_local_to_scene = true
@@ -15,7 +15,7 @@ normal_scale = 16.0
 normal_texture = ExtResource("2_h73vc")
 rim_tint = 1.0
 clearcoat_roughness = 1.0
-clearcoat_texture = SubResource("CompressedTexture2D_xx562")
+clearcoat_texture = SubResource("CompressedTexture2D_udpxs")
 backlight = Color(1, 1, 1, 1)
 uv1_scale = Vector3(1, -1, 1)
 uv1_triplanar_sharpness = 0.5

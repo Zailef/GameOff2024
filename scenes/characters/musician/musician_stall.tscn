@@ -19,6 +19,9 @@ radius = 1.3
 [node name="MusicianStall" type="Node3D"]
 script = ExtResource("1_wacb7")
 
+[node name="MusicianAndStage" parent="." instance=ExtResource("12_7e8dh")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 4.24698, 0, 0)
+
 [node name="XylophoneMemoryGame" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2329, -0.538319, 1.0197)
 script = ExtResource("4_m7olm")
@@ -61,6 +64,3 @@ shape = SubResource("CylinderShape3D_xt10f")
 
 [node name="MiniGameCamera" type="Camera3D" parent="XylophoneMemoryGame"]
 transform = Transform3D(1, 0, 0, 0, 0.910518, 0.41347, 0, -0.41347, 0.910518, 0, 2.16019, 2.37851)
-
-[node name="MusicianAndStage" parent="." instance=ExtResource("12_7e8dh")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 4.24698, 0, 0)
