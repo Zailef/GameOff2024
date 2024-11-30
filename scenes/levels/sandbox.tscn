@@ -355,13 +355,6 @@ radius = 3.0
 sides = 12
 material = SubResource("StandardMaterial3D_0f6fc")
 
-[node name="SpawnCard" parent="Bounds" instance=ExtResource("11_v2ekr")]
-transform = Transform3D(0.533661, -0.0226258, -0.845395, 0.0141427, 0.999741, -0.0178289, 0.84558, -0.00244158, 0.533843, -40.6959, 1.06007, 39.809)
-is_active_spawn = true
-
-[node name="SpawnCard2" parent="Bounds" instance=ExtResource("11_v2ekr")]
-transform = Transform3D(-0.0574769, 0, -0.998347, 0, 1, 0, 0.998347, 0, -0.0574769, 20.9504, 1, 6.27301)
-
 [node name="MusicianStall" parent="." instance=ExtResource("3_8dt6u")]
 transform = Transform3D(-0.0379753, 0, -1.99964, 0, 2, 0, 1.99964, 0, -0.0379753, 32.7128, 0.499998, 9.62939)
 
@@ -799,3 +792,12 @@ transform = Transform3D(2.50041, -1.60555, -2.67771, 1.09578, 3.66363, -1.17348,
 
 [node name="crystal_42" parent="SkyCrystals" instance=ExtResource("24_7x85t")]
 transform = Transform3D(2.7235, 0.989659, 6.37206, -2.3907, 6.5791, -1.43416e-08, -5.98892, -2.17624, 2.89774, -62.1541, 71.3027, -64.9343)
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="SpawnCard" parent="Checkpoints" instance=ExtResource("11_v2ekr")]
+transform = Transform3D(0.533661, -0.0226258, -0.845395, 0.0141427, 0.999741, -0.0178289, 0.84558, -0.00244158, 0.533843, -40.6959, 1.06007, 39.809)
+is_active_spawn = true
+
+[node name="SpawnCard2" parent="Checkpoints" instance=ExtResource("11_v2ekr")]
+transform = Transform3D(-0.0574769, 0, -0.998347, 0, 1, 0, 0.998347, 0, -0.0574769, 20.9504, 1, 6.27301)
