@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/common/death_handler.gd" id="1_ly3xp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rxmfq"]
-size = Vector3(200, 5, 200)
+size = Vector3(200, 1, 200)
 
 [node name="DeathHandler" type="Node3D"]
 script = ExtResource("1_ly3xp")
