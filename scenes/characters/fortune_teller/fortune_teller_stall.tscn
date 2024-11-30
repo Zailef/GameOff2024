@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://hwf1hh6jn5s6"]
+
+[ext_resource type="Script" path="res://scenes/characters/fortune_teller/fortune_teller_stall.gd" id="1_auu5q"]
+[ext_resource type="PackedScene" uid="uid://2isfaa6wkaj8" path="res://scenes/common/interaction_handler.tscn" id="2_13hbs"]
+[ext_resource type="PackedScene" uid="uid://c46xaikra54ku" path="res://models/characters/fortune_teller/fortune.teller.tent.glb" id="3_ixvpf"]
+[ext_resource type="PackedScene" uid="uid://f1n4bef1u22x" path="res://models/characters/fortune_teller/fortune.teller.sign.glb" id="4_rr8mt"]
+[ext_resource type="PackedScene" uid="uid://d1xqlqrtjwwa7" path="res://models/characters/fortune_teller/Fortune.teller.export.glb" id="5_ogxob"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_01pbl"]
+radius = 1.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ohdn"]
+size = Vector3(3.62939, 4.85095, 3.82233)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hc4pw"]
+size = Vector3(2.13727, 2.99164, 1.59192)
+
+[node name="FortuneTellerStall" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_auu5q")
+
+[node name="InteractionHandler" parent="." instance=ExtResource("2_13hbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.809727, 1.89649)
+label_text = "Talk [E]"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionHandler"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0150933, 2.5803, 0)
+shape = SubResource("CylinderShape3D_01pbl")
+
+[node name="fortune_teller_tent" parent="." instance=ExtResource("3_ixvpf")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="fortune_teller_tent"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fortune_teller_tent/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231934, 2.40631, 0.00204468)
+shape = SubResource("BoxShape3D_0ohdn")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="fortune_teller_tent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.32823, 0.836765)
+light_color = Color(0.511499, 0.555899, 0.667636, 1)
+light_energy = 10.0
+
+[node name="fortune_teller_sign" parent="." instance=ExtResource("4_rr8mt")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -4, 0, 1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="fortune_teller_sign"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fortune_teller_sign/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0662544, 1.47379, 0.29596)
+shape = SubResource("BoxShape3D_hc4pw")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="fortune_teller_sign"]
+transform = Transform3D(0.499039, 0.0309773, 0.000812531, -0.0309705, 0.498146, 0.0298595, 0.00104041, -0.0298525, 0.499107, -0.00632715, 1.87748, 2.97035)
+light_energy = 50.0
+spot_range = 6.0
+spot_angle = 35.0
+
+[node name="Fortune_teller_export" parent="." instance=ExtResource("5_ogxob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.537729, 0.693476)
