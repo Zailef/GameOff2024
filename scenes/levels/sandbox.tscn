@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://drbrebgd4gd5n" path="res://scenes/characters/musician/musician_stall.tscn" id="3_8dt6u"]
 [ext_resource type="PackedScene" uid="uid://bpuevhu8yt47f" path="res://scenes/environment/pillared_wall.tscn" id="3_fhotw"]
 [ext_resource type="PackedScene" uid="uid://b180jm6jisq1f" path="res://scenes/environment/ground.tscn" id="3_nbdf5"]
-[ext_resource type="PackedScene" uid="uid://hwf1hh6jn5s6" path="res://scenes/characters/fortune_teller/fortune_teller_stall.tscn" id="4_5rr1d"]
 [ext_resource type="Texture2D" uid="uid://dojo4w6dk6xj2" path="res://models/characters/fortune_teller/fortune.teller_metal-ring.png" id="4_he47l"]
 [ext_resource type="Texture2D" uid="uid://dyfycftqc4gbc" path="res://models/characters/fortune_teller/fortune.teller_purple-canvas.png" id="5_21fh0"]
 [ext_resource type="PackedScene" uid="uid://j7n3jd2qe28s" path="res://scenes/environment/platforms/drop_platform.tscn" id="5_igbqd"]
 [ext_resource type="Texture2D" uid="uid://b31brjplhcuh3" path="res://models/characters/fortune_teller/fortune.teller_black-velvet.png" id="6_ic6e2"]
+[ext_resource type="PackedScene" uid="uid://bfxv7q2n336i5" path="res://scenes/characters/fortune_teller/fortune_teller_stall.tscn" id="6_j3ibc"]
 [ext_resource type="PackedScene" uid="uid://d2yish6ulxay3" path="res://scenes/environment/spooky_tree.tscn" id="7_w6ynp"]
 [ext_resource type="PackedScene" uid="uid://dxwcg7c4x7y1g" path="res://models/characters/ms_jackson/teddy_bear.glb" id="8_hkiek"]
 [ext_resource type="PackedScene" uid="uid://k7ls3g4owws8" path="res://scenes/environment/platforms/spawn_card.tscn" id="11_v2ekr"]
@@ -344,8 +344,8 @@ transform = Transform3D(-0.312609, 0, -1.46706, 0, 1.5, 0, 1.46706, 0, -0.312609
 [node name="SpookyTree" parent="." instance=ExtResource("7_w6ynp")]
 transform = Transform3D(1.59853, 0, -1.20196, 0, 2, 0, 1.20196, 0, 1.59853, -24.6322, 0.766181, -9.10519)
 
-[node name="FortuneTellerStall" parent="." instance=ExtResource("4_5rr1d")]
-transform = Transform3D(0.697209, 0, -1.87454, 0, 2, 0, 1.87454, 0, 0.697209, 42.2565, 0.115464, 7.52275)
+[node name="FortuneTellerStall" parent="." instance=ExtResource("6_j3ibc")]
+transform = Transform3D(0.697209, 0, -1.87454, 0, 2, 0, 1.87454, 0, 0.697209, 42.2565, 0.138647, 7.52275)
 
 [node name="teddy_bear" parent="." instance=ExtResource("8_hkiek")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.10634, -2.36435)
