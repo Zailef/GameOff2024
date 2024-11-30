@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bv7m31qxnkc6" path="res://scenes/environment/pillar.tscn" id="2_mhn3p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0kp5"]
-size = Vector3(4.60553, 3.43457, 0.518616)
+size = Vector3(4.606, 4, 0.519)
 
 [node name="PillaredWall" instance=ExtResource("1_anmw4")]
 
@@ -15,7 +15,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00772095, 1.72556, 0.00643921)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00772095, 2.00553, 0.00643921)
 shape = SubResource("BoxShape3D_u0kp5")
 
 [node name="Pillar" parent="." index="2" instance=ExtResource("2_mhn3p")]

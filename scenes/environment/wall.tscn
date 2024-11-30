@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cx3mohvscbmir" path="res://models/environment/wall.glb" id="1_n41xv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2j08x"]
-size = Vector3(4.60553, 3.43457, 0.518616)
+size = Vector3(4.606, 4, 0.519)
 
 [node name="Wall" instance=ExtResource("1_n41xv")]
 
@@ -14,5 +14,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00772095, 1.72556, 0.00643921)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00772095, 2.01033, 0.00643921)
 shape = SubResource("BoxShape3D_2j08x")
