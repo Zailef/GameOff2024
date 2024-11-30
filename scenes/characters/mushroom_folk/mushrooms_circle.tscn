@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3u1j7y83xnxy"]
+[gd_scene load_steps=6 format=3 uid="uid://c3u1j7y83xnxy"]
 
 [ext_resource type="PackedScene" uid="uid://tign6pylq6lu" path="res://scenes/characters/mushroom_folk/mushroom_folk.tscn" id="1_orcbs"]
 [ext_resource type="Script" path="res://scenes/characters/mushroom_folk/mushrooms_circle.gd" id="1_w14x1"]
 [ext_resource type="PackedScene" uid="uid://b180jm6jisq1f" path="res://scenes/environment/ground.tscn" id="3_vf2lv"]
+[ext_resource type="AudioStream" uid="uid://d31eewt2ydlj3" path="res://audio/characters/mushroom_folk/mushroom_greeting.mp3" id="4_pnqpo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t5yia"]
 size = Vector3(22.0343, 5.2345, 17.7796)
@@ -102,3 +103,20 @@ transform = Transform3D(0.0501104, 0, 0.141383, 0, 0.15, 0, -0.141383, 0, 0.0501
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.7382, 0, -40.7003)
 visible = false
+
+[node name="AudioPlayers" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07614, 4.62008, -8.68082)
+stream = ExtResource("4_pnqpo")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.82107, 8.09223)
+stream = ExtResource("4_pnqpo")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.89973, 5.16887, 0)
+stream = ExtResource("4_pnqpo")
+bus = &"SFX"

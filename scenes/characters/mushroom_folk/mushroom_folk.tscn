@@ -25,7 +25,9 @@ shape = SubResource("ConvexPolygonShape3D_dm414")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0612786, 3.36013, 0.00707394)
 
 [node name="InteractionHandler" parent="." index="2" instance=ExtResource("3_ohe2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0035e-07, -0.615564, 1.14787)
+label_text = "Talk [E]"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionHandler" index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.632, 1.53833)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.02837e-07, 1.632, 0.362012)
 shape = SubResource("CylinderShape3D_rkljb")
