@@ -156,3 +156,7 @@ script = ExtResource("8_qyltd")
 
 [node name="PlayerModelAnimated" parent="." instance=ExtResource("9_sefjt")]
 transform = Transform3D(-1, 0, -8.75443e-08, 0, 1, 0, 8.75443e-08, 0, -1, -0.000290542, -0.995044, 0.0166451)
+
+[node name="ReadyTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true

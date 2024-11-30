@@ -9,6 +9,7 @@ signal player_exited_slippery_area
 signal player_entered_fire_area
 signal player_exited_fire_area
 
+signal player_ready
 signal player_died
 
 func _ready():

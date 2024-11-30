@@ -9,9 +9,7 @@ func _ready() -> void:
 	mushroom_watch_area.body_entered.connect(_on_mushroom_watch_area_body_entered)
 	mushroom_watch_area.body_exited.connect(_on_mushroom_watch_area_body_exited)
 
-	for audio_player in audio_players.get_children():
-		audio_player = audio_player as AudioStreamPlayer3D
-		audio_player.play()
+	SignalManager.player_ready.connect(_on_player_ready)
 
 	set_process(false)
 	set_physics_process(false)
@@ -25,3 +23,8 @@ func _on_mushroom_watch_area_body_exited(body: Node) -> void:
 	if body is Player:
 		for mushroom in mushrooms.get_children():
 			mushroom.stop_tracking_player()
+
+func _on_player_ready() -> void:
+	for audio_player in audio_players.get_children():
+		audio_player = audio_player as AudioStreamPlayer3D
+		audio_player.play()

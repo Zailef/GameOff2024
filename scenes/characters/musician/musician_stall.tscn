@@ -49,10 +49,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03787, 1.18902)
 
 [node name="FailureSound" type="AudioStreamPlayer" parent="XylophoneMemoryGame"]
 stream = ExtResource("18_sa6he")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="SuccessSound" type="AudioStreamPlayer" parent="XylophoneMemoryGame"]
 stream = ExtResource("19_223te")
+volume_db = 14.0
 bus = &"SFX"
 
 [node name="InteractionHandler" parent="XylophoneMemoryGame" instance=ExtResource("2_bj52x")]
@@ -69,6 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 0.910518, 0.41347, 0, -0.41347, 0.910518, 0,
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2313, 2.50805, -1.61942)
 stream = ExtResource("13_60qev")
-volume_db = 10.0
+volume_db = 3.0
+unit_size = 15.0
 autoplay = true
 bus = &"Music"

@@ -3,6 +3,7 @@ class_name Player
 
 @export var player_rotation_speed: float = 160.0
 
+@onready var ready_timer: Timer = $ReadyTimer
 @onready var state_machine: PlayerStateMachine = $PlayerStateMachine
 @onready var player_idle_state: PlayerIdleState = $PlayerStateMachine/PlayerIdleState
 @onready var player_move_state: PlayerMoveState = $PlayerStateMachine/PlayerMoveState
@@ -17,6 +18,8 @@ func _ready() -> void:
 
 	SignalManager.player_freeze_requested.connect(_on_player_freeze_requested)
 	SignalManager.player_unfreeze_requested.connect(_on_player_unfreeze_requested)
+
+	ready_timer.timeout.connect(_on_ready_timer_timeout)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -38,3 +41,7 @@ func _on_player_freeze_requested() -> void:
 func _on_player_unfreeze_requested() -> void:
 	third_person_camera.make_current()
 	state_machine.change_state(player_idle_state)
+
+func _on_ready_timer_timeout() -> void:
+	# Slightly hacky workaround for web builds skipping audio playback due to loading times
+	SignalManager.player_ready.emit()

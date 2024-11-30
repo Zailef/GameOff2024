@@ -225,32 +225,40 @@ libraries = {
 
 [node name="C3KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="0"]
 stream = ExtResource("4_ko7p3")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="D3KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="1"]
 stream = ExtResource("5_hwht1")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="E3KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="2"]
 stream = ExtResource("6_lnima")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="F3KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="3"]
 stream = ExtResource("7_pgdog")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="G3KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="4"]
 stream = ExtResource("8_wca3g")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="A4KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="5"]
 stream = ExtResource("9_6h28s")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="B4KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="6"]
 stream = ExtResource("10_aix47")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="C4KeyPlayer" type="AudioStreamPlayer" parent="AudioStreams" index="7"]
 stream = ExtResource("11_kglk1")
+volume_db = 10.0
 bus = &"SFX"
