@@ -159,6 +159,7 @@ script = ExtResource("2_6g2mp")
 
 [node name="Card" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
 use_collision = true
 collision_mask = 0
 size = Vector3(6, 0.09, 3.5)
