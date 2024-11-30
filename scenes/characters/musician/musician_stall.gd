@@ -17,7 +17,6 @@ func _ready() -> void:
 	xylophone_memory_game.game_ended.connect(_on_game_ended)
 
 func _on_interaction_started() -> void:
-	print("Started talking to the musician")
 	mini_game_camera.current = true
 	xylophone_memory_game.start_game()
 
@@ -31,3 +30,5 @@ func _on_player_discovery_area_body_entered(body: Node) -> void:
 	if body is Player:
 		audio_stream_player.attenuation_model = AudioStreamPlayer3D.AttenuationModel.ATTENUATION_DISABLED
 		audio_stream_player.volume_db = standard_volume_db
+		body.music_player_remote_transform.remote_path = audio_stream_player.get_path()
+		player_discovery_area.queue_free()

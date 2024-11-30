@@ -12,6 +12,7 @@ class_name Player
 @onready var player_fall_state: PlayerFallState = $PlayerStateMachine/PlayerFallState
 @onready var third_person_camera: Camera3D = %ThirdPersonCamera
 @onready var player_model_animated: Node3D = $PlayerModelAnimated
+@onready var music_player_remote_transform: RemoteTransform3D = $MusicPlayerTransform
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

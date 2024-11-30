@@ -71,14 +71,6 @@ shape = SubResource("CylinderShape3D_xt10f")
 [node name="MiniGameCamera" type="Camera3D" parent="XylophoneMemoryGame"]
 transform = Transform3D(1, 0, 0, 0, 0.910518, 0.41347, 0, -0.41347, 0.910518, 0, 2.16019, 2.37851)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2313, 2.50805, -1.61942)
-stream = ExtResource("13_60qev")
-volume_db = 3.0
-unit_size = 15.0
-autoplay = true
-bus = &"Music"
-
 [node name="PlayerDiscoveryArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.89632, 0, 0)
 collision_layer = 0
@@ -87,3 +79,11 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDiscoveryArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.874247, 3.92065)
 shape = SubResource("BoxShape3D_rohji")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2313, 2.50805, -1.61942)
+stream = ExtResource("13_60qev")
+volume_db = 1.0
+unit_size = 15.0
+autoplay = true
+bus = &"Music"
