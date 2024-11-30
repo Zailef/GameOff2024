@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dbcs2ke7l76a2"]
+[gd_scene load_steps=32 format=3 uid="uid://dbcs2ke7l76a2"]
 
 [ext_resource type="PackedScene" uid="uid://mwbglbrt5mhq" path="res://scenes/characters/player/player.tscn" id="1_2fspt"]
 [ext_resource type="PackedScene" uid="uid://drbrebgd4gd5n" path="res://scenes/characters/musician/musician_stall.tscn" id="3_8dt6u"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://hwf1hh6jn5s6" path="res://scenes/characters/fortune_teller/fortune_teller_stall.tscn" id="4_5rr1d"]
 [ext_resource type="Texture2D" uid="uid://dojo4w6dk6xj2" path="res://models/characters/fortune_teller/fortune.teller_metal-ring.png" id="4_he47l"]
 [ext_resource type="Texture2D" uid="uid://dyfycftqc4gbc" path="res://models/characters/fortune_teller/fortune.teller_purple-canvas.png" id="5_21fh0"]
+[ext_resource type="PackedScene" uid="uid://j7n3jd2qe28s" path="res://scenes/environment/platforms/drop_platform.tscn" id="5_igbqd"]
 [ext_resource type="Texture2D" uid="uid://b31brjplhcuh3" path="res://models/characters/fortune_teller/fortune.teller_black-velvet.png" id="6_ic6e2"]
 [ext_resource type="PackedScene" uid="uid://d2yish6ulxay3" path="res://scenes/environment/spooky_tree.tscn" id="7_w6ynp"]
 [ext_resource type="PackedScene" uid="uid://dxwcg7c4x7y1g" path="res://models/characters/ms_jackson/teddy_bear.glb" id="8_hkiek"]
@@ -17,9 +18,12 @@
 [ext_resource type="PackedScene" uid="uid://svf0i1n4f4x2" path="res://models/environment/crystal_2.glb" id="19_xx0dj"]
 [ext_resource type="PackedScene" uid="uid://dkwwkk8mdm2au" path="res://scenes/environment/pine_tree.tscn" id="20_4f750"]
 [ext_resource type="PackedScene" uid="uid://c2cbrdxgw6yei" path="res://models/environment/pine_tree.glb" id="20_o5fnq"]
+[ext_resource type="PackedScene" uid="uid://t4tdj4q466kx" path="res://scenes/environment/platforms/fade_platform.tscn" id="21_ege4p"]
 [ext_resource type="PackedScene" uid="uid://doybmfx3322r0" path="res://scenes/environment/spindle_tree.tscn" id="22_00j0k"]
+[ext_resource type="PackedScene" uid="uid://cg1xr7ics863d" path="res://scenes/environment/platforms/water_platform.tscn" id="22_8m8ff"]
 [ext_resource type="PackedScene" uid="uid://ds2rhcdt88qf3" path="res://models/environment/crystal_3.glb" id="23_ukbns"]
 [ext_resource type="PackedScene" uid="uid://blvrdc3fs5dxh" path="res://models/environment/crystal_4.glb" id="24_7x85t"]
+[ext_resource type="PackedScene" uid="uid://q0xqg7cyoond" path="res://scenes/environment/platforms/fire_platform.tscn" id="24_qsioq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kgrn6"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -39,6 +43,12 @@ fog_light_color = Color(0.126808, 0.141678, 0.165056, 1)
 fog_density = 0.13
 adjustment_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlwbg"]
+proximity_fade_distance = 0.1
+distance_fade_mode = 1
+distance_fade_min_distance = 10.0
+distance_fade_max_distance = 0.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28bcd"]
 albedo_texture = ExtResource("4_he47l")
 
@@ -47,12 +57,6 @@ albedo_texture = ExtResource("5_21fh0")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0f6fc"]
 albedo_texture = ExtResource("6_ic6e2")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlwbg"]
-proximity_fade_distance = 0.1
-distance_fade_mode = 1
-distance_fade_min_distance = 10.0
-distance_fade_max_distance = 0.0
 
 [node name="Sandbox" type="Node3D"]
 
@@ -65,7 +69,7 @@ light_color = Color(0.84107, 0.860623, 0.908618, 1)
 shadow_enabled = true
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_2fspt")]
-transform = Transform3D(0.546263, 0, -0.837615, 0, 1, 0, 0.837615, 0, 0.546263, -41.1818, 1.93323, 39.8728)
+transform = Transform3D(0.546263, 0, -0.837615, 0, 1, 0, 0.837615, 0, 0.546263, -40.8246, 3.42061, 39.3733)
 
 [node name="Bounds" type="Node3D" parent="."]
 
@@ -334,41 +338,20 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50, 0
 
 [node name="Ground" parent="Bounds" instance=ExtResource("3_nbdf5")]
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Bounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.4, -9)
-use_collision = true
-radius = 3.0
-sides = 12
-material = SubResource("StandardMaterial3D_28bcd")
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Bounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.5, -14)
-use_collision = true
-radius = 3.0
-sides = 12
-material = SubResource("StandardMaterial3D_pw2en")
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Bounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2, -17)
-use_collision = true
-radius = 3.0
-sides = 12
-material = SubResource("StandardMaterial3D_0f6fc")
-
 [node name="MusicianStall" parent="." instance=ExtResource("3_8dt6u")]
-transform = Transform3D(-0.0379753, 0, -1.99964, 0, 2, 0, 1.99964, 0, -0.0379753, 32.7128, 0.499998, 9.62939)
+transform = Transform3D(-0.312609, 0, -1.46706, 0, 1.5, 0, 1.46706, 0, -0.312609, 41.8556, 0.499998, 15.5269)
 
 [node name="SpookyTree" parent="." instance=ExtResource("7_w6ynp")]
-transform = Transform3D(1.59853, 0, -1.20196, 0, 2, 0, 1.20196, 0, 1.59853, 26.1632, 0, 42.1831)
+transform = Transform3D(1.59853, 0, -1.20196, 0, 2, 0, 1.20196, 0, 1.59853, -24.6322, 0.766181, -9.10519)
 
 [node name="FortuneTellerStall" parent="." instance=ExtResource("4_5rr1d")]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 34.2709, 0.7, 5.64304)
+transform = Transform3D(0.697209, 0, -1.87454, 0, 2, 0, 1.87454, 0, 0.697209, 42.2565, 0.115464, 7.52275)
 
 [node name="teddy_bear" parent="." instance=ExtResource("8_hkiek")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.10634, -2.36435)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1839, 2.60525, -27.4627)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.6611, 2.60525, -35.3909)
 use_collision = true
 collision_mask = 0
 size = Vector3(6.72656, 4.14355, 6.46594)
@@ -773,6 +756,9 @@ transform = Transform3D(0.398692, 0, 1.13183, 0, 1.2, 0, -1.13183, 0, 0.398692, 
 [node name="SpindleTree" parent="Trees" instance=ExtResource("22_00j0k")]
 transform = Transform3D(1.51017, 0, 0.979481, 0, 1.8, 0, -0.979481, 0, 1.51017, 38.2899, 0, 43.1782)
 
+[node name="SpindleTree4" parent="Trees" instance=ExtResource("22_00j0k")]
+transform = Transform3D(1.13245, 0, -0.823137, 0, 1.4, 0, 0.823137, 0, 1.13245, 22.8213, 0, 43.4633)
+
 [node name="SpindleTree2" parent="Trees" instance=ExtResource("22_00j0k")]
 transform = Transform3D(-1.2431, 0, 0.839462, 0, 1.5, 0, -0.839462, 0, -1.2431, 13.0822, -9.53674e-07, 43.0709)
 
@@ -800,4 +786,106 @@ transform = Transform3D(0.533661, -0.0226258, -0.845395, 0.0141427, 0.999741, -0
 is_active_spawn = true
 
 [node name="SpawnCard2" parent="Checkpoints" instance=ExtResource("11_v2ekr")]
-transform = Transform3D(-0.0574769, 0, -0.998347, 0, 1, 0, 0.998347, 0, -0.0574769, 20.9504, 1, 6.27301)
+transform = Transform3D(0.999909, 0, 0.013491, 0, 1, 0, -0.013491, 0, 0.999909, 12.1592, 1, 3.11816)
+
+[node name="JumpPuzzle" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JumpPuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1395, 1.11942, -6.66065)
+use_collision = true
+radius = 3.0
+sides = 12
+material = SubResource("StandardMaterial3D_28bcd")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JumpPuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8794, 0.365113, -4.65325)
+use_collision = true
+radius = 3.0
+sides = 12
+material = SubResource("StandardMaterial3D_pw2en")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="JumpPuzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.583, 1.34222, -11.6073)
+use_collision = true
+radius = 3.0
+height = 3.0
+sides = 12
+material = SubResource("StandardMaterial3D_0f6fc")
+
+[node name="SpawnCard" parent="JumpPuzzle" instance=ExtResource("11_v2ekr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.8973, 10.7617, 34.1845)
+
+[node name="FadePlatform2" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.31493, 10.7617, 28.8537)
+
+[node name="FadePlatform5" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.8562, 10.7617, 28.8537)
+
+[node name="FadePlatform9" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 0.910409, -0.413708, 0, 0.413708, 0.910409, 12.8562, 12.4697, 21.9677)
+
+[node name="WaterPlatform" parent="JumpPuzzle" instance=ExtResource("22_8m8ff")]
+transform = Transform3D(1, 0, 0, 0, 0.910409, -0.413708, 0, 0.413708, 0.910409, 12.8562, 15.3522, 12.5226)
+
+[node name="WaterPlatform2" parent="JumpPuzzle" instance=ExtResource("22_8m8ff")]
+transform = Transform3D(1, 0, 0, 0, 0.910409, -0.413708, 0, 0.413708, 0.910409, 12.8562, 18.1838, 3.59867)
+
+[node name="FadePlatform11" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 0.910409, -0.413708, 0, 0.413708, 0.910409, 12.8562, 20.4184, -9.42949)
+
+[node name="FadePlatform15" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8562, 21.6777, -16.6935)
+
+[node name="SpawnCard2" parent="JumpPuzzle" instance=ExtResource("11_v2ekr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8562, 21.6777, -27.927)
+
+[node name="DropPlatform3" parent="JumpPuzzle" instance=ExtResource("5_igbqd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79808, 21.6777, -27.927)
+
+[node name="FirePlatform" parent="JumpPuzzle" instance=ExtResource("24_qsioq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.67862, 21.6777, -27.927)
+
+[node name="FirePlatform2" parent="JumpPuzzle" instance=ExtResource("24_qsioq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.2903, 21.6777, -27.927)
+
+[node name="WaterPlatform3" parent="JumpPuzzle" instance=ExtResource("22_8m8ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8562, 21.6777, -27.927)
+
+[node name="DropPlatform4" parent="JumpPuzzle" instance=ExtResource("5_igbqd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.59888, 10.7617, 28.8537)
+
+[node name="FadePlatform" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 0.971969, -0.235108, 0, 0.235108, 0.971969, 14.3289, 3.71156, -21.8319)
+
+[node name="FadePlatform3" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.2225, 4.77148, -31.1365)
+
+[node name="FadePlatform4" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(-4.13055e-08, 0.327185, 0.94496, 1.43017e-08, 0.94496, -0.327185, -1, 0, -4.37114e-08, 3.47758, 6.72554, -31.1365)
+
+[node name="FadePlatform6" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(-4.13055e-08, 0.327185, 0.94496, 1.43017e-08, 0.94496, -0.327185, -1, 0, -4.37114e-08, -6.93421, 9.12315, -31.1365)
+
+[node name="FadePlatform7" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4934, 10.657, -29.8928)
+
+[node name="FadePlatform8" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.266, 10.657, -20.4867)
+
+[node name="DropPlatform" parent="JumpPuzzle" instance=ExtResource("5_igbqd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.4688, 10.657, -11.4646)
+
+[node name="FadePlatform10" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.926, 10.657, -0.490045)
+
+[node name="DropPlatform2" parent="JumpPuzzle" instance=ExtResource("5_igbqd")]
+transform = Transform3D(-0.999498, 0, -0.0316725, 0, 1, 0, 0.0316725, 0, -0.999498, -15.3673, 10.657, 8.07368)
+
+[node name="FadePlatform12" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(-0.0316725, 0, 0.999498, 0, 1, 0, -0.999498, 0, -0.0316725, -14.525, 10.657, 15.7547)
+
+[node name="FadePlatform13" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(-0.999994, 0, 0.00347314, 0, 1, 0, -0.00347314, 0, -0.999994, -13.5178, 10.657, 20.9434)
+
+[node name="FadePlatform14" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+transform = Transform3D(0.999914, 0, 0.013142, 0, 1, 0, -0.013142, 0, 0.999914, -14.525, 10.657, 28.6536)
