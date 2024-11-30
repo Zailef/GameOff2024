@@ -16,12 +16,14 @@ func enter() -> void:
         else:
             owner_node.current_round = 1
             get_parent().change_state(owner_node.idle_state)
+            owner_node.game_ended.emit()
             print("Player won!")
     else:
         print("Player failed!")
         owner_node.failure_audio_player.play()
         owner_node.current_round = 1
         get_parent().change_state(owner_node.idle_state)
+        owner_node.game_ended.emit()
 
 func progress_round() -> void:
     owner_node.current_round += 1

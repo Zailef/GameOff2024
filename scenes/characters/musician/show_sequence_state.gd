@@ -28,6 +28,7 @@ func update(_delta) -> void:
 func play_next_note():
 	if cancellation_requested:
 		get_parent().change_state(owner_node.idle_state)
+		owner_node.game_ended.emit()
 		return
 
 	if owner_node.current_index < owner_node.sequence.size():

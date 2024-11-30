@@ -29,6 +29,7 @@ func update(_delta) -> void:
 
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_parent().change_state(owner_node.idle_state)
+		owner_node.game_ended.emit()
 
 func handle_note(note_pressed: String) -> void:
 	if is_handling_note:

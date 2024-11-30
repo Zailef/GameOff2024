@@ -1,6 +1,9 @@
 extends Node3D
 class_name XylophoneMemoryGame
 
+signal game_started
+signal game_ended
+
 @onready var state_machine = $MemoryGameStateMachine
 @onready var idle_state = $MemoryGameStateMachine/IdleState
 @onready var show_sequence_state = $MemoryGameStateMachine/ShowSequenceState
@@ -30,6 +33,7 @@ func _process(delta) -> void:
 
 func start_game() -> void:
 	state_machine.change_state(show_sequence_state)
+	game_started.emit()
 
 func generate_sequence() -> Array:
 	sequence = []
