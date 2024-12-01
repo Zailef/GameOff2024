@@ -1,7 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxqi541f2ccls"]
+[gd_scene load_steps=10 format=3 uid="uid://cxqi541f2ccls"]
 
 [ext_resource type="Script" path="res://scenes/pickups/major_arcana_card.gd" id="1_eqlgg"]
-[ext_resource type="PackedScene" uid="uid://2isfaa6wkaj8" path="res://scenes/common/interaction_handler.tscn" id="2_v2x58"]
+[ext_resource type="Shader" path="res://shaders/2d_highlight.gdshader" id="2_pwe1t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_um0fi"]
+shader = ExtResource("2_pwe1t")
+shader_parameter/line_smoothness = 0.045
+shader_parameter/line_width = 0.09
+shader_parameter/brightness = 3.0
+shader_parameter/rotation_angle = 30.0
+shader_parameter/distortion = 1.8
+shader_parameter/speed = 0.7
+shader_parameter/scroll_position = 0.0
+shader_parameter/position_min = 0.25
+shader_parameter/position_max = 0.5
+shader_parameter/alpha = 1.0
+shader_parameter/is_active = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5k4pq"]
 resource_local_to_scene = true
@@ -10,25 +24,12 @@ albedo_color = Color(0.827451, 0.603922, 0.0705882, 1)
 metallic = 1.0
 roughness = 0.1
 emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 100.0
+emission_operator = 1
 normal_enabled = true
 backlight = Color(1, 1, 1, 1)
 uv1_scale = Vector3(-1, 1, 1)
 billboard_keep_scale = true
-
-[sub_resource type="Animation" id="Animation_w2rjr"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CardModel:material:albedo_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.827451, 0.603922, 0.0705882, 1), Color(0.827451, 0.603922, 0.0705882, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_hpt2e"]
 length = 0.001
@@ -43,6 +44,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.827451, 0.603922, 0.0705882, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w2rjr"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardModel:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.827451, 0.603922, 0.0705882, 1), Color(0.827451, 0.603922, 0.0705882, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_swgx2"]
@@ -69,7 +85,7 @@ _data = {
 "spin": SubResource("Animation_swgx2")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_nb56r"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_uc7a1"]
 radius = 0.25
 
 [node name="MajorArcanaCard" type="Node3D"]
@@ -79,6 +95,7 @@ script = ExtResource("1_eqlgg")
 [node name="CardModel" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
 layers = 2
+material_overlay = SubResource("ShaderMaterial_um0fi")
 cast_shadow = 0
 size = Vector3(0.1, 0.175, 0.001)
 material = SubResource("StandardMaterial3D_5k4pq")
@@ -89,29 +106,9 @@ libraries = {
 }
 autoplay = "spin"
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0.1)
-layers = 2
-light_energy = 50.0
-light_cull_mask = 2
-omni_range = 1.0
+[node name="PickupArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, -0.1)
-layers = 2
-light_energy = 100.0
-light_cull_mask = 2
-omni_range = 1.0
-
-[node name="InteractionHandler" parent="." node_paths=PackedStringArray("interaction_label") instance=ExtResource("2_v2x58")]
-interaction_label = NodePath("Label3D")
-
-[node name="Label3D" type="Label3D" parent="InteractionHandler"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20753, 0)
-billboard = 1
-text = "Collect [E]"
-font_size = 16
-outline_size = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionHandler"]
-shape = SubResource("SphereShape3D_nb56r")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
+shape = SubResource("SphereShape3D_uc7a1")

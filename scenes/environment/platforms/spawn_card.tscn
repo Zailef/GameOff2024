@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://k7ls3g4owws8"]
+[gd_scene load_steps=7 format=3 uid="uid://k7ls3g4owws8"]
 
 [ext_resource type="Texture2D" uid="uid://dtw6mbm23kxhg" path="res://textures/tarot_cards/major/RWS_Tarot_13_Death.jpg" id="1_6od8w"]
 [ext_resource type="Script" path="res://scenes/environment/platforms/spawn_card.gd" id="1_eeowu"]
+[ext_resource type="Material" uid="uid://cf2qbrqmtglua" path="res://materials/spawn_card_active.tres" id="2_kvh1j"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rdi76"]
 
@@ -20,7 +21,6 @@ rim_enabled = true
 rim_tint = 1.0
 clearcoat_roughness = 1.0
 clearcoat_texture = SubResource("CompressedTexture2D_rdi76")
-backlight_enabled = true
 backlight = Color(0.865264, 0.836784, 0, 1)
 uv1_scale = Vector3(1, -1, 1)
 uv1_triplanar_sharpness = 0.5
@@ -36,8 +36,9 @@ size = Vector3(2.28444, 0.121216, 3.97114)
 script = ExtResource("1_eeowu")
 
 [node name="Card" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 layers = 2
+material_overlay = ExtResource("2_kvh1j")
 cast_shadow = 0
 use_collision = true
 collision_mask = 0
@@ -56,11 +57,3 @@ shape = SubResource("BoxShape3D_0ih2y")
 [node name="SpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.045, 0)
 gizmo_extents = 0.0
-
-[node name="ActivationLight" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06394, 0)
-visible = false
-layers = 2
-light_energy = 100.0
-light_cull_mask = 2
-omni_range = 4.0

@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cf2qbrqmtglua"]
+
+[ext_resource type="Shader" path="res://shaders/3d_highlight.gdshader" id="1_4uew8"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_4uew8")
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/cycle_interval = 1.0
+shader_parameter/shine_speed = 2.0
+shader_parameter/shine_width = 100.0
+shader_parameter/is_active = false
