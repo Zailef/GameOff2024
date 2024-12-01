@@ -364,7 +364,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50, 0
 [node name="Ground" parent="Bounds" instance=ExtResource("3_nbdf5")]
 
 [node name="MusicianStall" parent="." instance=ExtResource("3_8dt6u")]
-transform = Transform3D(-0.312609, 0, -1.46706, 0, 1.5, 0, 1.46706, 0, -0.312609, 41.8556, 0.499998, 15.5269)
+transform = Transform3D(-0.0618189, 0, -1.49872, 0, 1.5, 0, 1.49872, 0, -0.0618189, 39.9118, 1.48692, 26.09)
 
 [node name="SpookyTree" parent="." instance=ExtResource("7_w6ynp")]
 transform = Transform3D(1.59853, 0, -1.20196, 0, 2, 0, 1.20196, 0, 1.59853, -24.6322, 0.766181, -9.10519)
@@ -969,12 +969,12 @@ card_name = "The High Priestess"
 card_texture = ExtResource("29_iah0h")
 
 [node name="TheMagician03" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 45.8348, 1.72504, 34.0577)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 45.7965, 1.72504, 30.0736)
 card_name = "The Magician"
 card_texture = ExtResource("27_t5kxf")
 
 [node name="TheEmpress04" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 46.7772, 1.75742, 25.8492)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 45.7468, 1.75742, 22.7541)
 card_name = "The Empress"
 card_texture = ExtResource("27_t2xce")
 
@@ -1009,17 +1009,17 @@ card_name = "TheHermit"
 card_texture = ExtResource("29_b484g")
 
 [node name="TheWheelOfFortune11" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 39.8319, 3.56099, 31.4004)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 38.5822, 3.56099, 32.3298)
 card_name = "The Wheel of Fortune"
 card_texture = ExtResource("33_vym3g")
 
 [node name="Justice12" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 40.798, 3.46362, 28.6456)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 38.5739, 3.46362, 28.6456)
 card_name = "Justice"
 card_texture = ExtResource("33_clm8d")
 
 [node name="TheHangedMan13" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 41.3471, 3.5058, 25.5891)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 39.0824, 3.5058, 20.2683)
 card_name = "The Hanged Man"
 card_texture = ExtResource("34_ipqp5")
 

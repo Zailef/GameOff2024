@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://sj36jqhvigs0"
-path="res://.godot/imported/Musician.and.stage.glb-a91f34d36c20b99c5624a64913599e3c.scn"
+uid="uid://bulgdch6f5v8q"
+path="res://.godot/imported/Musician.stage.glb-899df629bcd37b14548dd63fdf2cc1fb.scn"
 
 [deps]
 
-source_file="res://models/characters/musician/Musician.and.stage.glb"
-dest_files=["res://.godot/imported/Musician.and.stage.glb-a91f34d36c20b99c5624a64913599e3c.scn"]
+source_file="res://models/characters/musician/Musician.stage.glb"
+dest_files=["res://.godot/imported/Musician.stage.glb-899df629bcd37b14548dd63fdf2cc1fb.scn"]
 
 [params]
 
