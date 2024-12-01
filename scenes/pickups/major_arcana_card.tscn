@@ -1,17 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxqi541f2ccls"]
+[gd_scene load_steps=9 format=3 uid="uid://cxqi541f2ccls"]
 
 [ext_resource type="Script" path="res://scenes/pickups/major_arcana_card.gd" id="1_eqlgg"]
-[ext_resource type="Texture2D" uid="uid://clnrrhqhdx6hl" path="res://textures/tarot_cards/major/RWS_Tarot_15_Devil.jpg" id="2_0rdmj"]
 [ext_resource type="PackedScene" uid="uid://2isfaa6wkaj8" path="res://scenes/common/interaction_handler.tscn" id="2_v2x58"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5k4pq"]
+resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.827451, 0.603922, 0.0705882, 1)
 metallic = 1.0
 roughness = 0.1
 emission = Color(1, 1, 1, 1)
 normal_enabled = true
-normal_texture = ExtResource("2_0rdmj")
 backlight = Color(1, 1, 1, 1)
 uv1_scale = Vector3(-1, 1, 1)
 billboard_keep_scale = true
@@ -74,7 +73,7 @@ _data = {
 radius = 0.25
 
 [node name="MajorArcanaCard" type="Node3D"]
-transform = Transform3D(4, 0, 6.99382e-07, 0, 4, 0, -6.99382e-07, 0, 4, 0, 0, 0)
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 0, 0, 0)
 script = ExtResource("1_eqlgg")
 
 [node name="CardModel" type="CSGBox3D" parent="."]

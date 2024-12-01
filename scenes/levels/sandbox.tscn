@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dbcs2ke7l76a2"]
+[gd_scene load_steps=55 format=3 uid="uid://dbcs2ke7l76a2"]
 
 [ext_resource type="PackedScene" uid="uid://mwbglbrt5mhq" path="res://scenes/characters/player/player.tscn" id="1_2fspt"]
 [ext_resource type="PackedScene" uid="uid://drbrebgd4gd5n" path="res://scenes/characters/musician/musician_stall.tscn" id="3_8dt6u"]
@@ -26,6 +26,27 @@
 [ext_resource type="PackedScene" uid="uid://q0xqg7cyoond" path="res://scenes/environment/platforms/fire_platform.tscn" id="24_qsioq"]
 [ext_resource type="PackedScene" uid="uid://cxqi541f2ccls" path="res://scenes/pickups/major_arcana_card.tscn" id="25_mhjep"]
 [ext_resource type="Texture2D" uid="uid://clnrrhqhdx6hl" path="res://textures/tarot_cards/major/RWS_Tarot_15_Devil.jpg" id="26_u5jhc"]
+[ext_resource type="Texture2D" uid="uid://ehj4bkjamxm5" path="res://textures/tarot_cards/major/RWS_Tarot_00_Fool.jpg" id="27_n05b8"]
+[ext_resource type="Texture2D" uid="uid://vm2foyxgjro1" path="res://textures/tarot_cards/major/RWS_Tarot_03_Empress.jpg" id="27_t2xce"]
+[ext_resource type="Texture2D" uid="uid://c3y4mqx0h1nlh" path="res://textures/tarot_cards/major/RWS_Tarot_01_Magician.jpg" id="27_t5kxf"]
+[ext_resource type="Texture2D" uid="uid://b8indcc3n4fu2" path="res://textures/tarot_cards/major/RWS_Tarot_04_Emperor.jpg" id="28_cheox"]
+[ext_resource type="Texture2D" uid="uid://b8nva7bxxajnc" path="res://textures/tarot_cards/major/RWS_Tarot_09_Hermit.jpg" id="29_b484g"]
+[ext_resource type="Texture2D" uid="uid://by82d5dfddglh" path="res://textures/tarot_cards/major/RWS_Tarot_02_High_Priestess.jpg" id="29_iah0h"]
+[ext_resource type="Texture2D" uid="uid://dhquqln0m78b" path="res://textures/tarot_cards/major/RWS_Tarot_05_Hierophant.jpg" id="29_jxekv"]
+[ext_resource type="Texture2D" uid="uid://b1ojlj82heonj" path="res://textures/tarot_cards/major/RWS_Tarot_06_Lovers.jpg" id="30_142iv"]
+[ext_resource type="Texture2D" uid="uid://bfoaej1fex7f6" path="res://textures/tarot_cards/major/RWS_Tarot_11_Justice.jpg" id="33_clm8d"]
+[ext_resource type="Texture2D" uid="uid://cb8oc3jiwbq27" path="res://textures/tarot_cards/major/RWS_Tarot_10_Wheel_of_Fortune.jpg" id="33_vym3g"]
+[ext_resource type="Texture2D" uid="uid://dr66liop3p4gx" path="res://textures/tarot_cards/major/RWS_Tarot_07_Chariot.jpg" id="34_5r2cj"]
+[ext_resource type="Texture2D" uid="uid://bdqaj87icunwk" path="res://textures/tarot_cards/major/RWS_Tarot_12_Hanged_Man.jpg" id="34_ipqp5"]
+[ext_resource type="Texture2D" uid="uid://d2vf784vcmlau" path="res://textures/tarot_cards/major/RWS_Tarot_08_Strength.jpg" id="35_bjvot"]
+[ext_resource type="Texture2D" uid="uid://dtw6mbm23kxhg" path="res://textures/tarot_cards/major/RWS_Tarot_13_Death.jpg" id="39_6kin8"]
+[ext_resource type="Texture2D" uid="uid://prlqtwkwxwto" path="res://textures/tarot_cards/major/RWS_Tarot_14_Temperance.jpg" id="40_glfpi"]
+[ext_resource type="Texture2D" uid="uid://cdxj3w43kvgv3" path="res://textures/tarot_cards/major/RWS_Tarot_16_Tower.jpg" id="41_imljg"]
+[ext_resource type="Texture2D" uid="uid://iadxi2q42v3x" path="res://textures/tarot_cards/major/RWS_Tarot_17_Star.jpg" id="42_fo5bd"]
+[ext_resource type="Texture2D" uid="uid://d4k36s4we1qfj" path="res://textures/tarot_cards/major/RWS_Tarot_18_Moon.jpg" id="43_ek3ah"]
+[ext_resource type="Texture2D" uid="uid://d4hepfibhrnrb" path="res://textures/tarot_cards/major/RWS_Tarot_19_Sun.jpg" id="44_5q71o"]
+[ext_resource type="Texture2D" uid="uid://2a08notkb18q" path="res://textures/tarot_cards/major/RWS_Tarot_20_Judgement.jpg" id="45_3lfyp"]
+[ext_resource type="Texture2D" uid="uid://7ek66awkv25n" path="res://textures/tarot_cards/major/RWS_Tarot_21_World.jpg" id="46_72gdd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kgrn6"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -896,7 +917,112 @@ transform = Transform3D(0.999914, 0, 0.013142, 0, 1, 0, -0.013142, 0, 0.999914, 
 
 [node name="Pickups" type="Node3D" parent="."]
 
-[node name="MajorArcanaCard" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(3.49904, 0, -4.87409, 0, 6, 0, 4.87409, 0, 3.49904, -33.5478, 2.31584, 35.5309)
+[node name="TheFool" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 10.2531, 2.19179, 28.5798)
+card_name = "The Fool"
+card_texture = ExtResource("27_n05b8")
+
+[node name="TheEmpress" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 7.70014, 2.19179, 30.8192)
+card_name = "The Empress"
+card_texture = ExtResource("27_t2xce")
+
+[node name="TheEmperor" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 16.7333, 2.19179, 32.2997)
+card_name = "The Emperor"
+card_texture = ExtResource("28_cheox")
+
+[node name="TheHermit" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 16.7915, 2.19179, 27.325)
+card_name = "TheHermit"
+card_texture = ExtResource("29_b484g")
+
+[node name="TheHierophant" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 5.52681, 2.19179, 27.7221)
+card_name = "The Hierophant"
+card_texture = ExtResource("29_jxekv")
+
+[node name="TheLovers" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 6.1909, 2.19179, 27.5205)
+card_name = "The Lovers"
+card_texture = ExtResource("30_142iv")
+
+[node name="TheMagician" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 12.1655, 2.19179, 33.7561)
+card_name = "The Magician"
+card_texture = ExtResource("27_t5kxf")
+
+[node name="Justice" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 14.6781, 2.19179, 34.7601)
+card_name = "Justice"
+card_texture = ExtResource("33_clm8d")
+
+[node name="TheHangedMan" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 10.8879, 2.19179, 36.7266)
+card_name = "The Hanged Man"
+card_texture = ExtResource("34_ipqp5")
+
+[node name="TheWheelOfFortune" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 13.269, 2.19179, 30.3095)
+card_name = "The Wheel of Fortune"
+card_texture = ExtResource("33_vym3g")
+
+[node name="TheDevil" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(3.49904, 0, -4.87409, 0, 6, 0, 4.87409, 0, 3.49904, 7.84182, 2.63426, 35.5309)
 card_name = "The Devil"
 card_texture = ExtResource("26_u5jhc")
+
+[node name="TheHighPriestess" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 8.39418, 2.31418, 27.3326)
+card_name = "The High Priestess"
+card_texture = ExtResource("29_iah0h")
+
+[node name="TheChariot" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 4.40318, 2.31418, 32.9706)
+card_name = "The Chariot"
+card_texture = ExtResource("34_5r2cj")
+
+[node name="Death" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 3.39479, 2.31418, 35.3335)
+card_name = "Death"
+card_texture = ExtResource("39_6kin8")
+
+[node name="Temperance" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 18.5717, 2.31418, 34.8736)
+card_name = "Termperance"
+card_texture = ExtResource("40_glfpi")
+
+[node name="TheTower" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 15.8969, 2.31418, 37.2168)
+card_name = "The Tower"
+card_texture = ExtResource("41_imljg")
+
+[node name="TheStar" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 8.02903, 2.31418, 37.9398)
+card_name = "The Star"
+card_texture = ExtResource("42_fo5bd")
+
+[node name="TheMoon" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 4.15142, 2.31418, 38.606)
+card_name = "The Moon"
+card_texture = ExtResource("43_ek3ah")
+
+[node name="TheMoon2" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 0.512752, 2.31418, 36.8043)
+card_name = "The Sun"
+card_texture = ExtResource("44_5q71o")
+
+[node name="TheMoon3" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 6.69162, 2.31418, 40.1539)
+card_name = "Judgement"
+card_texture = ExtResource("45_3lfyp")
+
+[node name="TheMoon4" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 19.528, 2.31418, 30.0956)
+card_name = "The World"
+card_texture = ExtResource("46_72gdd")
+
+[node name="Strength" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 10.1891, 2.31418, 32.6961)
+card_name = "Strength"
+card_texture = ExtResource("35_bjvot")
