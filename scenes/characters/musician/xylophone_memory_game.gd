@@ -3,6 +3,7 @@ class_name XylophoneMemoryGame
 
 signal game_started
 signal game_ended(is_win: bool)
+signal round_won(stage: int)
 
 @onready var state_machine = $MemoryGameStateMachine
 @onready var idle_state = $MemoryGameStateMachine/IdleState

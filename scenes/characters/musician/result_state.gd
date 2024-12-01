@@ -30,6 +30,8 @@ func enter() -> void:
 			musician_animation_player.play(ANIMATION_BOW)
 			get_parent().change_state(owner_node.idle_state)
 			owner_node.game_ended.emit(true)
+		
+		owner_node.round_won.emit(owner_node.current_round)
 	else:
 		owner_node.failure_audio_player.play()
 		musician_animation_player.play(ANIMATION_GAME_FAILED)

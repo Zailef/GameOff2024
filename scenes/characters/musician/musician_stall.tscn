@@ -63,7 +63,7 @@ volume_db = 14.0
 bus = &"SFX"
 
 [node name="MiniGameCamera" type="Camera3D" parent="XylophoneMemoryGame"]
-transform = Transform3D(1, 0, 0, 0, 0.990946, 0.134263, 0, -0.134263, 0.990946, 0, 2.16019, 2.83321)
+transform = Transform3D(1, 0, 0, 0, 0.998863, 0.0476643, 0, -0.0476643, 0.998863, 0, 2.16019, 3.05758)
 
 [node name="InteractionHandler" parent="XylophoneMemoryGame" node_paths=PackedStringArray("interaction_label") instance=ExtResource("2_bj52x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.866393, 1.93881)
@@ -98,3 +98,12 @@ tracks = Array[AudioStream]([ExtResource("13_60qev"), ExtResource("15_q7nm6"), E
 [node name="MusicianStage" parent="." instance=ExtResource("16_vffei")]
 
 [node name="MusicianCharacter" parent="." instance=ExtResource("17_oa5uc")]
+
+[node name="PrizeOneWinLocation" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97978, -0.229321, 2.22578)
+
+[node name="PrizeTwoWinLocation" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43325, -0.229321, 2.22578)
+
+[node name="PrizeThreeWinLocation" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61693, -0.229321, 2.22578)
