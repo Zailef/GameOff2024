@@ -16,9 +16,6 @@ backlight = Color(1, 1, 1, 1)
 uv1_scale = Vector3(-1, 1, 1)
 billboard_keep_scale = true
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_vihlt"]
-radius = 0.2
-
 [sub_resource type="Animation" id="Animation_w2rjr"]
 resource_name = "fade_out"
 tracks/0/type = "value"
@@ -73,6 +70,9 @@ _data = {
 "spin": SubResource("Animation_swgx2")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_nb56r"]
+radius = 0.25
+
 [node name="MajorArcanaCard" type="Node3D"]
 transform = Transform3D(4, 0, 6.99382e-07, 0, 4, 0, -6.99382e-07, 0, 4, 0, 0, 0)
 script = ExtResource("1_eqlgg")
@@ -83,14 +83,6 @@ layers = 2
 cast_shadow = 0
 size = Vector3(0.1, 0.175, 0.001)
 material = SubResource("StandardMaterial3D_5k4pq")
-
-[node name="InteractionHandler" parent="." instance=ExtResource("2_v2x58")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.19923, 0.00906384)
-label_text = "Collect [E]"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionHandler"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20079, 0)
-shape = SubResource("SphereShape3D_vihlt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -111,3 +103,16 @@ layers = 2
 light_energy = 100.0
 light_cull_mask = 2
 omni_range = 1.0
+
+[node name="InteractionHandler" parent="." node_paths=PackedStringArray("interaction_label") instance=ExtResource("2_v2x58")]
+interaction_label = NodePath("Label3D")
+
+[node name="Label3D" type="Label3D" parent="InteractionHandler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20753, 0)
+billboard = 1
+text = "Collect [E]"
+font_size = 16
+outline_size = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionHandler"]
+shape = SubResource("SphereShape3D_nb56r")

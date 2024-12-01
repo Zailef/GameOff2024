@@ -37,15 +37,19 @@ spot_angle = 20.0
 [node name="FortuneTellerCharacter" parent="." index="2" instance=ExtResource("3_0nbns")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.681009, 0)
 
-[node name="InteractionHandler" parent="." index="3" instance=ExtResource("4_qavpu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.809724, 2.43048)
-label_text = "Talk [E]"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionHandler" index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0150933, 2.5803, 0)
-shape = SubResource("CylinderShape3D_2bcdk")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="4"]
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.96408, 1.75853)
 light_color = Color(0.511499, 0.555899, 0.667636, 1)
 light_energy = 10.0
+
+[node name="InteractionHandler" parent="." index="4" node_paths=PackedStringArray("interaction_label") instance=ExtResource("4_qavpu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.866393, 1.93881)
+interaction_label = NodePath("Label3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionHandler" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0150933, 2.5803, 0)
+shape = SubResource("CylinderShape3D_2bcdk")
+
+[node name="Label3D" type="Label3D" parent="InteractionHandler" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39539, 0.05527)
+text = "Talk [E]"

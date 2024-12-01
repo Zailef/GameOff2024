@@ -16,8 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://bv0vf4sf3qnsl" path="res://audio/characters/musician/xylophone/xylophone failure.wav" id="18_sa6he"]
 [ext_resource type="AudioStream" uid="uid://b3upgfdcolyne" path="res://audio/characters/musician/xylophone/xylophone success.wav" id="19_223te"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_xt10f"]
-radius = 1.3
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lym20"]
+radius = 1.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rohji"]
 size = Vector3(20, 2, 5)
@@ -62,16 +62,20 @@ stream = ExtResource("19_223te")
 volume_db = 14.0
 bus = &"SFX"
 
-[node name="InteractionHandler" parent="XylophoneMemoryGame" instance=ExtResource("2_bj52x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.876854, 1.79591)
-label_text = "Talk [E]"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XylophoneMemoryGame/InteractionHandler"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.93062, -0.57586)
-shape = SubResource("CylinderShape3D_xt10f")
-
 [node name="MiniGameCamera" type="Camera3D" parent="XylophoneMemoryGame"]
 transform = Transform3D(1, 0, 0, 0, 0.910518, 0.41347, 0, -0.41347, 0.910518, 0, 2.16019, 2.37851)
+
+[node name="InteractionHandler" parent="XylophoneMemoryGame" node_paths=PackedStringArray("interaction_label") instance=ExtResource("2_bj52x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.866393, 1.93881)
+interaction_label = NodePath("Label3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XylophoneMemoryGame/InteractionHandler"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0150933, 2.5803, 0)
+shape = SubResource("CylinderShape3D_lym20")
+
+[node name="Label3D" type="Label3D" parent="XylophoneMemoryGame/InteractionHandler"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30692, -0.696326)
+text = "Talk [E]"
 
 [node name="PlayerDiscoveryArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.89632, 0, 0)
