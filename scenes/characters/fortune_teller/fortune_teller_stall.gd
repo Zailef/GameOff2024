@@ -13,7 +13,6 @@ func _ready() -> void:
 	animation_player.play(ANIMATION_IDLE)
 
 func _on_interaction_started() -> void:
-	print("Started talking to the fortune teller")
 	animation_player.play(ANIMATION_INTERACT_TRANSITION)
 	await animation_player.animation_finished
 	animation_player.play(ANIMATION_TALKING)

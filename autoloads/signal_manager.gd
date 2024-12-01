@@ -13,6 +13,8 @@ signal player_ready
 signal player_died
 
 signal major_arcana_card_collected(card_name: String)
+signal major_acrana_card_added_to_inventory(card_name: String)
+signal all_major_arcana_cards_added_to_inventory
 
 func _ready():
     set_process(false)

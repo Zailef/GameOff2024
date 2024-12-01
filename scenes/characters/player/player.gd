@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name Player
 
+const MAJOR_ARCANA_CARD_COUNT: int = 22
+
 @export var player_rotation_speed: float = 160.0
 
 @onready var ready_timer: Timer = $ReadyTimer
@@ -14,11 +16,14 @@ class_name Player
 @onready var player_model_animated: Node3D = $PlayerModelAnimated
 @onready var music_player_remote_transform: RemoteTransform3D = $MusicPlayerTransform
 
+var collected_cards: Array[String] = []
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	SignalManager.player_freeze_requested.connect(_on_player_freeze_requested)
 	SignalManager.player_unfreeze_requested.connect(_on_player_unfreeze_requested)
+	SignalManager.major_arcana_card_collected.connect(_on_major_arcana_card_collected)
 
 	ready_timer.timeout.connect(_on_ready_timer_timeout)
 
@@ -46,3 +51,10 @@ func _on_player_unfreeze_requested() -> void:
 func _on_ready_timer_timeout() -> void:
 	# Slightly hacky workaround for web builds skipping audio playback due to loading times
 	SignalManager.player_ready.emit()
+
+func _on_major_arcana_card_collected(card_name: String) -> void:
+	collected_cards.append(card_name)
+	SignalManager.major_acrana_card_added_to_inventory.emit(card_name)
+
+	if collected_cards.size() == MAJOR_ARCANA_CARD_COUNT:
+		SignalManager.all_major_arcana_cards_added_to_inventory.emit()

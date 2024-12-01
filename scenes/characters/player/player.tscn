@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://mwbglbrt5mhq"]
+[gd_scene load_steps=25 format=3 uid="uid://mwbglbrt5mhq"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_5m5gm"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_state_machine.gd" id="2_5tt5k"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/characters/player/screen_flames.gd" id="4_ci6ft"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_idle_state.gd" id="4_o4wn0"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_jump_state.gd" id="5_4suqs"]
+[ext_resource type="Script" path="res://scenes/characters/player/player_hud.gd" id="5_prpu3"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_freeze_state.gd" id="7_ggo65"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_fall_state.gd" id="8_qyltd"]
 [ext_resource type="PackedScene" uid="uid://2nu4yl8r3ojc" path="res://models/characters/player/Player.full.ani.glb" id="9_sefjt"]
@@ -125,6 +126,24 @@ wait_time = 0.1
 
 [node name="RecoveryDelayTimer" type="Timer" parent="CanvasLayer/ScreenFlames"]
 wait_time = 1.5
+
+[node name="PlayerHUD" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("5_prpu3")
+
+[node name="MajorArcanaLabel" type="Label" parent="CanvasLayer/PlayerHUD"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Major Arcana Collected: 0/22"
 
 [node name="InteractionProbe" type="Area3D" parent="."]
 collision_layer = 2
