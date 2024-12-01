@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dbcs2ke7l76a2"]
+[gd_scene load_steps=55 format=3 uid="uid://dbcs2ke7l76a2"]
 
 [ext_resource type="PackedScene" uid="uid://mwbglbrt5mhq" path="res://scenes/characters/player/player.tscn" id="1_2fspt"]
 [ext_resource type="Script" path="res://scenes/levels/sandbox.gd" id="1_s1iu1"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://b31brjplhcuh3" path="res://models/characters/fortune_teller/fortune.teller_black-velvet.png" id="6_ic6e2"]
 [ext_resource type="PackedScene" uid="uid://bfxv7q2n336i5" path="res://scenes/characters/fortune_teller/fortune_teller_stall.tscn" id="6_j3ibc"]
 [ext_resource type="PackedScene" uid="uid://d2yish6ulxay3" path="res://scenes/environment/spooky_tree.tscn" id="7_w6ynp"]
-[ext_resource type="PackedScene" uid="uid://dxwcg7c4x7y1g" path="res://models/characters/ms_jackson/teddy_bear.glb" id="8_hkiek"]
 [ext_resource type="PackedScene" uid="uid://k7ls3g4owws8" path="res://scenes/environment/platforms/spawn_card.tscn" id="11_v2ekr"]
 [ext_resource type="PackedScene" uid="uid://c3u1j7y83xnxy" path="res://scenes/characters/mushroom_folk/mushrooms_circle.tscn" id="16_5d6fp"]
 [ext_resource type="PackedScene" uid="uid://ciomd0ug0tjo6" path="res://scenes/common/death_handler.tscn" id="17_48rxm"]
@@ -67,20 +66,20 @@ fog_light_color = Color(0.126808, 0.141678, 0.165056, 1)
 fog_light_energy = 0.75
 fog_density = 0.13
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlwbg"]
-proximity_fade_distance = 0.1
-distance_fade_mode = 1
-distance_fade_min_distance = 10.0
-distance_fade_max_distance = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28bcd"]
-albedo_texture = ExtResource("4_he47l")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0foo8"]
+albedo_texture = ExtResource("6_ic6e2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pw2en"]
 albedo_texture = ExtResource("5_21fh0")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0f6fc"]
-albedo_texture = ExtResource("6_ic6e2")
+albedo_texture = ExtResource("4_he47l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlwbg"]
+proximity_fade_distance = 0.1
+distance_fade_mode = 1
+distance_fade_min_distance = 10.0
+distance_fade_max_distance = 0.0
 
 [node name="Sandbox" type="Node3D"]
 script = ExtResource("1_s1iu1")
@@ -95,7 +94,7 @@ light_cull_mask = 2147483645
 shadow_enabled = true
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_2fspt")]
-transform = Transform3D(0.546263, 0, -0.837615, 0, 1, 0, 0.837615, 0, 0.546263, -40.825, 2.1, 39.373)
+transform = Transform3D(0.546263, 0, -0.837615, 0, 1, 0, 0.837615, 0, 0.546263, 7.11021, 2.1, -0.719587)
 
 [node name="Bounds" type="Node3D" parent="."]
 
@@ -372,16 +371,6 @@ transform = Transform3D(1.59853, 0, -1.20196, 0, 2, 0, 1.20196, 0, 1.59853, -24.
 
 [node name="FortuneTellerStall" parent="." instance=ExtResource("6_j3ibc")]
 transform = Transform3D(0.697209, 0, -1.87454, 0, 2, 0, 1.87454, 0, 0.697209, 42.2565, 0.138647, 7.52275)
-
-[node name="teddy_bear" parent="." instance=ExtResource("8_hkiek")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.10634, -2.36435)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.6611, 2.60525, -35.3909)
-use_collision = true
-collision_mask = 0
-size = Vector3(6.72656, 4.14355, 6.46594)
-material = SubResource("StandardMaterial3D_hlwbg")
 
 [node name="MushroomCircle" parent="." instance=ExtResource("16_5d6fp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9735, -0.045619, 40.0807)
@@ -737,6 +726,24 @@ transform = Transform3D(0.843317, 0, 0.537417, 0, 1, 0, -0.537417, 0, 0.843317, 
 [node name="PineTree25" parent="Trees" instance=ExtResource("20_4f750")]
 transform = Transform3D(0.119652, 0, 0.992816, 0, 1, 0, -0.992816, 0, 0.119652, 2.81435, 0, 22.1782)
 
+[node name="PineTree38" parent="Trees" instance=ExtResource("20_4f750")]
+transform = Transform3D(-0.713838, 0, 0.964591, 0, 1.2, 0, -0.964591, 0, -0.713838, 6.5884, 0, 15.2259)
+
+[node name="PineTree39" parent="Trees" instance=ExtResource("20_4f750")]
+transform = Transform3D(0.843317, 0, 0.537417, 0, 1, 0, -0.537417, 0, 0.843317, 1.44956, 0, 28.161)
+
+[node name="PineTree40" parent="Trees" instance=ExtResource("20_4f750")]
+transform = Transform3D(0.119652, 0, 0.992816, 0, 1, 0, -0.992816, 0, 0.119652, 9.74899, 0, 22.1782)
+
+[node name="PineTree41" parent="Trees" instance=ExtResource("20_4f750")]
+transform = Transform3D(-0.713838, 0, 0.964591, 0, 1.2, 0, -0.964591, 0, -0.713838, 13.5282, 0, 15.2259)
+
+[node name="PineTree42" parent="Trees" instance=ExtResource("20_4f750")]
+transform = Transform3D(0.843317, 0, 0.537417, 0, 1, 0, -0.537417, 0, 0.843317, 8.38941, 0, 28.6961)
+
+[node name="PineTree43" parent="Trees" instance=ExtResource("20_4f750")]
+transform = Transform3D(0.119652, 0, 0.992816, 0, 1, 0, -0.992816, 0, 0.119652, 14.0746, 0, 26.814)
+
 [node name="PineTree26" parent="Trees" instance=ExtResource("20_4f750")]
 transform = Transform3D(1.19853, 0, -0.0593728, 0, 1.2, 0, 0.0593728, 0, 1.19853, -4.19666, 0, 21.5614)
 
@@ -782,11 +789,26 @@ transform = Transform3D(0.398692, 0, 1.13183, 0, 1.2, 0, -1.13183, 0, 0.398692, 
 [node name="SpindleTree" parent="Trees" instance=ExtResource("22_00j0k")]
 transform = Transform3D(1.51017, 0, 0.979481, 0, 1.8, 0, -0.979481, 0, 1.51017, 38.2899, 0, 43.1782)
 
+[node name="SpindleTree5" parent="Trees" instance=ExtResource("22_00j0k")]
+transform = Transform3D(1.77176, 0, -0.317607, 0, 1.8, 0, 0.317607, 0, 1.77176, -23.3538, -1.90735e-06, -30.5223)
+
+[node name="SpindleTree9" parent="Trees" instance=ExtResource("22_00j0k")]
+transform = Transform3D(1.74394, 0, 2.44104, 0, 3, 0, -2.44104, 0, 1.74394, 17.1717, -1.90735e-06, -40.6637)
+
 [node name="SpindleTree4" parent="Trees" instance=ExtResource("22_00j0k")]
 transform = Transform3D(1.13245, 0, -0.823137, 0, 1.4, 0, 0.823137, 0, 1.13245, 22.8213, 0, 43.4633)
 
 [node name="SpindleTree2" parent="Trees" instance=ExtResource("22_00j0k")]
 transform = Transform3D(-1.2431, 0, 0.839462, 0, 1.5, 0, -0.839462, 0, -1.2431, 13.0822, -9.53674e-07, 43.0709)
+
+[node name="SpindleTree6" parent="Trees" instance=ExtResource("22_00j0k")]
+transform = Transform3D(0.550102, 0, -1.28739, 0, 1.4, 0, 1.28739, 0, 0.550102, -10.8768, 0.557642, -1.11853)
+
+[node name="SpindleTree7" parent="Trees" instance=ExtResource("22_00j0k")]
+transform = Transform3D(-1.49565, 0, 0.114114, 0, 1.5, 0, -0.114114, 0, -1.49565, -38.5478, 0.446422, -1.48868)
+
+[node name="SpindleTree8" parent="Trees" instance=ExtResource("22_00j0k")]
+transform = Transform3D(-1.24638, 0, 0.095095, 0, 1.25, 0, -0.095095, 0, -1.24638, -37.1842, 0.94211, -21.8755)
 
 [node name="SpindleTree3" parent="Trees" instance=ExtResource("22_00j0k")]
 transform = Transform3D(-1.97186, 0, -0.334295, 0, 2, 0, 0.334295, 0, -1.97186, 0.199116, -9.53674e-07, 43.0309)
@@ -808,29 +830,32 @@ transform = Transform3D(2.7235, 0.989659, 6.37206, -2.3907, 6.5791, -1.43416e-08
 [node name="Checkpoints" type="Node3D" parent="."]
 
 [node name="SpawnCard" parent="Checkpoints" instance=ExtResource("11_v2ekr")]
-transform = Transform3D(0.499951, -0.00698109, -0.866025, 0.0139622, 0.999903, 0, 0.865941, -0.0120916, 0.5, -40.6959, 1.06007, 39.809)
+transform = Transform3D(-0.513386, 0.00716869, 0.858127, 0.0139622, 0.999903, -4.65661e-10, -0.858044, 0.0119813, -0.513436, -40.6959, 1.06007, 39.809)
 is_active_spawn = true
 
 [node name="SpawnCard2" parent="Checkpoints" instance=ExtResource("11_v2ekr")]
-transform = Transform3D(0.999909, 0, 0.013491, 0, 1, 0, -0.013491, 0, 0.999909, 12.1592, 1, 3.11816)
+transform = Transform3D(0.0303989, 0, 0.999538, 0, 1, 0, -0.999538, 0, 0.0303989, 16.1001, 2.10283, -5.03214)
 
-[node name="JumpPuzzle" type="Node3D" parent="."]
+[node name="SpawnCard3" parent="Checkpoints" instance=ExtResource("11_v2ekr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6071, 12.7523, 29.0903)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JumpPuzzle"]
+[node name="JumpPuzzleMain" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="JumpPuzzleMain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1395, 1.11942, -6.66065)
 use_collision = true
-radius = 3.0
+radius = 6.0
 sides = 12
-material = SubResource("StandardMaterial3D_28bcd")
+material = SubResource("StandardMaterial3D_0foo8")
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JumpPuzzle"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="JumpPuzzleMain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8794, 0.365113, -4.65325)
 use_collision = true
-radius = 3.0
+radius = 4.0
 sides = 12
 material = SubResource("StandardMaterial3D_pw2en")
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="JumpPuzzle"]
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="JumpPuzzleMain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.583, 1.34222, -11.6073)
 use_collision = true
 radius = 3.0
@@ -838,83 +863,98 @@ height = 3.0
 sides = 12
 material = SubResource("StandardMaterial3D_0f6fc")
 
-[node name="SpawnCard" parent="JumpPuzzle" instance=ExtResource("11_v2ekr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.8973, 10.7617, 34.1845)
+[node name="FirePlatform3" parent="JumpPuzzleMain" instance=ExtResource("24_qsioq")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -5.87163, 12.7579, 30.2954)
 
-[node name="FadePlatform2" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.31493, 10.7617, 28.8537)
+[node name="DropPlatform2" parent="JumpPuzzleMain" instance=ExtResource("5_igbqd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3403, 12.8239, 30.3352)
 
-[node name="FadePlatform5" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.8562, 10.7617, 28.8537)
+[node name="DropPlatform4" parent="JumpPuzzleMain" instance=ExtResource("5_igbqd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1046, 12.8239, 30.3352)
 
-[node name="FadePlatform9" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
-transform = Transform3D(1, 0, 0, 0, 0.910409, -0.413708, 0, 0.413708, 0.910409, 12.8562, 12.4697, 21.9677)
+[node name="FadePlatform9" parent="JumpPuzzleMain" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 0.910409, -0.413708, 0, 0.413708, 0.910409, 12.8562, 13.7648, 21.9677)
 
-[node name="WaterPlatform" parent="JumpPuzzle" instance=ExtResource("22_8m8ff")]
-transform = Transform3D(1, 0, 0, 0, 0.910409, -0.413708, 0, 0.413708, 0.910409, 12.8562, 15.3522, 12.5226)
+[node name="WaterPlatform" parent="JumpPuzzleMain" instance=ExtResource("22_8m8ff")]
+transform = Transform3D(1, 0, 0, 0, 0.910409, -0.413708, 0, 0.413708, 0.910409, 12.8562, 16.876, 12.5226)
 
-[node name="WaterPlatform2" parent="JumpPuzzle" instance=ExtResource("22_8m8ff")]
-transform = Transform3D(1, 0, 0, 0, 0.910409, -0.413708, 0, 0.413708, 0.910409, 12.8562, 18.1838, 3.59867)
+[node name="WaterPlatform2" parent="JumpPuzzleMain" instance=ExtResource("22_8m8ff")]
+transform = Transform3D(1, 0, 0, 0, 0.910409, -0.413708, 0, 0.413708, 0.910409, 12.8562, 19.1899, 3.59867)
 
-[node name="FadePlatform11" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+[node name="FadePlatform11" parent="JumpPuzzleMain" instance=ExtResource("21_ege4p")]
 transform = Transform3D(1, 0, 0, 0, 0.910409, -0.413708, 0, 0.413708, 0.910409, 12.8562, 20.4184, -9.42949)
 
-[node name="FadePlatform15" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
+[node name="FadePlatform15" parent="JumpPuzzleMain" instance=ExtResource("21_ege4p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8562, 21.6777, -16.6935)
 
-[node name="SpawnCard2" parent="JumpPuzzle" instance=ExtResource("11_v2ekr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8562, 21.6777, -27.927)
+[node name="SpawnCard2" parent="JumpPuzzleMain" instance=ExtResource("11_v2ekr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2702, 21.6777, -23.9627)
 
-[node name="DropPlatform3" parent="JumpPuzzle" instance=ExtResource("5_igbqd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79808, 21.6777, -27.927)
+[node name="DropPlatform3" parent="JumpPuzzleMain" instance=ExtResource("5_igbqd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.30636, 21.6777, -23.7521)
 
-[node name="FirePlatform" parent="JumpPuzzle" instance=ExtResource("24_qsioq")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.67862, 21.6777, -27.927)
+[node name="DropPlatform8" parent="JumpPuzzleMain" instance=ExtResource("5_igbqd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.2564, 21.6777, -23.7521)
 
-[node name="FirePlatform2" parent="JumpPuzzle" instance=ExtResource("24_qsioq")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.2903, 21.6777, -27.927)
+[node name="FadePlatform2" parent="JumpPuzzleMain" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4749, 16.3699, -23.7521)
 
-[node name="WaterPlatform3" parent="JumpPuzzle" instance=ExtResource("22_8m8ff")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8562, 21.6777, -27.927)
+[node name="FirePlatform" parent="JumpPuzzleMain" instance=ExtResource("24_qsioq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.8562, 21.6777, -23.8967)
 
-[node name="DropPlatform4" parent="JumpPuzzle" instance=ExtResource("5_igbqd")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.59888, 10.7617, 28.8537)
+[node name="FirePlatform2" parent="JumpPuzzleMain" instance=ExtResource("24_qsioq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.44638, 21.6777, -23.8967)
 
-[node name="FadePlatform" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
-transform = Transform3D(1, 0, 0, 0, 0.971969, -0.235108, 0, 0.235108, 0.971969, 14.3289, 3.71156, -21.8319)
+[node name="FirePlatform4" parent="JumpPuzzleMain" instance=ExtResource("24_qsioq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.72572, 21.6777, -23.8967)
 
-[node name="FadePlatform3" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.2225, 4.77148, -31.1365)
+[node name="WaterPlatform3" parent="JumpPuzzleMain" instance=ExtResource("22_8m8ff")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -16.292, 21.6777, -23.8967)
 
-[node name="FadePlatform4" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
-transform = Transform3D(-4.13055e-08, 0.327185, 0.94496, 1.43017e-08, 0.94496, -0.327185, -1, 0, -4.37114e-08, 3.47758, 6.72554, -31.1365)
+[node name="FadePlatform" parent="JumpPuzzleMain" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 0.971969, -0.235108, 0, 0.235108, 0.971969, 14.3289, 3.71156, -19.7614)
 
-[node name="FadePlatform6" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
-transform = Transform3D(-4.13055e-08, 0.327185, 0.94496, 1.43017e-08, 0.94496, -0.327185, -1, 0, -4.37114e-08, -6.93421, 9.12315, -31.1365)
+[node name="FadePlatform3" parent="JumpPuzzleMain" instance=ExtResource("21_ege4p")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.2225, 4.77148, -27.0194)
 
-[node name="FadePlatform7" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4934, 10.657, -29.8928)
+[node name="FadePlatform4" parent="JumpPuzzleMain" instance=ExtResource("21_ege4p")]
+transform = Transform3D(-4.13055e-08, 0.327185, 0.94496, 1.43017e-08, 0.94496, -0.327185, -1, 0, -4.37114e-08, 5.21592, 5.95058, -26.9538)
 
-[node name="FadePlatform8" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.266, 10.657, -20.4867)
+[node name="FadePlatform7" parent="JumpPuzzleMain" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.27629, 9.99914, -25.6936)
 
-[node name="DropPlatform" parent="JumpPuzzle" instance=ExtResource("5_igbqd")]
+[node name="FadePlatform17" parent="JumpPuzzleMain" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3817, 9.99914, -25.6936)
+
+[node name="WaterPlatform4" parent="JumpPuzzleMain" instance=ExtResource("22_8m8ff")]
+transform = Transform3D(-3.99992, 0, -0.0245749, 0, 4, 0, 0.0245749, 0, -3.99992, 8.85885, 9.68715, -2.30984)
+
+[node name="FadePlatform16" parent="JumpPuzzleMain" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 0.949513, 0.313727, 0, -0.313727, 0.949513, -12.3819, 10.657, -18.5509)
+
+[node name="DropPlatform" parent="JumpPuzzleMain" instance=ExtResource("5_igbqd")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.4688, 10.657, -11.4646)
 
-[node name="FadePlatform10" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.926, 10.657, -0.490045)
+[node name="DropPlatform7" parent="JumpPuzzleMain" instance=ExtResource("5_igbqd")]
+transform = Transform3D(-0.649501, 0, 0.760361, 0, 1, 0, -0.760361, 0, -0.649501, -3.31066, 10.657, -18.1642)
 
-[node name="DropPlatform2" parent="JumpPuzzle" instance=ExtResource("5_igbqd")]
-transform = Transform3D(-0.999498, 0, -0.0316725, 0, 1, 0, 0.0316725, 0, -0.999498, -15.3673, 10.657, 8.07368)
+[node name="DropPlatform6" parent="JumpPuzzleMain" instance=ExtResource("5_igbqd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.1933, 10.657, 1.20001)
 
-[node name="FadePlatform12" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
-transform = Transform3D(-0.0316725, 0, 0.999498, 0, 1, 0, -0.999498, 0, -0.0316725, -14.525, 10.657, 15.7547)
+[node name="FadePlatform10" parent="JumpPuzzleMain" instance=ExtResource("21_ege4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3282, 10.657, -5.0099)
 
-[node name="FadePlatform13" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
-transform = Transform3D(-0.999994, 0, 0.00347314, 0, 1, 0, -0.00347314, 0, -0.999994, -13.5178, 10.657, 20.9434)
+[node name="WaterPlatform5" parent="JumpPuzzleMain" instance=ExtResource("22_8m8ff")]
+transform = Transform3D(0.999498, 0, 0.0316726, 0, 1, 0, -0.0316726, 0, 0.999498, -12.7894, 10.657, 8.13407)
 
-[node name="FadePlatform14" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
-transform = Transform3D(0.999914, 0, 0.013142, 0, 1, 0, -0.013142, 0, 0.999914, -14.525, 10.657, 28.6536)
+[node name="FadePlatform13" parent="JumpPuzzleMain" instance=ExtResource("21_ege4p")]
+transform = Transform3D(-0.999994, 0, 0.00347314, -0.00117859, 0.940662, -0.339343, -0.00326705, -0.339345, -0.940656, -12.6531, 11.7729, 15.5033)
+
+[node name="FadePlatform14" parent="JumpPuzzleMain" instance=ExtResource("21_ege4p")]
+transform = Transform3D(0.999914, 0, 0.013142, 0, 1, 0, -0.013142, 0, 0.999914, -12.6928, 12.813, 21.9959)
+
+[node name="DropPlatform5" parent="JumpPuzzleMain" instance=ExtResource("5_igbqd")]
+transform = Transform3D(0.949879, 0.312617, 0, -0.312617, 0.949879, 0, 0, 0, 1, -2.22132, 8.45339, -26.8982)
 
 [node name="Pickups" type="Node3D" parent="."]
 
@@ -924,106 +964,152 @@ card_name = "The Fool"
 card_texture = ExtResource("27_n05b8")
 
 [node name="TheHighPriestess02" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 8.39418, 2.31418, 27.3326)
+transform = Transform3D(5.3952, 0, -2.62524, 0, 6, 0, 2.62524, 0, 5.3952, -19.1533, 2.08166, 48.0487)
 card_name = "The High Priestess"
 card_texture = ExtResource("29_iah0h")
 
 [node name="TheMagician03" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 12.1655, 2.19179, 33.7561)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 45.8348, 1.72504, 34.0577)
 card_name = "The Magician"
 card_texture = ExtResource("27_t5kxf")
 
 [node name="TheEmpress04" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 7.70014, 2.19179, 30.8192)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 46.7772, 1.75742, 25.8492)
 card_name = "The Empress"
 card_texture = ExtResource("27_t2xce")
 
 [node name="TheEmperor05" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 16.7333, 2.19179, 32.2997)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 44.7909, 1.82545, -5.94724)
 card_name = "The Emperor"
 card_texture = ExtResource("28_cheox")
 
 [node name="TheHierophant06" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 5.52681, 2.19179, 27.7221)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 42.3733, 1.94571, -16.2384)
 card_name = "The Hierophant"
 card_texture = ExtResource("29_jxekv")
 
 [node name="TheLovers07" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 6.1909, 2.19179, 27.5205)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, -26.8988, 2.19179, -13.447)
 card_name = "The Lovers"
 card_texture = ExtResource("30_142iv")
 
 [node name="TheChariot08" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 4.40318, 2.31418, 32.9706)
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, -11.8513, 2.31418, 17.2283)
 card_name = "The Chariot"
 card_texture = ExtResource("34_5r2cj")
 
 [node name="Strength09" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 10.1891, 2.31418, 32.6961)
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 46.4728, 2.31418, -44.631)
 card_name = "Strength"
 card_texture = ExtResource("35_bjvot")
 
 [node name="TheHermit10" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 16.7915, 2.19179, 27.325)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, -23.5583, 17.4414, -23.6858)
 card_name = "TheHermit"
 card_texture = ExtResource("29_b484g")
 
 [node name="TheWheelOfFortune11" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 13.269, 2.19179, 30.3095)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 39.8319, 3.56099, 31.4004)
 card_name = "The Wheel of Fortune"
 card_texture = ExtResource("33_vym3g")
 
 [node name="Justice12" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 14.6781, 2.19179, 34.7601)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 40.798, 3.46362, 28.6456)
 card_name = "Justice"
 card_texture = ExtResource("33_clm8d")
 
 [node name="TheHangedMan13" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 10.8879, 2.19179, 36.7266)
+transform = Transform3D(6, 0, 8.9407e-07, 0, 6, 0, -8.9407e-07, 0, 6, 41.3471, 3.5058, 25.5891)
 card_name = "The Hanged Man"
 card_texture = ExtResource("34_ipqp5")
 
 [node name="Death14" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 3.39479, 2.31418, 35.3335)
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, -34.7184, 2.31418, 15.6298)
 card_name = "Death"
 card_texture = ExtResource("39_6kin8")
 
 [node name="Temperance15" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 18.5717, 2.31418, 34.8736)
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 8.849, 11.3661, 8.71666)
 card_name = "Termperance"
 card_texture = ExtResource("40_glfpi")
 
 [node name="TheDevil16" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(3.49904, 0, -4.87409, 0, 6, 0, 4.87409, 0, 3.49904, 7.84182, 2.63426, 35.5309)
+transform = Transform3D(3.49904, 0, -4.87409, 0, 6, 0, 4.87409, 0, 3.49904, 40.4362, 2.63426, -35.5245)
 card_name = "The Devil"
 card_texture = ExtResource("26_u5jhc")
 
 [node name="TheTower17" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 15.8969, 2.31418, 37.2168)
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 12.9707, 20.7444, 3.58677)
 card_name = "The Tower"
 card_texture = ExtResource("41_imljg")
 
 [node name="TheStar18" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 8.02903, 2.31418, 37.9398)
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 14.9818, 11.3661, -12.6336)
 card_name = "The Star"
 card_texture = ExtResource("42_fo5bd")
 
 [node name="TheMoon19" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 4.15142, 2.31418, 38.606)
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 3.5802, 11.3661, -1.74112)
 card_name = "The Moon"
 card_texture = ExtResource("43_ek3ah")
 
 [node name="TheSun20" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 0.512752, 2.31418, 36.8043)
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, -12.3637, 11.5441, -25.8821)
 card_name = "The Sun"
 card_texture = ExtResource("44_5q71o")
 
 [node name="Judgement21" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 6.69162, 2.31418, 40.1539)
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 14.3519, 5.33521, -19.9365)
 card_name = "Judgement"
 card_texture = ExtResource("45_3lfyp")
 
 [node name="TheWorld22" parent="Pickups" instance=ExtResource("25_mhjep")]
-transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 19.528, 2.31418, 30.0956)
+transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 14.7535, 1.91029, 21.4445)
 card_name = "The World"
 card_texture = ExtResource("46_72gdd")
+
+[node name="JumpPuzzleMini" type="Node3D" parent="."]
+
+[node name="TinyMaze" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="TinyMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.6611, 2.60525, -35.3909)
+use_collision = true
+collision_mask = 0
+size = Vector3(6.72656, 4.14355, 6.46594)
+material = SubResource("StandardMaterial3D_hlwbg")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="TinyMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.0454, 2.60525, -30.421)
+use_collision = true
+collision_mask = 0
+size = Vector3(8.16601, 4.14355, 6.46594)
+material = SubResource("StandardMaterial3D_hlwbg")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="TinyMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.0938, 4.57672, -38.893)
+use_collision = true
+collision_mask = 0
+size = Vector3(13.4053, 0.935544, 22.7944)
+material = SubResource("StandardMaterial3D_hlwbg")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="TinyMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.9394, 2.60525, -35.5128)
+use_collision = true
+collision_mask = 0
+size = Vector3(4.11572, 4.14355, 3.69754)
+material = SubResource("StandardMaterial3D_hlwbg")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="TinyMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.9595, 2.60525, -40.0329)
+use_collision = true
+collision_mask = 0
+size = Vector3(4.5144, 4.14355, 5.63832)
+material = SubResource("StandardMaterial3D_hlwbg")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="TinyMaze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4961, 2.60525, -44.0929)
+use_collision = true
+collision_mask = 0
+size = Vector3(6.72656, 4.14355, 11.1936)
+material = SubResource("StandardMaterial3D_hlwbg")
