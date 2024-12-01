@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://drbrebgd4gd5n"]
+[gd_scene load_steps=19 format=3 uid="uid://drbrebgd4gd5n"]
 
 [ext_resource type="Script" path="res://scenes/characters/musician/musician_stall.gd" id="1_wacb7"]
 [ext_resource type="PackedScene" uid="uid://2isfaa6wkaj8" path="res://scenes/common/interaction_handler.tscn" id="2_bj52x"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://ccow570biiwcu" path="res://audio/music/Darkest Child.mp3" id="13_60qev"]
 [ext_resource type="Script" path="res://scenes/characters/musician/level_music_player.gd" id="14_hdkqo"]
 [ext_resource type="AudioStream" uid="uid://n7424qrc6w5p" path="res://audio/music/Vanishing.mp3" id="15_q7nm6"]
+[ext_resource type="AudioStream" uid="uid://de8fvu07vwjbr" path="res://audio/music/Blue Feather.mp3" id="16_vch86"]
 [ext_resource type="AudioStream" uid="uid://bv0vf4sf3qnsl" path="res://audio/characters/musician/xylophone/xylophone failure.wav" id="18_sa6he"]
 [ext_resource type="AudioStream" uid="uid://b3upgfdcolyne" path="res://audio/characters/musician/xylophone/xylophone success.wav" id="19_223te"]
 
@@ -93,4 +94,4 @@ volume_db = 1.0
 unit_size = 15.0
 bus = &"Music"
 script = ExtResource("14_hdkqo")
-tracks = Array[AudioStream]([ExtResource("13_60qev"), ExtResource("15_q7nm6")])
+tracks = Array[AudioStream]([ExtResource("13_60qev"), ExtResource("15_q7nm6"), ExtResource("16_vch86")])
