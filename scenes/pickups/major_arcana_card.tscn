@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxqi541f2ccls"]
+[gd_scene load_steps=11 format=3 uid="uid://cxqi541f2ccls"]
 
 [ext_resource type="Script" path="res://scenes/pickups/major_arcana_card.gd" id="1_eqlgg"]
 [ext_resource type="Shader" path="res://shaders/2d_highlight.gdshader" id="2_pwe1t"]
+[ext_resource type="AudioStream" uid="uid://cea18iwyj46re" path="res://audio/characters/musician/xylophone/A4.wav" id="3_0jp4y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_um0fi"]
 shader = ExtResource("2_pwe1t")
@@ -112,3 +113,6 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
 shape = SubResource("SphereShape3D_uc7a1")
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0jp4y")
