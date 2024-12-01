@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://djrd4sci3aady"]
+[gd_scene load_steps=6 format=3 uid="uid://djrd4sci3aady"]
 
 [ext_resource type="Script" path="res://scenes/menus/settings_menu/settings_menu.gd" id="1_ksp3g"]
+[ext_resource type="LabelSettings" uid="uid://b6q4cwq5qro1g" path="res://scenes/menus/title_label.tres" id="2_0awiv"]
 [ext_resource type="AudioStream" uid="uid://dse8chjbrhva2" path="res://audio/characters/musician/xylophone/C3.wav" id="2_72jer"]
 [ext_resource type="AudioStream" uid="uid://0d8bhpb5pr5t" path="res://audio/characters/musician/xylophone/D3.wav" id="3_dtuj4"]
 [ext_resource type="AudioStream" uid="uid://8rumgb0mbhe4" path="res://audio/characters/musician/xylophone/E3.wav" id="4_l81an"]
@@ -13,6 +14,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ksp3g")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.772549, 0, 0.333333, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -30,6 +40,7 @@ theme_override_constants/margin_bottom = 100
 layout_mode = 2
 size_flags_vertical = 0
 text = "Settings"
+label_settings = ExtResource("2_0awiv")
 horizontal_alignment = 1
 
 [node name="ControlsContainer" type="VBoxContainer" parent="MarginContainer"]

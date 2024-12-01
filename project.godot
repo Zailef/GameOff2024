@@ -20,6 +20,10 @@ ActionNames="*res://autoloads/action_names.gd"
 SignalManager="*res://autoloads/signal_manager.gd"
 MenuMusicPlayer="*res://autoloads/menu_music_player.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 player=""
