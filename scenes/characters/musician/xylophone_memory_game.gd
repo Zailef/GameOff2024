@@ -2,7 +2,7 @@ extends Node3D
 class_name XylophoneMemoryGame
 
 signal game_started
-signal game_ended
+signal game_ended(is_win: bool)
 
 @onready var state_machine = $MemoryGameStateMachine
 @onready var idle_state = $MemoryGameStateMachine/IdleState
@@ -13,13 +13,15 @@ signal game_ended
 @onready var success_audio_player: AudioStreamPlayer = $SuccessSound
 @onready var failure_audio_player: AudioStreamPlayer = $FailureSound
 
+@export var num_rounds := 2
+@export var round_note_count := 3
+@export var musician_character: Node3D
+
 var available_notes = ["C3", "D3", "E3", "F3", "G3", "A4", "B4", "C4"]
 var sequence := []
 var current_index := 0
 var player_index := 0
 var current_round := 1
-@export var num_rounds := 2
-@export var round_note_count := 3
 
 func _ready() -> void:
 	state_machine.owner_node = self

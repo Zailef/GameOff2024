@@ -10,6 +10,8 @@ class_name MusicianStall
 @export var standard_volume_db: float = -2
 @export var mini_game_volumne_reduction_db: float = -5
 
+var is_game_won: bool = false
+
 func _ready() -> void:
 	interaction_handler.interaction_started.connect(_on_interaction_started)
 	player_discovery_area.body_entered.connect(_on_player_discovery_area_body_entered)
@@ -23,8 +25,15 @@ func _on_interaction_started() -> void:
 func _on_game_started() -> void:
 	level_music_player.volume_db = mini_game_volumne_reduction_db
 
-func _on_game_ended() -> void:
+func _on_game_ended(is_win: bool) -> void:
 	level_music_player.volume_db = standard_volume_db
+
+	if is_win:
+		is_game_won = true
+		interaction_handler.queue_free()
+	else:
+		is_game_won = false
+		interaction_handler.interaction_label.visible = true
 
 func _on_player_discovery_area_body_entered(body: Node) -> void:
 	if body is Player:

@@ -10,7 +10,7 @@ signal note_played(note: String)
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_streams: Node3D = $AudioStreams
 
-@export var player_default_delay := .5
+@export var player_default_delay := .3
 
 var current_player_note: String
 var key_audio_stream_players := {}
