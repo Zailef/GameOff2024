@@ -148,6 +148,7 @@ bounce = 0.5
 size = Vector3(3.53131, 0.0830688, 5.98511)
 
 [node name="WaterPlatform" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_u1mes")
 
 [node name="Card" type="CSGBox3D" parent="."]
