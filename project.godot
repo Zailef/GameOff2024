@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 
 ActionNames="*res://autoloads/action_names.gd"
 SignalManager="*res://autoloads/signal_manager.gd"
+MenuMusicPlayer="*res://autoloads/menu_music_player.tscn"
 
 [global_group]
 

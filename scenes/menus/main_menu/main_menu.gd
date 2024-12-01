@@ -1,4 +1,5 @@
 extends Control
+class_name MainMenu
 
 @onready var play_button: Button = %PlayButton
 @onready var settings_button: Button = %SettingsButton
@@ -14,6 +15,7 @@ func _ready() -> void:
     settings_button.pressed.connect(_on_settings_button_pressed)
     credits_button.pressed.connect(_on_credits_button_pressed)
     quit_button.pressed.connect(_on_quit_button_pressed)
+    MenuMusicPlayer.menu_music_requested.emit()
 
 func _on_play_button_pressed() -> void:
     get_tree().change_scene_to_packed(main_level)

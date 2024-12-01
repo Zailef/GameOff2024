@@ -1,6 +1,7 @@
-[gd_scene load_steps=55 format=3 uid="uid://dbcs2ke7l76a2"]
+[gd_scene load_steps=56 format=3 uid="uid://dbcs2ke7l76a2"]
 
 [ext_resource type="PackedScene" uid="uid://mwbglbrt5mhq" path="res://scenes/characters/player/player.tscn" id="1_2fspt"]
+[ext_resource type="Script" path="res://scenes/levels/sandbox.gd" id="1_s1iu1"]
 [ext_resource type="PackedScene" uid="uid://drbrebgd4gd5n" path="res://scenes/characters/musician/musician_stall.tscn" id="3_8dt6u"]
 [ext_resource type="PackedScene" uid="uid://bpuevhu8yt47f" path="res://scenes/environment/pillared_wall.tscn" id="3_fhotw"]
 [ext_resource type="PackedScene" uid="uid://b180jm6jisq1f" path="res://scenes/environment/ground.tscn" id="3_nbdf5"]
@@ -83,6 +84,7 @@ albedo_texture = ExtResource("5_21fh0")
 albedo_texture = ExtResource("6_ic6e2")
 
 [node name="Sandbox" type="Node3D"]
+script = ExtResource("1_s1iu1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hw884")

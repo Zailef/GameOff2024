@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnl8mjaummeu4"]
+
+[ext_resource type="AudioStream" uid="uid://de8fvu07vwjbr" path="res://audio/music/Blue Feather.mp3" id="1_tjw7l"]
+[ext_resource type="Script" path="res://autoloads/menu_music_player.gd" id="2_60dla"]
+
+[node name="MenuMusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_tjw7l")
+bus = &"Music"
+script = ExtResource("2_60dla")

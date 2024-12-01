@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://djrd4sci3aady"]
+[gd_scene load_steps=5 format=3 uid="uid://djrd4sci3aady"]
 
 [ext_resource type="Script" path="res://scenes/menus/settings_menu/settings_menu.gd" id="1_ksp3g"]
 [ext_resource type="AudioStream" uid="uid://dse8chjbrhva2" path="res://audio/characters/musician/xylophone/C3.wav" id="2_72jer"]
+[ext_resource type="AudioStream" uid="uid://0d8bhpb5pr5t" path="res://audio/characters/musician/xylophone/D3.wav" id="3_dtuj4"]
+[ext_resource type="AudioStream" uid="uid://8rumgb0mbhe4" path="res://audio/characters/musician/xylophone/E3.wav" id="4_l81an"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -73,6 +75,13 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Back"
 
-[node name="SFXSampler" type="AudioStreamPlayer" parent="."]
+[node name="MasterSampler" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_72jer")
+
+[node name="MusicSampler" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dtuj4")
+bus = &"Music"
+
+[node name="SFXSampler" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_l81an")
 bus = &"SFX"
