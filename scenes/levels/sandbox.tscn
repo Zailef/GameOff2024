@@ -94,7 +94,7 @@ light_cull_mask = 2147483645
 shadow_enabled = true
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_2fspt")]
-transform = Transform3D(0.546263, 0, -0.837615, 0, 1, 0, 0.837615, 0, 0.546263, 7.11021, 2.1, -0.719587)
+transform = Transform3D(0.508035, 0, -0.861338, 0, 1, 0, 0.861338, 0, 0.508035, -41.1649, 2.10444, 40.1591)
 
 [node name="Bounds" type="Node3D" parent="."]
 
@@ -1070,8 +1070,6 @@ card_texture = ExtResource("45_3lfyp")
 transform = Transform3D(6, 0, 1.04907e-06, 0, 6, 0, -1.04907e-06, 0, 6, 14.7535, 1.91029, 21.4445)
 card_name = "The World"
 card_texture = ExtResource("46_72gdd")
-
-[node name="JumpPuzzleMini" type="Node3D" parent="."]
 
 [node name="TinyMaze" type="Node3D" parent="."]
 

@@ -142,7 +142,7 @@ script = ExtResource("5_prpu3")
 [node name="MajorArcanaLabel" type="Label" parent="CanvasLayer/PlayerHUD"]
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 0
+size_flags_vertical = 8
 text = "Major Arcana Collected: 0/22"
 
 [node name="InteractionProbe" type="Area3D" parent="."]
