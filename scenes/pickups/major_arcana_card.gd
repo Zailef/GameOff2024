@@ -16,6 +16,6 @@ func _ready() -> void:
 
 func _on_interaction_started() -> void:
 	animation_player.play(ANIMATION_FADE_OUT)
-	await animation_player.animation_finished
 	SignalManager.major_arcana_card_collected.emit(card_name)
+	await animation_player.animation_finished
 	queue_free()
