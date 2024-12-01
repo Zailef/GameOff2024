@@ -14,7 +14,11 @@ func _ready() -> void:
     play_button.pressed.connect(_on_play_button_pressed)
     settings_button.pressed.connect(_on_settings_button_pressed)
     credits_button.pressed.connect(_on_credits_button_pressed)
-    quit_button.pressed.connect(_on_quit_button_pressed)
+
+    if OS.get_name() == "web":
+        quit_button.hide()
+        quit_button.pressed.connect(_on_quit_button_pressed)
+
     MenuMusicPlayer.menu_music_requested.emit()
 
 func _on_play_button_pressed() -> void:
