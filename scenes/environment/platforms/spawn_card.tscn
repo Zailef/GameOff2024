@@ -37,22 +37,12 @@ script = ExtResource("1_eeowu")
 
 [node name="Card" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+layers = 2
 cast_shadow = 0
 use_collision = true
 collision_mask = 0
 size = Vector3(6, 0.09, 3.5)
 material = SubResource("StandardMaterial3D_hrmwp")
-
-[node name="Lights" type="Node3D" parent="."]
-visible = false
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120323, 0, 2.13501)
-omni_range = 1.0
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120323, 0, -1.95486)
-omni_range = 1.0
 
 [node name="PlayerDetectionArea" type="Area3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0.000277972, 0, -0.000277972, 1.5, 0, 0, 0)
@@ -66,3 +56,11 @@ shape = SubResource("BoxShape3D_0ih2y")
 [node name="SpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.045, 0)
 gizmo_extents = 0.0
+
+[node name="ActivationLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06394, 0)
+visible = false
+layers = 2
+light_energy = 100.0
+light_cull_mask = 2
+omni_range = 4.0

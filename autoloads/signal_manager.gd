@@ -12,6 +12,8 @@ signal player_exited_fire_area
 signal player_ready
 signal player_died
 
+signal major_arcana_card_collected(card_name: String)
+
 func _ready():
     set_process(false)
     set_physics_process(false)

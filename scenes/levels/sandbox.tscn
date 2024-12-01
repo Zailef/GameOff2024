@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dbcs2ke7l76a2"]
+[gd_scene load_steps=34 format=3 uid="uid://dbcs2ke7l76a2"]
 
 [ext_resource type="PackedScene" uid="uid://mwbglbrt5mhq" path="res://scenes/characters/player/player.tscn" id="1_2fspt"]
 [ext_resource type="PackedScene" uid="uid://drbrebgd4gd5n" path="res://scenes/characters/musician/musician_stall.tscn" id="3_8dt6u"]
@@ -24,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://ds2rhcdt88qf3" path="res://models/environment/crystal_3.glb" id="23_ukbns"]
 [ext_resource type="PackedScene" uid="uid://blvrdc3fs5dxh" path="res://models/environment/crystal_4.glb" id="24_7x85t"]
 [ext_resource type="PackedScene" uid="uid://q0xqg7cyoond" path="res://scenes/environment/platforms/fire_platform.tscn" id="24_qsioq"]
+[ext_resource type="PackedScene" uid="uid://cxqi541f2ccls" path="res://scenes/pickups/major_arcana_card.tscn" id="25_mhjep"]
+[ext_resource type="Texture2D" uid="uid://clnrrhqhdx6hl" path="res://textures/tarot_cards/major/RWS_Tarot_15_Devil.jpg" id="26_u5jhc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kgrn6"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -40,6 +42,7 @@ sky = SubResource("Sky_73i75")
 glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(0.126808, 0.141678, 0.165056, 1)
+fog_light_energy = 0.75
 fog_density = 0.13
 adjustment_enabled = true
 
@@ -66,10 +69,11 @@ environment = SubResource("Environment_hw884")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 49, 0)
 light_color = Color(0.84107, 0.860623, 0.908618, 1)
+light_cull_mask = 2147483645
 shadow_enabled = true
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_2fspt")]
-transform = Transform3D(0.546263, 0, -0.837615, 0, 1, 0, 0.837615, 0, 0.546263, -40.8246, 3.42061, 39.3733)
+transform = Transform3D(0.546263, 0, -0.837615, 0, 1, 0, 0.837615, 0, 0.546263, -40.825, 2.1, 39.373)
 
 [node name="Bounds" type="Node3D" parent="."]
 
@@ -889,3 +893,10 @@ transform = Transform3D(-0.999994, 0, 0.00347314, 0, 1, 0, -0.00347314, 0, -0.99
 
 [node name="FadePlatform14" parent="JumpPuzzle" instance=ExtResource("21_ege4p")]
 transform = Transform3D(0.999914, 0, 0.013142, 0, 1, 0, -0.013142, 0, 0.999914, -14.525, 10.657, 28.6536)
+
+[node name="Pickups" type="Node3D" parent="."]
+
+[node name="MajorArcanaCard" parent="Pickups" instance=ExtResource("25_mhjep")]
+transform = Transform3D(3.49904, 0, -4.87409, 0, 6, 0, 4.87409, 0, 3.49904, -33.5478, 2.31584, 35.5309)
+card_name = "The Devil"
+card_texture = ExtResource("26_u5jhc")
