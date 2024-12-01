@@ -26,6 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0612786, 3.36013, 0.007073
 
 [node name="InteractionHandler" parent="." index="2" node_paths=PackedStringArray("interaction_label") instance=ExtResource("3_ohe2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0035e-07, -0.615564, 1.14787)
+visible = false
 interaction_label = NodePath("Label3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionHandler" index="0"]
