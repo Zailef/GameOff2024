@@ -4,6 +4,7 @@ class_name SpawnCard
 @onready var player_detection_area: Area3D = $PlayerDetectionArea
 @onready var spawn_point: Marker3D = $SpawnPoint
 @onready var card: CSGBox3D = $Card
+@onready var spawn_activated_sound: AudioStreamPlayer = $SpawnActivatedSound
 
 @export var is_active_spawn: bool = false
 
@@ -16,6 +17,7 @@ func _on_player_detection_area_body_entered(body: Node) -> void:
 
 	is_active_spawn = true
 	card.material_overlay.set_shader_parameter("is_active", true)
+	spawn_activated_sound.play()
 	
 	for child in get_tree().get_nodes_in_group("spawn_cards"):
 		if child != self:
