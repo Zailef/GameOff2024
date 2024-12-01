@@ -6,6 +6,7 @@ class_name CreditsMenu
 var main_menu: PackedScene = load("res://scenes/menus/main_menu/main_menu.tscn")
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	back_button.pressed.connect(_on_back_button_pressed)
 	MenuMusicPlayer.menu_music_requested.emit()
 

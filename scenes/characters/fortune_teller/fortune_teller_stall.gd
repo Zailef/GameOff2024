@@ -5,6 +5,8 @@ const ANIMATION_INTERACT_TRANSITION: String = "interact_transition"
 const ANIMATION_TALKING: String = "talking"
 const ANIMATION_IDLE: String = "idle"
 
+var credits_scene: PackedScene = preload("res://scenes/menus/credits_menu/credits_menu.tscn")
+
 var audio_streams: Array[AudioStream] = [
 	preload("res://audio/characters/fortune_teller/monologue.mp3"),
 	preload("res://audio/characters/fortune_teller/see_me_again.mp3"),
@@ -12,7 +14,6 @@ var audio_streams: Array[AudioStream] = [
 ]
 
 var player: Player
-
 var conversation_state = 0
 
 @onready var interaction_handler: InteractionHandler = $InteractionHandler
@@ -34,3 +35,6 @@ func _on_interaction_started() -> void:
 
 	if conversation_state == 0:
 		conversation_state += 1
+
+	if conversation_state == 2:
+		get_tree().change_scene_to_packed(credits_scene)
