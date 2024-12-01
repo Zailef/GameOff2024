@@ -38,6 +38,7 @@ func _ready() -> void:
 
 func enter() -> void:
 	super.enter()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	animation_player = player_node.player_model_animated.get_node("AnimationPlayer")
 
 func exit() -> void:

@@ -16,6 +16,9 @@ func _ready() -> void:
 
 func enter() -> void:
 	super.enter()
+
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 	if player_node.is_on_floor():
 		player_node.velocity.y = jump_velocity
 		jump_timer = jump_grace_period

@@ -10,6 +10,8 @@ func _ready() -> void:
 	state_name = "PLAYER_FALL_STATE"
 
 func enter() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 	super.enter()
 	animation_player = player_node.player_model_animated.get_node("AnimationPlayer")
 	animation_player.play(FALLING_ANIMATION)

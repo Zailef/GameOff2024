@@ -13,6 +13,8 @@ func enter() -> void:
 	player_node.set_physics_process(true)
 	player_node.set_process_unhandled_input(true)
 
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 	if player_node.player_model_animated:
 		animation_player = player_node.player_model_animated.get_node("AnimationPlayer")
 		animation_player.play("rest")
