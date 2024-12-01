@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfxv7q2n336i5"]
+[gd_scene load_steps=9 format=3 uid="uid://bfxv7q2n336i5"]
 
 [ext_resource type="PackedScene" uid="uid://c46xaikra54ku" path="res://models/characters/fortune_teller/Fortune.teller.tent.glb" id="1_vwkpp"]
 [ext_resource type="PackedScene" uid="uid://f1n4bef1u22x" path="res://models/characters/fortune_teller/fortune.teller.sign.glb" id="2_q7pvc"]
 [ext_resource type="Script" path="res://scenes/characters/fortune_teller/fortune_teller_stall.gd" id="2_xqwe8"]
 [ext_resource type="PackedScene" uid="uid://c0ffma0ehkl8j" path="res://models/characters/fortune_teller/Fortune.teller.ani.glb" id="3_0nbns"]
 [ext_resource type="PackedScene" uid="uid://2isfaa6wkaj8" path="res://scenes/common/interaction_handler.tscn" id="4_qavpu"]
+[ext_resource type="AudioStream" uid="uid://uxnk6ttny0nr" path="res://audio/characters/fortune_teller/monologue.mp3" id="6_2ihsi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7345m"]
 size = Vector3(2.13727, 2.99164, 1.59192)
@@ -53,3 +54,8 @@ shape = SubResource("CylinderShape3D_2bcdk")
 [node name="Label3D" type="Label3D" parent="InteractionHandler" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39539, 0.05527)
 text = "Talk [E]"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("6_2ihsi")
+volume_db = 4.0
+bus = &"SFX"

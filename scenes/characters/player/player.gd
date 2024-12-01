@@ -16,7 +16,7 @@ const MAJOR_ARCANA_CARD_COUNT: int = 22
 @onready var player_model_animated: Node3D = $PlayerModelAnimated
 @onready var music_player_remote_transform: RemoteTransform3D = $MusicPlayerTransform
 
-var collected_cards: Array[String] = []
+@export var collected_cards: Array[String] = []
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -56,5 +56,6 @@ func _on_major_arcana_card_collected(card_name: String) -> void:
 	collected_cards.append(card_name)
 	SignalManager.major_acrana_card_added_to_inventory.emit(card_name)
 
-	if collected_cards.size() == MAJOR_ARCANA_CARD_COUNT:
+	# Greater than or equal to is used for easier debugging
+	if collected_cards.size() >= MAJOR_ARCANA_CARD_COUNT:
 		SignalManager.all_major_arcana_cards_added_to_inventory.emit()
